@@ -1,0 +1,133 @@
+ | arXiv e-print repository
+  MathJax.Hub.Config({
+    messageStyle: "none",
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      ignoreClass: '.*',
+      processClass: 'mathjax.*'
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "noErrors.js"],
+        noErrors: {
+          inlineDelimiters: ["$","$"],
+          multiLine: false,
+          style: {
+            "font-size": "normal",
+            "border": ""
+          }
+        }
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+  Skip to main content
+        <a class="level-item" href="https://cornell.edu/"
+            ><img
+                src="/static/base/1.0.1/images/cornell-reduced-white-SMALL.svg"
+                alt="Cornell University"
+                width="200"
+                aria-label="logo"
+        />
+            <span id="support-ack-url"
+                >We gratefully acknowledge support from
+                the Simons Foundation, Schmidt Sciences,
+                <a href="https://info.arxiv.org/about/ourmembers.html"
+                    >member institutions</a
+                >, and all contributors.
+                <a href="https://info.arxiv.org/about/donate.html"
+                    >Donate</a
+                ></span
+            >
+            <a
+                class="arxiv"
+                href="https://arxiv.org/"
+                aria-label="arxiv-logo"
+            >
+                <img
+                    src="/static/base/1.0.1/images/arxiv-logo-one-color-white.svg"
+                    aria-label="logo"
+                    alt="arxiv logo"
+                    width="85"
+                    style="width: 85px"
+                />
+          Help | Advanced Search
+              All fields
+              Title
+              Author
+              Abstract
+              Comments
+              Journal reference
+              ACM classification
+              MSC classification
+              Report number
+              arXiv identifier
+              DOI
+              ORCID
+              arXiv author ID
+              Help pages
+              Full text
+        Search
+    <div
+        class="user-tools is-size-7 has-text-right has-text-weight-bold"
+        role="navigation"
+        aria-label="User menu"
+    >
+<a
+            href="https://arxiv.org/login"
+            >Login</a
+        >    
+No HTML for '2604.06425'
+HTML is not available for the source.
+This could be due to the source files not being HTML, LaTeX, or a conversion failure.
+If you are an author, learn how you can help HTML conversions for your papers.  
+                    About
+                    Help
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                            class="icon filter-black"
+                            role="presentation"
+                        >
+                            contact arXiv
+                            Click here to contact arXiv
+                            <path
+                                d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"
+                            />
+                         Contact
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                            class="icon filter-black"
+                            role="presentation"
+                        >
+                            subscribe to arXiv mailings
+                            Click here to subscribe
+                            <path
+                                d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"
+                            />
+                         Subscribe
+                    Copyright
+                        <a href="https://info.arxiv.org/help/policies/privacy_policy.html"
+                            >Privacy Policy</a
+                        >
+                        <a href="https://info.arxiv.org/help/web_accessibility.html"
+                            >Web Accessibility Assistance</a
+                        >
+                            <a
+                                class="a11y-main-link"
+                                href="https://status.arxiv.org"
+                                target="_blank"
+                                >arXiv Operational Status
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 256 512"
+                                    class="icon filter-dark_grey"
+                                    role="presentation"
+                                >
+                                    <path
+                                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                                    /></a
+                            >

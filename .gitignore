@@ -1,0 +1,16 @@
+# PDFs - too large for git, re-downloadable from arXiv
+*.pdf
+
+# Backups
+scripts.bak/
+
+# OS / editor
+.DS_Store
+*.swp
+*~
+
+# Logs
+*.log
+
+# Temp files
+/tmp/

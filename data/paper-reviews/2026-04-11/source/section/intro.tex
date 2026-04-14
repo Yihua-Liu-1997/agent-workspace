@@ -1,0 +1,73 @@
+Can a single set of weights act as a ``computer''?  
+We term this abstraction a Neural Computer (NC): a neural system that unifies computation, memory, and I/O in a learned runtime state.
+This usage is distinct from the Neural Turing Machine / Differentiable Neural Computer line~\citep{graves2014neural,graves2016hybrid}: our concern is not differentiable external memory, but whether a learning machine can begin to assume the role of the running computer itself.
+
+To implement this idea, we instantiate NCs as video models.
+At this stage, video models are the most practical substrate for this prototype, though we expect the long-term solution to require a fundamentally new neural architecture (\Cref{section:toward-cnc}).
+This implementation draws on several technical lines. World models~\citep{ha2018world} show that neural networks can internalize environment dynamics and support predictive imagination, while high-capacity video generators such as Veo~3.1~\citep{google_veo3_1_2025} and Sora~2~\citep{openai_sora2_2025} show that such learned dynamics can be rendered into coherent frame sequences.
+Frontier interactive video models such as Genie~3~\citep{bruce2024genie} further extend this trajectory toward action-controllable generative environments. These lines provide practical machinery for current NC prototypes, but do not by themselves define the NC abstraction.
+In parallel, LLM-driven UI systems such as Imagine with Claude\footnote{\url{https://claude.ai/imagine/}} map natural-language inputs to structured interface updates. 
+Yet these capabilities remain split across different systems objects: conventional computers execute explicit programs, agents act through external execution environments, and world models render or predict environment dynamics, while executable state still resides outside the model.
+NCs are motivated by this gap: they are not a smarter layer on top of the existing stack, but a proposal to make the model itself the running computer.
+The immediate question in this paper is whether early runtime primitives can be learned directly from raw interface I/O without privileged access to program state.
+
+Throughout this paper, NC denotes this proposed machine form, while CNC denotes its mature, general-purpose realization.
+We study two interface-specific prototypes of this NC formulation (see~\Cref{section:prelim}).
+\nccligen{} models terminal interaction from text (natural language or command lines) and an initial frame, while \ncguiworld{} models desktop interaction from recent pixels and synchronized mouse/keyboard actions (\Cref{section:impl-cligen,section:impl-guiworld}).
+
+\begin{tcolorbox}[
+  colback=apricotglaze!40!white,
+  colframe=metablue!40,
+  interior style={shade,shading angle=315,left color=white,right color=apricotglaze!55!white},
+  boxrule=0pt,
+  borderline west={1pt}{0pt}{gray!60},
+  left=6pt,right=4pt,top=3pt,bottom=3pt]
+\small
+\textbf{Neural Computer (NC) abstraction~(\hyperlink{teaser}{Teaser}).}
+A neural system $(F, G)$ parameterized by $\theta$ that models an interactive computer interface through a single latent runtime state $h_t$ that carries executable interface state and also acts as working memory (see~\cref{eq:wm}).
+\end{tcolorbox}
+
+In the \nccligen{} experiments, the NC can render and execute basic command-line workflows.
+It often stays aligned with the terminal buffer and captures common ``physics'' of everyday CLI use (e.g., fast scrollback, prompt wrapping, window resizing).
+On carefully scripted data, rollouts can be visually and structurally close to real sessions, and the model can execute short command chains and render their outputs.
+Arithmetic-probe scores improve substantially with stronger system-level conditioning, though symbolic stability remains limited.
+
+In the \ncguiworld{} experiments, we evaluate standard world-model designs across action injection, action encoding, and data quality.
+Figure~\ref{fig:nc-general} summarizes this template across two interface-specific NCs trained separately without shared parameters.
+Qualitatively, the model learns coherent pointer dynamics and short-horizon action responses (e.g., hover/click feedback and window/menu transitions), suggesting that local GUI control primitives are learnable in controlled settings.
+
+Our experimental insights indicate that current NCs already realize early runtime primitives, most notably I/O alignment and short-horizon control.
+The long-term target is a Completely Neural Computer (CNC), the mature, general-purpose realization of this machine form: a fully learned computer whose compute, memory, and interfaces are unified in a single learned runtime substrate rather than engineered as separate modules.
+These prototypes are an early step toward that CNC vision. 
+Substantial challenges remain in robust long-horizon reasoning, reliable symbolic processing, stable capability reuse, and explicit runtime governance.
+\Cref{section:toward-cnc} outlines these open challenges and a roadmap toward CNCs. 
+
+\begin{tcolorbox}[
+  colback=apricotglaze!40!white,
+  colframe=metablue!40,
+  interior style={shade,shading angle=315,left color=white,right color=apricotglaze!55!white},
+  boxrule=0pt,
+  borderline west={1pt}{0pt}{gray!60},
+  left=6pt,right=4pt,top=3pt,bottom=3pt]
+\small
+\textbf{Completely Neural Computer (CNC) abstraction~(\Cref{sec:roadmap}).}
+A Neural Computer instance is \emph{complete} (i.e., a CNC) if it is
+(i) \emph{Turing complete},
+(ii) \emph{universally programmable},
+(iii) \emph{behavior-consistent} unless explicitly reprogrammed, and
+(iv) realizes the architectural and programming-language advantages of NCs relative to conventional computers.
+\end{tcolorbox}
+
+\textbf{Concretely, this work makes the following contributions:}
+{
+\renewcommand\labelitemi{\large$\bullet$}
+\begin{itemize}
+\setlength{\itemsep}{2pt plus 1pt minus 1pt}
+\setlength{\parskip}{0pt}
+\item Define neural computers (NCs) and build video-based prototypes for both CLI and GUI interfaces.
+\item Provide a data engine and alignment recipe that synchronize text, actions, and frames for the CLI and GUI environments used in this paper.
+\item Identify practical design choices for NCs through extensive ablation studies.
+\item Outline an engineering roadmap toward completely neural computers (CNCs), centered on acceptance challenges such as reuse, consistency, and runtime governance.
+
+\end{itemize}
+}

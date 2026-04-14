@@ -1,0 +1,707 @@
+LPM 1.0: Video-based Character Performance Model
+  // Restore the saved color scheme preference, or
+  // enact the browser preference if "automatic", 
+  // without expecting DOM load to have completed.
+  //
+  // Also restore any saved readingmode and ToC display preferences.
+  function initializeReadingPreferences() {
+    let saved_theme = localStorage.getItem("ar5iv_theme") || "automatic";
+    if (saved_theme === "automatic") {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        saved_theme = "dark";
+      }
+    }
+    if (saved_theme == "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+    const tocDisplay = localStorage.getItem('arxiv_html_paper_toc_display');
+    if (tocDisplay) {
+      document.documentElement.setAttribute("data-toc-display", tocDisplay);
+    }
+    const readingMode = localStorage.getItem('arxiv_html_paper_reading_mode');
+    if (readingMode) {
+      document.documentElement.setAttribute("data-reading-mode", readingMode);
+    }
+  }
+  // Run as soon as JS starts, to minimize repainting
+  initializeReadingPreferences();
+<link rel="apple-touch-icon" sizes="180x180"
+  href="/static/browse/0.3.4/images/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+  href="/static/browse/0.3.4/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+  href="/static/browse/0.3.4/images/icons/favicon-16x16.png">
+      Report GitHub Issue
+      ×
+      Title:
+      Content selection saved. Describe the issue below:
+      Description:
+      <textarea class="form-control" id="description" name="description" required maxlength="500"
+        placeholder="500 characters maximum">
+      Submit without GitHub
+      Submit in GitHub
+      <img alt="arXiv logo" class="logo desktop-only" width="100"
+        src="/static/browse/0.3.4/images/arxiv-logo-one-color-white.svg">
+      Back to arXiv
+    <a class="header-button hover-effect desktop-only" href="https://info.arxiv.org/about/accessible_HTML.html"
+      target="_blank">Why HTML?
+    <a class="header-button" title="Report an Issue" href="#" title="Report an issue"
+      onclick="event.preventDefault(); showModalForm();">
+      <svg role="presentation" class="mobile-only toggle-icon" aria-hidden="true" height="1.25rem"
+        viewBox="0 0 640 640">
+        <path
+          d="M224 160C224 107 267 64 320 64C373 64 416 107 416 160L416 163.6C416 179.3 403.3 192 387.6 192L252.5 192C236.8 192 224.1 179.3 224.1 163.6L224.1 160zM569.6 172.8C580.2 186.9 577.3 207 563.2 217.6L465.4 290.9C470.7 299.8 474.7 309.6 477.2 320L576 320C593.7 320 608 334.3 608 352C608 369.7 593.7 384 576 384L480 384L480 416C480 418.6 479.9 421.3 479.8 423.9L563.2 486.4C577.3 497 580.2 517.1 569.6 531.2C559 545.3 538.9 548.2 524.8 537.6L461.7 490.3C438.5 534.5 395.2 566.5 344 574.2L344 344C344 330.7 333.3 320 320 320C306.7 320 296 330.7 296 344L296 574.2C244.8 566.5 201.5 534.5 178.3 490.3L115.2 537.6C101.1 548.2 81 545.3 70.4 531.2C59.8 517.1 62.7 497 76.8 486.4L160.2 423.9C160.1 421.3 160 418.7 160 416L160 384L64 384C46.3 384 32 369.7 32 352C32 334.3 46.3 320 64 320L162.8 320C165.3 309.6 169.3 299.8 174.6 290.9L76.8 217.6C62.7 207 59.8 186.9 70.4 172.8C81 158.7 101.1 155.8 115.2 166.4L224 248C236.3 242.9 249.8 240 264 240L376 240C390.2 240 403.7 242.8 416 248L524.8 166.4C538.9 155.8 559 158.7 569.6 172.8z" />
+      Report Issue
+    <a class="header-button" title="Back to abstract page" aria-label="Back to abstract page"
+      href="/abs/2604.07823v1">
+      <svg class="mobile-only toggle-icon" role="presentation" height="1.25rem" viewBox="0 0 512 512" fill="#ffffff"
+        aria-hidden="true">
+        <path
+          d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z">
+      Back to Abstract
+    <a class="header-button" title="Download PDF" href="/pdf/2604.07823v1"
+      target="_blank">
+        <path
+          d="M208 48L96 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l80 0 0 48-80 0c-35.3 0-64-28.7-64-64L32 64C32 28.7 60.7 0 96 0L229.5 0c17 0 33.3 6.7 45.3 18.7L397.3 141.3c12 12 18.7 28.3 18.7 45.3l0 149.5-48 0 0-128-88 0c-39.8 0-72-32.2-72-72l0-88zM348.1 160L256 67.9 256 136c0 13.3 10.7 24 24 24l68.1 0zM240 380l32 0c33.1 0 60 26.9 60 60s-26.9 60-60 60l-12 0 0 28c0 11-9 20-20 20s-20-9-20-20l0-128c0-11 9-20 20-20zm32 80c11 0 20-9 20-20s-9-20-20-20l-12 0 0 40 12 0zm96-80l32 0c28.7 0 52 23.3 52 52l0 64c0 28.7-23.3 52-52 52l-32 0c-11 0-20-9-20-20l0-128c0-11 9-20 20-20zm32 128c6.6 0 12-5.4 12-12l0-64c0-6.6-5.4-12-12-12l-12 0 0 88 12 0zm76-108c0-11 9-20 20-20l48 0c11 0 20 9 20 20s-9 20-20 20l-28 0 0 24 28 0c11 0 20 9 20 20s-9 20-20 20l-28 0 0 44c0 11-9 20-20 20s-20-9-20-20l0-128z" />
+      Download PDF
+    <a class="header-button toggle-icon" href="javascript:toggleNavTOC();" title="Toggle navigation"
+      aria-label="Toggle navigation">
+        <path
+          d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z">
+    <a class="header-button toggle-icon" href="javascript:toggleReadingMode();"
+      title="Disable reading mode, show header and footer">
+      <svg role="presentation" height="1.25rem"
+        viewBox="0 0 448 512">
+        <path
+          d="M32 32C14.3 32 0 46.3 0 64l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64 64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 32zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 96c0 17.7 14.3 32 32 32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0 0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32l-96 0zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l96 0c17.7 0 32-14.3 32-32l0-96z" />
+          <path
+            d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z">
+          <path
+            d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z">
+          <path
+            d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z">
+Abstract
+1 Summary and Discussion
+Summary.
+Limitations.
+Future work.
+2 Acknowledgement
+References
+    License: arXiv.org perpetual non-exclusive license
+arXiv:2604.07823v1 [cs.CV] 09 Apr 2026
+LPM 1.0: Video-based Character Performance Model
+Ailing Zeng†
+Casper Yang
+Chauncey Ge
+Eddie Zhang
+Garvey Xu
+Gavin Lin
+Gilbert Gu
+Jeremy Pi
+Leo Li
+Mingyi Shi
+Sheng Bi
+Steven Tang
+Thorn Hang
+Tobey Guo
+Vincent Li
+Xin Tong†
+Yikang Li
+Yuchen Sun
+Yue (R) Zhao
+Yuhan Lu
+Yuwei Li
+Zane Zhang
+Zeshi Yang
+and Zi Ye
+Project Page: large-performance-model.github.io
+Abstract
+Performance, the externalization of intent, emotion, and personality through visual, vocal, and temporal behavior, is what makes a character
+alive.
+Learning such performance from video is a promising alternative to traditional 3D pipelines. However, existing video models struggle to jointly achieve high expressiveness, real-time inference, and long-horizon identity stability, a tension we call the performance trilemma.
+Conversation is the most comprehensive performance scenario, as characters simultaneously speak, listen, react, and emote while maintaining identity over time. To address this, we present LPM 1.0 (Large Performance Model), focusing on single-person full-duplex audio-visual conversational performance.
+Concretely, we build a multimodal human-centric dataset through strict filtering, speaking–listening audio-video pairing, performance understanding, and identity-aware multi-reference extraction; train a 17B-parameter Diffusion Transformer (Base LPM) for highly controllable, identity-consistent performance through multimodal conditioning; and distill it into a causal streaming generator (Online LPM) for low-latency, infinite-length interaction.
+At inference, given a character image with identity-aware references, LPM 1.0 generates listening videos from user audio and speaking videos from synthesized audio, with text prompts for motion control, all at real-time speed with identity-stable, infinite-length generation. LPM 1.0 thus serves as a visual engine for conversational agents, live streaming characters, and game NPCs. To systematically evaluate this setting, we propose LPM-Bench, the first benchmark for interactive character performance. LPM 1.0 achieves state-of-the-art results across all evaluated dimensions while
+maintaining real-time inference.
+Figure 1: LPM 1.0 generates identity-consistent conversational video with synchronized verbal and non-verbal behaviors—speaking, listening, micro-expressions, and natural motion—while maintaining visual fidelity across streaming and long-horizon video generation.
+Contents
+1 Summary and Discussion
+2 Acknowledgement
+References
+1 Summary and Discussion
+Summary.
+LPM 1.0 begins from a simple insight: human conversation is not merely the exchange of words, but a form of performance. What makes an interaction feel natural depends not only on semantic content, but on how attention, timing, reaction, and affect are continuously expressed through voice, face, and body. A conversational character, therefore, should not be evaluated solely by lip synchronization or frame realism, but by whether it appears to participate in the interaction as a socially legible actor: listening while silent, anticipating turn transitions, reacting contingently, and remaining behaviorally coherent over time [93]. From this perspective, the objective is not a better talking head, but a performance model: a system that sustains the audiovisual behavior of a conversational actor over time.
+In this work, our system suggests that the performance trilemma — expressive quality, real-time inference, and long-horizon stability — admits a workable resolution through systems-level co-design. In particular, conversational performance at this stage is more naturally addressed as a joint problem of data, multimodal conditioning, generation, streaming, and stabilization than as a question of a model architecture alone. The resulting system is not a complete solution to interactive character, but it demonstrates that high-quality full-duplex conversational performance can be made practical under deployable latency and stability constraints.
+Limitations.
+This resolution is possible only because the current regime remains relatively simple. Interaction is still mostly limited to a single, camera-facing character and is weakly grounded in broader social, physical, and narrative structure. The system is not yet required to support long-horizon discourse memory, multi-party coordination, behavior in dynamically changing environments, or strong 3D and world consistency under arbitrary viewpoints and actions. As a result, specialized components can still achieve strong performance without making the overall system feel fragmented.
+Future work.
+Looking ahead, we see three key axes for extending this work.
+Along the temporal axis, longer interactions will require discourse-level memory, persona persistence, and the ability to make current behavior coherent with prior events.
+Along the social axis, multi-party interaction introduces new challenges such as addressee tracking, gaze allocation, and group-level turn-taking [94].
+Along the physical axis, characters situated in environments must ground their behavior in scene geometry, objects, and contact.
+As these dimensions converge, the current pipeline decomposition—language generation, speech synthesis, audiovisual rendering, and online stabilization—may give way to more unified actor models that jointly determine what is said, how it is expressed, and how behavior unfolds over time.
+LPM 1.0 is best viewed as a first systems-level answer to this larger problem, demonstrating that video generation can serve not only as a rendering mechanism, but as the layer through which an interactive character becomes perceptible as a participant.
+2 Acknowledgement
+We thank all contributors who participated in different stages of this project, including data preparation, model development, and evaluation. We also appreciate the support from our extended collaborators and previous contributors, including interns and former team members who contributed to earlier versions of this work. Their contributions have been essential to the development of this project.
+References
+[1]
+Erving Goffman.
+The presentation of self in everyday life.
+In Social theory re-wired, pages 450–459. Routledge, 2023.
+[2]
+Mark L Knapp, Judith A Hall, and Terrence G Horgan.
+Nonverbal communication in human interaction.
+Thomson Wadsworth, 1972.
+[3]
+Harvey Sacks, Emanuel A. Schegloff, and Gail Jefferson.
+A simplest systematics for the organization of turn-taking for
+conversation.
+Language, 50(4):696–735, 1974.
+[4]
+Rick Parent.
+Computer animation: algorithms and techniques.
+Newnes, 2012.
+[5]
+Wentao Zhu, Xiaoxuan Ma, Dongwoo Ro, Hai Ci, Jinlu Zhang, Jiaxin Shi, Feng Gao,
+Qi Tian, and Yizhou Wang.
+Human motion generation: A survey.
+IEEE Transactions on Pattern Analysis and Machine Intelligence,
+46(4):2430–2449, 2023.
+[6]
+Joon Sung Park, Joseph O’Brien, Carrie Jun Cai, Meredith Ringel Morris, Percy
+Liang, and Michael S Bernstein.
+Generative agents: Interactive simulacra of human behavior.
+In Proceedings of the 36th annual acm symposium on user
+interface software and technology, pages 1–22, 2023.
+[7]
+NVIDIA.
+NVIDIA ACE: Autonomous game characters with generative AI.
+https://developer.nvidia.com/ace, 2024.
+[8]
+Xuangeng Chu, Ruicong Liu, Yifei Huang, Yun Liu, Yichen Peng, and Bo Zheng.
+Unils: End-to-end audio-driven avatars for unified listening and
+speaking.
+arXiv preprint arXiv:2512.09327, 2025.
+[9]
+Yichen Peng, Jyun-Ting Song, Siyeol Jung, Ruofan Liu, Haiyang Liu, Xuangeng
+Chu, Ruicong Liu, Erwin Wu, Hideki Koike, and Kris Kitani.
+Dyadit: A multi-modal diffusion transformer for socially favorable
+dyadic gesture generation.
+arXiv preprint arXiv:2602.23165, 2026.
+[10]
+Yiyi Cai, Xuangeng Chu, Xiwei Gao, Sitong Gong, Yifei Huang, Caixin Kang,
+Kunhang Li, Haiyang Liu, Ruicong Liu, Yun Liu, et al.
+Towards interactive intelligence for digital humans.
+arXiv preprint arXiv:2512.13674, 2025.
+[11]
+Ang Wang, Baole Ai, Bin Wen, Chaojie Mao, Chen-Wei Xie, Di Chen, Feiwu Yu,
+Haiming Zhao, Jianxiao Yang, Jianyuan Zeng, et al.
+Wan: Open and advanced large-scale video generative models.
+arXiv preprint arXiv:2503.20314, 3(4):6, 2025.
+[12]
+Google DeepMind.
+Veo — Google DeepMind.
+https://deepmind.google/models/veo/, 2025.
+Accessed: 2026-03-14.
+[13]
+Kuaishou.
+Kling ai.
+https://klingai.kuaishou.com/, 2024.06.
+[14]
+Tim Brooks, Bill Peebles, Connor Holmes, Will DePue, Yufei Guo, Li Jing, David
+Schnurr, Joe Taylor, Troy Luhman, Eric Luhman, Clarence Ng, Ricky Wang, and
+Aditya Ramesh.
+Video generation models as world simulators.
+2024.
+[15]
+ByteDance Seed Team.
+Seedance 2.0.
+https://seed.bytedance.com/en/blog/seedance-2-0, 2026.
+Accessed: 2026-03-14.
+[16]
+Yoav HaCohen, Nisan Chiprut, Benny Brazowski, Daniel Shalem, Dudu Moshe, Eitan
+Richardson, Eran Levin, Guy Shiran, Nir Zabari, Ori Gordon, Poriya Panet,
+Sapir Weissbuch, Victor Kulikov, Yaki Bitterman, Zeev Melumian, and Ofir
+Bibi.
+Ltx-video: Realtime video latent diffusion.
+arXiv preprint arXiv:2501.00103, 2024.
+[17]
+Gaojie Lin, Jianwen Jiang, Jiaqi Yang, Zerong Zheng, and Chao Liang.
+Omnihuman-1: Rethinking the scaling-up of one-stage conditioned human
+animation models.
+arXiv preprint arXiv:2502.01061, 2025.
+[18]
+Jianwen Jiang, Weihong Zeng, Zerong Zheng, Jiaqi Yang, Chao Liang, Wang Liao,
+Han Liang, Yuan Zhang, and Mingyuan Gao.
+Omnihuman-1.5: Instilling an active mind in avatars via cognitive
+simulation.
+arXiv preprint arXiv:2508.19209, 2025.
+[19]
+Kling Team, Jialu Chen, Yikang Ding, Zhixue Fang, Kun Gai, Yuan Gao, Kang He,
+Jingyun Hua, Boyuan Jiang, Mingming Lao, et al.
+Klingavatar 2.0 technical report.
+arXiv preprint arXiv:2512.13313, 2025.
+[20]
+Yubo Huang, Hailong Guo, Fangtai Wu, Shifeng Zhang, Shijie Huang, Qijun Gan,
+Lin Liu, Sirui Zhao, Enhong Chen, Jiaming Liu, et al.
+Live avatar: Streaming real-time audio-driven avatar generation with
+infinite length.
+arXiv preprint arXiv:2512.04677, 2025.
+[21]
+Le Shen, Qiao Qian, Tan Yu, Ke Zhou, Tianhang Yu, Yu Zhan, Zhenjie Wang, Ming
+Tao, Shunshun Yin, and Siyuan Liu.
+Soulx-livetalk: Real-time infinite streaming of audio-driven avatars
+via self-correcting bidirectional distillation.
+arXiv e-prints, pages arXiv–2512, 2025.
+[22]
+Sekotalk.
+https://sekotalk.com/.
+Accessed: 2025-11-12.
+[23]
+Shuyuan Tu, Yueming Pan, Yinming Huang, Xintong Han, Zhen Xing, Qi Dai, Chong
+Luo, Zuxuan Wu, and Yu-Gang Jiang.
+Stableavatar: Infinite-length audio-driven avatar video generation.
+arXiv preprint arXiv:2508.08248, 2025.
+[24]
+Lizhen Wang, Yongming Zhu, Zhipeng Ge, Youwei Zheng, Longhao Zhang, Tianshu Hu,
+Shiyang Qin, Mingshuang Luo, Jiaxu Zhang, Xin Chen, et al.
+Flowact-r1: Towards interactive humanoid video generation.
+arXiv preprint arXiv:2601.10103, 2026.
+[25]
+Chetwin Low and Weimin Wang.
+Talkingmachines: Real-time audio-driven facetime-style video via
+autoregressive diffusion models.
+arXiv preprint arXiv:2506.03099, 2025.
+[26]
+Youliang Zhang, Zhaoyang Li, Duomin Wang, Jiahe Zhang, Deyu Zhou, Zixin Yin,
+Xili Dai, Gang Yu, and Li Xiu.
+A large-scale high-quality dataset for audio-visual dyadic
+interactive human generation.
+2025.
+[27]
+Vasu Agrawal, Akinniyi Akinyemi, Kathryn Alvero, Morteza Behrooz, Julia
+Buffalini, Fabio Maria Carlucci, Joy Chen, Junming Chen, Zhang Chen, Shiyang
+Cheng, et al.
+Seamless interaction: Dyadic audiovisual motion modeling and
+large-scale dataset.
+arXiv preprint arXiv:2506.22554, 2025.
+[28]
+Ying Guo, Xi Liu, Cheng Zhen, Pengfei Yan, and Xiaoming Wei.
+Arig: Autoregressive interactive head generation for real-time
+conversations.
+In Proceedings of the IEEE/CVF International Conference on
+Computer Vision, pages 12956–12965, 2025.
+[29]
+Maksim Siniukov, Di Chang, Minh Tran, Hongkun Gong, Ashutosh Chaubey, and
+Mohammad Soleymani.
+Ditailistener: Controllable high fidelity listener video generation
+with diffusion.
+In Proceedings of the IEEE/CVF International Conference on
+Computer Vision, pages 11991–12001, 2025.
+[30]
+You Xie, Tianpei Gu, Zenan Li, Chenxu Zhang, Guoxian Song, Xiaochen Zhao, Chao
+Liang, Jianwen Jiang, Hongyi Xu, and Linjie Luo.
+X-streamer: Unified human world modeling with audiovisual
+interaction.
+arXiv preprint arXiv:2509.21574, 2025.
+[31]
+Mohan Zhou, Yalong Bai, Wei Zhang, Ting Yao, Tiejun Zhao, and Tao Mei.
+Responsive listening head generation: A benchmark dataset and
+baseline.
+In Proceedings of the European Conference on Computer Vision
+(ECCV), pages 124–142. Springer, 2022.
+[32]
+Xin Gao, Li Hu, Siqi Hu, Mingyang Huang, Chaonan Ji, Dechao Meng, Jinwei Qi,
+Penchong Qiao, Zhen Shen, Yafei Song, et al.
+Wan-s2v: Audio-driven cinematic video generation.
+arXiv preprint arXiv:2508.18621, 2025.
+[33]
+Hui Li, Mingwang Xu, Yun Zhan, Shan Mu, Jiaye Li, Kaihui Cheng, Yuxuan Chen,
+Tan Chen, Mao Ye, Jingdong Wang, et al.
+Openhumanvid: A large-scale high-quality dataset for enhancing
+human-centric video generation.
+arXiv preprint arXiv:2412.00115, 2024.
+[34]
+Mohan Zhou, Yalong Bai, Wei Zhang, Ting Yao, Tiejun Zhao, and Tao Mei.
+ViCo-X: Multimodal conversation dataset.
+https://project.mhzhou.com/vico, 2022.
+Accessed: 2022-09-30.
+[35]
+Zhimeng Zhang, Lincheng Li, Yu Ding, and Changjie Fan.
+Flow-guided one-shot talking face generation with a high-resolution
+audio-visual dataset.
+In Proceedings of the IEEE/CVF conference on computer vision and
+pattern recognition, pages 3661–3670, 2021.
+[36]
+Hao Zhu, Wayne Wu, Wentao Zhu, Liming Jiang, Siwei Tang, Li Zhang, Ziwei Liu,
+and Chen Change Loy.
+Celebv-hq: A large-scale video facial attributes dataset.
+In European conference on computer vision, pages 650–667.
+Springer, 2022.
+[37]
+Scott Geng, Revant Teotia, Purva Tendulkar, Sachit Menon, and Carl Vondrick.
+Affective faces for goal-driven dyadic communication.
+arXiv preprint arXiv:2301.10939, 2023.
+[38]
+Liyuan Cui, Wentao Hu, Wenyuan Zhang, Zesong Yang, Fan Shi, and Xiaoqiang Liu.
+Avatarforcing: One-step streaming talking avatars via local-future
+sliding-window denoising.
+arXiv preprint arXiv:2603.14331, 2026.
+[39]
+Chaochao Li, Ruikui Wang, Liangbo Zhou, Jinheng Feng, Huaishao Luo, Huan Zhang,
+Youzheng Wu, and Xiaodong He.
+Joyavatar-flash: Real-time and infinite audio-driven avatar
+generation with autoregressive diffusion.
+arXiv preprint arXiv:2512.11423, 2025.
+[40]
+Steven Xiao, XIndi Zhang, Dechao Meng, Qi Wang, Peng Zhang, and Bang Zhang.
+Knot forcing: Taming autoregressive video diffusion models for
+real-time infinite interactive portrait animation.
+arXiv preprint arXiv:2512.21734, 2025.
+[41]
+Shuyuan Tu, Yueming Pan, Yinming Huang, Xintong Han, Zhen Xing, Qi Dai, Chong
+Luo, Zuxuan Wu, and Yu-Gang Jiang.
+Stableavatar: Infinite-length audio-driven avatar video generation.
+arXiv preprint arXiv:2508.08248, 2025.
+[42]
+Sicheng Xu, Guojun Chen, Yu-Xiao Guo, Jiaolong Yang, Chong Li, Zhenyu Zang,
+Yizhong Zhang, Xin Tong, and Baining Guo.
+Vasa-1: Lifelike audio-driven talking faces generated in real time.
+Advances in Neural Information Processing Systems, 37:660–684,
+2024.
+[43]
+Tomáš Souček and Jakub Lokoč.
+Transnet v2: An effective deep network architecture for fast shot
+transition detection.
+arXiv preprint arXiv:2008.04838, 2020.
+[44]
+Chien-Yao Wang, I-Hau Yeh, and Hong-Yuan Mark Liao.
+Yolov9: Learning what you want to learn using programmable gradient
+information.
+In European conference on computer vision, pages 1–21.
+Springer, 2024.
+[45]
+Huiyu Duan, Qiang Hu, Jiarui Wang, Liu Yang, Zitong Xu, Lu Liu, Xiongkuo Min,
+Chunlei Cai, Tianxiao Ye, Xiaoyun Zhang, and Guangtao Zhai.
+Finevq: Fine-grained user generated content video quality assessment.
+In Proceedings of the Computer Vision and Pattern Recognition
+Conference (CVPR), pages 3206–3217, June 2025.
+[46]
+Shuai Bai, Yuxuan Cai, Ruizhe Chen, Keqin Chen, Xionghui Chen, Zesen Cheng,
+Lianghao Deng, Wei Ding, Chang Gao, Chunjiang Ge, Wenbin Ge, Zhifang Guo,
+Qidong Huang, Jie Huang, Fei Huang, Binyuan Hui, Shutong Jiang, Zhaohai Li,
+Mingsheng Li, Mei Li, Kaixin Li, Zicheng Lin, Junyang Lin, Xuejing Liu,
+Jiawei Liu, Chenglong Liu, Yang Liu, Dayiheng Liu, Shixuan Liu, Dunjie Lu,
+Ruilin Luo, Chenxu Lv, Rui Men, Lingchen Meng, Xuancheng Ren, Xingzhang Ren,
+Sibo Song, Yuchong Sun, Jun Tang, Jianhong Tu, Jianqiang Wan, Peng Wang,
+Pengfei Wang, Qiuyue Wang, Yuxuan Wang, Tianbao Xie, Yiheng Xu, Haiyang Xu,
+Jin Xu, Zhibo Yang, Mingkun Yang, Jianxin Yang, An Yang, Bowen Yu, Fei Zhang,
+Hang Zhang, Xi Zhang, Bo Zheng, Humen Zhong, Jingren Zhou, Fan Zhou, Jing
+Zhou, Yuanzhi Zhu, and Ke Zhu.
+Qwen3-vl technical report.
+arXiv preprint arXiv:2511.21631, 2025.
+[47]
+Jin Xu, Zhifang Guo, Hangrui Hu, Yunfei Chu, Xiong Wang, Jinzheng He, Yuxuan
+Wang, Xian Shi, Ting He, Xinfa Zhu, Yuanjun Lv, Yongqi Wang, Dake Guo,
+He Wang, Linhan Ma, Pei Zhang, Xinyu Zhang, Hongkun Hao, Zishan Guo, Baosong
+Yang, Bin Zhang, Ziyang Ma, Xipin Wei, Shuai Bai, Keqin Chen, Xuejing Liu,
+Peng Wang, Mingkun Yang, Dayiheng Liu, Xingzhang Ren, Bo Zheng, Rui Men, Fan
+Zhou, Bowen Yu, Jianxin Yang, Le Yu, Jingren Zhou, and Junyang Lin.
+Qwen3-omni technical report.
+arXiv preprint arXiv:2509.17765, 2025.
+[48]
+Junhua Liao, Haihan Duan, Kanghui Feng, Wanbing Zhao, Yanbing Yang, and
+Liangyin Chen.
+A light weight model for active speaker detection.
+In Proceedings of the IEEE/CVF conference on computer vision and
+pattern recognition, pages 22932–22941, 2023.
+[49]
+Ruijie Tao, Zexu Pan, Rohan Kumar Das, Xinyuan Qian, Mike Zheng Shou, and
+Haizhou Li.
+Is someone speaking? exploring long-term temporal features for
+audio-visual active speaker detection.
+In Proceedings of the 29th ACM international conference on
+multimedia, pages 3927–3935, 2021.
+[50]
+Junhua Liao, Haihan Duan, Kanghui Feng, Wanbing Zhao, Yanbing Yang, Liangyin
+Chen, and Yanru Chen.
+Lr-asd: Lightweight and robust network for active speaker detection.
+International Journal of Computer Vision, pages 1–21, 2025.
+[51]
+Joon Son Chung and Andrew Zisserman.
+Out of time: automated lip sync in the wild.
+In Workshop on Multi-view Lip-reading, ACCV, 2016.
+[52]
+Gheorghe Comanici, Eric Bieber, Mike Schaekermann, Ice Pasupat, Noveen
+Sachdeva, Inderjit Dhillon, Marcel Blistein, Ori Ram, Dan Zhang, Evan Rosen,
+et al.
+Gemini 2.5: Pushing the frontier with advanced reasoning,
+multimodality, long context, and next generation agentic capabilities.
+arXiv preprint arXiv:2507.06261, 2025.
+[53]
+Zehong Shen, Huaijin Pi, Yan Xia, Zhi Cen, Sida Peng, Zechen Hu, Hujun Bao,
+Ruizhen Hu, and Xiaowei Zhou.
+World-grounded human motion recovery via gravity-view coordinates.
+In SIGGRAPH Asia Conference Proceedings, 2024.
+[54]
+Matthew Loper, Naureen Mahmood, Javier Romero, Gerard Pons-Moll, and Michael J.
+Black.
+SMPL: A skinned multi-person linear model.
+ACM Trans. Graph., 2015.
+[55]
+Zachary Teed and Jia Deng.
+Droid-slam: Deep visual slam for monocular, stereo, and rgb-d
+cameras.
+Advances in neural information processing systems,
+34:16558–16569, 2021.
+[56]
+Andrey Savchenko.
+Facial expression recognition with adaptive frame rate based on
+multiple testing correction.
+In Andreas Krause, Emma Brunskill, Kyunghyun Cho, Barbara Engelhardt,
+Sivan Sabato, and Jonathan Scarlett, editors, Proceedings of the 40th
+International Conference on Machine Learning (ICML), volume 202 of Proceedings of Machine Learning Research, pages 30119–30129. PMLR, 23–29
+Jul 2023.
+[57]
+Andrey V Savchenko, Lyudmila V Savchenko, and Ilya Makarov.
+Classifying emotions and engagement in online learning based on a
+single facial expression recognition neural network.
+IEEE Transactions on Affective Computing, 2022.
+[58]
+William Peebles and Saining Xie.
+Scalable diffusion models with transformers.
+In Proceedings of the IEEE/CVF international conference on
+computer vision, pages 4195–4205, 2023.
+[59]
+Jianlin Su, Murtadha Ahmed, Yu Lu, Shengfeng Pan, Wen Bo, and Yunfeng Liu.
+Roformer: Enhanced transformer with rotary position embedding.
+Neurocomputing, 568:127063, 2024.
+[60]
+Yaron Lipman, Ricky TQ Chen, Heli Ben-Hamu, Maximilian Nickel, and Matt Le.
+Flow matching for generative modeling.
+arXiv preprint arXiv:2210.02747, 2022.
+[61]
+Jonathan Ho and Tim Salimans.
+Classifier-free diffusion guidance.
+arXiv preprint arXiv:2207.12598, 2022.
+[62]
+Rafael Rafailov, Archit Sharma, Eric Mitchell, Christopher D Manning, Stefano
+Ermon, and Chelsea Finn.
+Direct preference optimization: Your language model is secretly a
+reward model.
+Advances in neural information processing systems,
+36:53728–53741, 2023.
+[63]
+John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
+Proximal policy optimization algorithms.
+arXiv preprint arXiv:1707.06347, 2017.
+[64]
+Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei
+Zhang, Mingchuan Zhang, YK Li, Yang Wu, et al.
+Deepseekmath: Pushing the limits of mathematical reasoning in open
+language models.
+arXiv preprint arXiv:2402.03300, 2024.
+[65]
+Taekyung Ki, Sangwon Jang, Jaehyeong Jo, Jaehong Yoon, and Sung Ju Hwang.
+Avatar forcing: Real-time interactive head avatar generation for
+natural conversation.
+arXiv preprint arXiv:2601.00664, 2026.
+[66]
+Jie Du, Xinyu Gong, Qingshan Tan, Wen Li, Yangming Cheng, Weitao Wang, Chenlu
+Zhan, Suhui Wu, Hao Zhang, and Jun Zhang.
+Reg-dpo: Sft-regularized direct preference optimization with gt-pair
+for improving video generation.
+arXiv preprint arXiv:2511.01450, 2025.
+[67]
+Kunhao Liu, Wenbo Hu, Jiale Xu, Ying Shan, and Shijian Lu.
+Rolling forcing: Autoregressive long video diffusion in real time.
+arXiv preprint arXiv:2509.25161, 2025.
+[68]
+Xun Huang, Zhengqi Li, Guande He, Mingyuan Zhou, and Eli Shechtman.
+Self forcing: Bridging the train-test gap in autoregressive video
+diffusion.
+arXiv preprint arXiv:2506.08009, 2025.
+[69]
+Tianwei Yin, Michaël Gharbi, Taesung Park, Richard Zhang, Eli Shechtman,
+Fredo Durand, and William T Freeman.
+Improved distribution matching distillation for fast image synthesis.
+In NeurIPS, 2024.
+[70]
+Tianwei Yin, Qiang Zhang, Richard Zhang, William T Freeman, Fredo Durand, Eli
+Shechtman, and Xun Huang.
+From slow bidirectional to fast autoregressive video diffusion
+models.
+In CVPR, 2025.
+[71]
+Tianwei Yin, Michaël Gharbi, Richard Zhang, Eli Shechtman, Frédo
+Durand, William T Freeman, and Taesung Park.
+One-step diffusion with distribution matching distillation.
+In CVPR, 2024.
+[72]
+Ben Poole, Ajay Jain, Jonathan T. Barron, and Ben Mildenhall.
+Dreamfusion: Text-to-3d using 2d diffusion.
+arXiv, 2022.
+[73]
+Zhengyi Wang, Cheng Lu, Yikai Wang, Fan Bao, Chongxuan Li, Hang Su, and Jun
+Zhu.
+Prolificdreamer: High-fidelity and diverse text-to-3d generation with
+variational score distillation.
+Advances in neural information processing systems,
+36:8406–8441, 2023.
+[74]
+Richard Zhang, Phillip Isola, Alexei A Efros, Eli Shechtman, and Oliver Wang.
+The unreasonable effectiveness of deep features as a perceptual
+metric.
+In CVPR, 2018.
+[75]
+Guangxuan Xiao, Yuandong Tian, Beidi Chen, Song Han, and Mike Lewis.
+Efficient streaming language models with attention sinks.
+arXiv preprint arXiv:2309.17453, 2023.
+[76]
+Wanchao Liang, Tianyu Liu, Less Wright, Will Constable, Andrew Gu, Chien-Chin
+Huang, Iris Zhang, Wei Feng, Howard Huang, Junjie Wang, Sanket Purandare,
+Gokul Nadathur, and Stratos Idreos.
+Torchtitan: One-stop pytorch native solution for production ready
+LLM pretraining.
+In The Thirteenth International Conference on Learning
+Representations, 2025.
+[77]
+Sam Ade Jacobs, Masahiro Tanaka, Chengming Zhang, Minjia Zhang, Shuaiwen Leon
+Song, Samyam Rajbhandari, and Yuxiong He.
+Deepspeed ulysses: System optimizations for enabling training of
+extreme long sequence transformer models.
+arXiv preprint arXiv:2309.14509, 2023.
+[78]
+Tri Dao.
+Flashattention-2: Faster attention with better parallelism and work
+partitioning, 2023.
+[79]
+Jay Shah, Ganesh Bikshandi, Ying Zhang, Vijay Thakkar, Pradeep Ramani, and Tri
+Dao.
+Flashattention-3: Fast and accurate attention with asynchrony and
+low-precision, 2024.
+[80]
+Ted Zadouri, Markus Hoehnerbach, Jay Shah, Timmy Liu, Vijay Thakkar, and Tri
+Dao.
+Flashattention-4: Algorithm and kernel pipelining co-design for
+asymmetric hardware scaling.
+arXiv preprint arXiv:2603.05451, 2026.
+[81]
+Juechu Dong, Boyuan Feng, Driss Guessous, Yanbo Liang, and Horace He.
+Flex attention: A programming model for generating optimized
+attention kernels, 2024.
+[82]
+Aaron Hurst, Adam Lerer, Adam P Goucher, Adam Perelman, Aditya Ramesh, Aidan
+Clark, AJ Ostrow, Akila Welihinda, Alan Hayes, Alec Radford, et al.
+Gpt-4o system card.
+arXiv preprint arXiv:2410.21276, 2024.
+[83]
+Yuhang Yang, Ke Fan, Shangkun Sun, Hongxiang Li, Ailing Zeng, FeiLin Han, Wei
+Zhai, Wei Liu, Yang Cao, and Zheng-Jun Zha.
+Videogen-eval: Agent-based system for video generation evaluation.
+arXiv preprint arXiv:2503.23452, 2025.
+[84]
+Ailing Zeng, Yuhang Yang, Weidong Chen, and Wei Liu.
+The dawn of video generation: Preliminary explorations with sora-like
+models.
+arXiv preprint arXiv:2410.05227, 2024.
+[85]
+Ziqi Huang, Yinan He, Jiashuo Yu, Fan Zhang, Chenyang Si, Yuming Jiang, Yuanhan
+Zhang, Tianxing Wu, Qingyang Jin, Nattapol Chanpaisit, et al.
+Vbench: Comprehensive benchmark suite for video generative models.
+In Proceedings of the IEEE/CVF Conference on Computer Vision and
+Pattern Recognition, pages 21807–21818, 2024.
+[86]
+Yaofang Liu, Xiaodong Cun, Xuebo Liu, Xintao Wang, Yong Zhang, Haoxin Chen,
+Yang Liu, Tieyong Zeng, Raymond Chan, and Ying Shan.
+Evalcrafter: Benchmarking and evaluating large video generation
+models.
+In Proceedings of the IEEE/CVF conference on computer vision and
+pattern recognition, pages 22139–22149, 2024.
+[87]
+Hui Han, Siyuan Li, Jiaqi Chen, Yiwen Yuan, Yuling Wu, Yufan Deng, Chak Tou
+Leong, Hanwen Du, Junchen Fu, Youhua Li, et al.
+Video-bench: Human-aligned video generation benchmark.
+In Proceedings of the Computer Vision and Pattern Recognition
+Conference, pages 18858–18868, 2025.
+[88]
+Kaiyue Sun, Kaiyi Huang, Xian Liu, Yue Wu, Zihan Xu, Zhenguo Li, and Xihui Liu.
+T2v-compbench: A comprehensive benchmark for compositional
+text-to-video generation.
+In Proceedings of the Computer Vision and Pattern Recognition
+Conference, pages 8406–8416, 2025.
+[89]
+Ziqi Huang, Fan Zhang, Xiaojie Xu, Yinan He, Jiashuo Yu, Ziyue Dong, Qianli Ma,
+Nattapol Chanpaisit, Chenyang Si, Yuming Jiang, et al.
+Vbench++: Comprehensive and versatile benchmark suite for video
+generative models.
+IEEE Transactions on Pattern Analysis and Machine Intelligence,
+2025.
+[90]
+Xiangqing Zheng, Chengyue Wu, Kehai Chen, and Min Zhang.
+Locot2v-bench: Benchmarking long-form and complex text-to-video
+generation.
+arXiv preprint arXiv:2510.26412, 2025.
+[91]
+Rensis Likert.
+A technique for the measurement of attitudes.
+Archives of psychology, 1932.
+[92]
+Wei-Lin Chiang, Lianmin Zheng, Ying Sheng, Anastasios Nikolas Angelopoulos,
+Tianle Li, Dacheng Li, Banghua Zhu, Hao Zhang, Michael Jordan, Joseph E
+Gonzalez, et al.
+Chatbot arena: An open platform for evaluating llms by human
+preference.
+In Forty-first International Conference on Machine Learning,
+2024.
+[93]
+Justine Cassell.
+Embodied conversational agents: representation and intelligence in
+user interfaces.
+AI magazine, 22(4):67–67, 2001.
+[94]
+Dan Bohus and Eric Horvitz.
+Facilitating multiparty dialog with gaze, gesture, and speech.
+In International Conference on Multimodal Interfaces and the
+Workshop on Machine Learning for Multimodal Interaction, pages 1–8, 2010.
+    Experimental support, please
+    <a href="./2604.07823v1/__stdout.txt" class="ltx_ref"
+    target="_blank" rel="nofollow">view the build logs
+    for errors. Generated by
+        L
+        A
+        T
+        E
+      xml
+      <img alt="[LOGO]"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==">
+    .
+    Instructions for reporting errors
+    We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+      support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+      methods listed below:
+      Click the "Report Issue" (<svg role="presentation"
+            style="display: inline-block; vertical-align: middle; fill: var(--text-color);" aria-hidden="true"
+            height="1em" viewBox="0 0 640 640">
+            <path
+              d="M224 160C224 107 267 64 320 64C373 64 416 107 416 160L416 163.6C416 179.3 403.3 192 387.6 192L252.5 192C236.8 192 224.1 179.3 224.1 163.6L224.1 160zM569.6 172.8C580.2 186.9 577.3 207 563.2 217.6L465.4 290.9C470.7 299.8 474.7 309.6 477.2 320L576 320C593.7 320 608 334.3 608 352C608 369.7 593.7 384 576 384L480 384L480 416C480 418.6 479.9 421.3 479.8 423.9L563.2 486.4C577.3 497 580.2 517.1 569.6 531.2C559 545.3 538.9 548.2 524.8 537.6L461.7 490.3C438.5 534.5 395.2 566.5 344 574.2L344 344C344 330.7 333.3 320 320 320C306.7 320 296 330.7 296 344L296 574.2C244.8 566.5 201.5 534.5 178.3 490.3L115.2 537.6C101.1 548.2 81 545.3 70.4 531.2C59.8 517.1 62.7 497 76.8 486.4L160.2 423.9C160.1 421.3 160 418.7 160 416L160 384L64 384C46.3 384 32 369.7 32 352C32 334.3 46.3 320 64 320L162.8 320C165.3 309.6 169.3 299.8 174.6 290.9L76.8 217.6C62.7 207 59.8 186.9 70.4 172.8C81 158.7 101.1 155.8 115.2 166.4L224 248C236.3 242.9 249.8 240 264 240L376 240C390.2 240 403.7 242.8 416 248L524.8 166.4C538.9 155.8 559 158.7 569.6 172.8z" />
+          ) button, located in the page header.
+    Tip: You can select the relevant text first, to include it in your report.
+    Our team has already identified <a class="ltx_ref" href="https://github.com/arXiv/html_feedback/issues"
+        target="_blank">the following issues. We appreciate your time reviewing and reporting rendering errors we
+      may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+      should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+      all.
+    Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a <a
+        class="ltx_ref" href="https://github.com/brucemiller/LaTeXML/wiki/Porting-LaTeX-packages-for-LaTeXML"
+        target="_blank">list of packages that need conversion, and welcome <a class="ltx_ref"
+        href="https://github.com/brucemiller/LaTeXML/issues" target="_blank">developer contributions.
+  BETA
+  <a id="disable-reading-mode-btn" class="header-button" href="javascript:toggleReadingMode();"
+    title="Disable reading mode, show header and footer">
+    <svg role="presentation" height="1.25rem"
+      viewBox="0 0 448 512">
+      <path
+        d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />

@@ -1,0 +1,696 @@
+ClawBench: Can AI Agents Complete Everyday Online Tasks?
+  // Restore the saved color scheme preference, or
+  // enact the browser preference if "automatic", 
+  // without expecting DOM load to have completed.
+  //
+  // Also restore any saved readingmode and ToC display preferences.
+  function initializeReadingPreferences() {
+    let saved_theme = localStorage.getItem("ar5iv_theme") || "automatic";
+    if (saved_theme === "automatic") {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        saved_theme = "dark";
+      }
+    }
+    if (saved_theme == "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+    const tocDisplay = localStorage.getItem('arxiv_html_paper_toc_display');
+    if (tocDisplay) {
+      document.documentElement.setAttribute("data-toc-display", tocDisplay);
+    }
+    const readingMode = localStorage.getItem('arxiv_html_paper_reading_mode');
+    if (readingMode) {
+      document.documentElement.setAttribute("data-reading-mode", readingMode);
+    }
+  }
+  // Run as soon as JS starts, to minimize repainting
+  initializeReadingPreferences();
+<link rel="apple-touch-icon" sizes="180x180"
+  href="/static/browse/0.3.4/images/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+  href="/static/browse/0.3.4/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+  href="/static/browse/0.3.4/images/icons/favicon-16x16.png">
+      Report GitHub Issue
+      ×
+      Title:
+      Content selection saved. Describe the issue below:
+      Description:
+      <textarea class="form-control" id="description" name="description" required maxlength="500"
+        placeholder="500 characters maximum">
+      Submit without GitHub
+      Submit in GitHub
+      <img alt="arXiv logo" class="logo desktop-only" width="100"
+        src="/static/browse/0.3.4/images/arxiv-logo-one-color-white.svg">
+      Back to arXiv
+    <a class="header-button hover-effect desktop-only" href="https://info.arxiv.org/about/accessible_HTML.html"
+      target="_blank">Why HTML?
+    <a class="header-button" title="Report an Issue" href="#" title="Report an issue"
+      onclick="event.preventDefault(); showModalForm();">
+      <svg role="presentation" class="mobile-only toggle-icon" aria-hidden="true" height="1.25rem"
+        viewBox="0 0 640 640">
+        <path
+          d="M224 160C224 107 267 64 320 64C373 64 416 107 416 160L416 163.6C416 179.3 403.3 192 387.6 192L252.5 192C236.8 192 224.1 179.3 224.1 163.6L224.1 160zM569.6 172.8C580.2 186.9 577.3 207 563.2 217.6L465.4 290.9C470.7 299.8 474.7 309.6 477.2 320L576 320C593.7 320 608 334.3 608 352C608 369.7 593.7 384 576 384L480 384L480 416C480 418.6 479.9 421.3 479.8 423.9L563.2 486.4C577.3 497 580.2 517.1 569.6 531.2C559 545.3 538.9 548.2 524.8 537.6L461.7 490.3C438.5 534.5 395.2 566.5 344 574.2L344 344C344 330.7 333.3 320 320 320C306.7 320 296 330.7 296 344L296 574.2C244.8 566.5 201.5 534.5 178.3 490.3L115.2 537.6C101.1 548.2 81 545.3 70.4 531.2C59.8 517.1 62.7 497 76.8 486.4L160.2 423.9C160.1 421.3 160 418.7 160 416L160 384L64 384C46.3 384 32 369.7 32 352C32 334.3 46.3 320 64 320L162.8 320C165.3 309.6 169.3 299.8 174.6 290.9L76.8 217.6C62.7 207 59.8 186.9 70.4 172.8C81 158.7 101.1 155.8 115.2 166.4L224 248C236.3 242.9 249.8 240 264 240L376 240C390.2 240 403.7 242.8 416 248L524.8 166.4C538.9 155.8 559 158.7 569.6 172.8z" />
+      Report Issue
+    <a class="header-button" title="Back to abstract page" aria-label="Back to abstract page"
+      href="/abs/2604.08523v1">
+      <svg class="mobile-only toggle-icon" role="presentation" height="1.25rem" viewBox="0 0 512 512" fill="#ffffff"
+        aria-hidden="true">
+        <path
+          d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z">
+      Back to Abstract
+    <a class="header-button" title="Download PDF" href="/pdf/2604.08523v1"
+      target="_blank">
+        <path
+          d="M208 48L96 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l80 0 0 48-80 0c-35.3 0-64-28.7-64-64L32 64C32 28.7 60.7 0 96 0L229.5 0c17 0 33.3 6.7 45.3 18.7L397.3 141.3c12 12 18.7 28.3 18.7 45.3l0 149.5-48 0 0-128-88 0c-39.8 0-72-32.2-72-72l0-88zM348.1 160L256 67.9 256 136c0 13.3 10.7 24 24 24l68.1 0zM240 380l32 0c33.1 0 60 26.9 60 60s-26.9 60-60 60l-12 0 0 28c0 11-9 20-20 20s-20-9-20-20l0-128c0-11 9-20 20-20zm32 80c11 0 20-9 20-20s-9-20-20-20l-12 0 0 40 12 0zm96-80l32 0c28.7 0 52 23.3 52 52l0 64c0 28.7-23.3 52-52 52l-32 0c-11 0-20-9-20-20l0-128c0-11 9-20 20-20zm32 128c6.6 0 12-5.4 12-12l0-64c0-6.6-5.4-12-12-12l-12 0 0 88 12 0zm76-108c0-11 9-20 20-20l48 0c11 0 20 9 20 20s-9 20-20 20l-28 0 0 24 28 0c11 0 20 9 20 20s-9 20-20 20l-28 0 0 44c0 11-9 20-20 20s-20-9-20-20l0-128z" />
+      Download PDF
+    <a class="header-button toggle-icon" href="javascript:toggleNavTOC();" title="Toggle navigation"
+      aria-label="Toggle navigation">
+        <path
+          d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z">
+    <a class="header-button toggle-icon" href="javascript:toggleReadingMode();"
+      title="Disable reading mode, show header and footer">
+      <svg role="presentation" height="1.25rem"
+        viewBox="0 0 448 512">
+        <path
+          d="M32 32C14.3 32 0 46.3 0 64l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64 64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 32zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 96c0 17.7 14.3 32 32 32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0 0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32l-96 0zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l96 0c17.7 0 32-14.3 32-32l0-96z" />
+          <path
+            d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z">
+          <path
+            d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z">
+          <path
+            d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z">
+Abstract
+1 Introduction
+2 Benchmark
+2.1 Task Design and Collection
+Candidate generation.
+Multi-stage filtering.
+Interception signal annotation.
+2.2 Task Taxonomy
+2.3 Interception Mechanism
+How it works.
+Safety guarantees.
+2.4 Five-Layer Recording Infrastructure
+2.5 Evaluation Protocol
+Agentic Evaluator.
+Scoring.
+3 Experiments
+3.1 Experimental Setup
+Models.
+Infrastructure.
+Reproducibility controls.
+Metrics.
+3.2 Main Results
+4 Related Work
+Web Agent Benchmarks.
+LLM-Based Web Agents.
+Evaluation Methods for Agent Systems.
+Concurrent and Complementary Work.
+5 Conclusion
+References
+    License: arXiv.org perpetual non-exclusive license
+arXiv:2604.08523v1 [cs.CL] 09 Apr 2026
+ClawBench: Can AI Agents Complete Everyday Online Tasks?
+Yuxuan Zhang 1,2,3,§,
+Yubo Wang 2,5,
+Yipeng Zhu 1,
+Penghui Du 3,
+Junwen Miao 4,
+Xuan Lu 6,
+Wendong Xu 7,§,
+Yunzhuo Hao 8,
+Songcheng Cai 5,
+Xiaochen Wang 9,
+Huaisong Zhang 10,
+Xian Wu 3,
+Yi Lu 5,
+Minyi Lei 5,
+Kai Zou 11,
+Huifeng Yin 7,
+Ping Nie 5,§,
+Liang Chen 7,†,
+Dongfu Jiang 2,5,†,
+Wenhu Chen 2,5,†,
+Kelsey R. Allen 1,2,†
+1University of British Columbia  2Vector Institute  3Etude AI  4Carnegie Mellon University
+5University of Waterloo  6Shanghai Jiao Tong University  7UniPat AI
+8Zhejiang University  9HKUST  10Tsinghua University  11Netmind.ai
+https://claw-bench.com
+Abstract
+AI agents may be able to automate your inbox, but can they automate other routine aspects of your life?
+Everyday online tasks offer a realistic yet unsolved testbed
+for evaluating the next generation of AI agents.
+To this end, we introduce ClawBench, an evaluation framework of 153 simple tasks that people need to accomplish regularly in their lives and work,
+spanning 144 live platforms across 15 categories,
+from completing purchases and booking appointments
+to submitting job applications.
+These tasks require demanding capabilities beyond existing benchmarks, such as obtaining relevant information from user-provided documents, navigating multi-step workflows across diverse platforms, and write-heavy operations like filling in many detailed forms correctly.
+Unlike existing benchmarks that evaluate agents in offline sandboxes with static pages,
+ClawBench operates on production websites, preserving the full complexity, dynamic nature, and challenges of real-world web interaction.
+A lightweight interception layer captures and blocks only the final submission request,
+ensuring safe evaluation without real-world side effects.
+Our evaluations of 7 frontier models show that both proprietary
+and open-source models can complete only a small portion of these tasks.
+For example, Claude Sonnet 4.6 achieves only 33.3%.
+Progress on ClawBench brings us closer to AI agents that can function as reliable general-purpose assistants.
+††footnotetext: §Project Lead.  †Advisors.
+Figure 1: ClawBench overview. Left: 153 tasks across 15 life categories. Middle: existing benchmarks evaluate agents in offline sandboxes with static HTML and fixed DOM structures; ClawBench evaluates on live websites with real-world complexity and provides rich, traceable verdicts via an agentic evaluator. Right: Claude-Sonnet-4.6 and GPT-5.4 achieve 65-75% task completion on established benchmarks such as OSWorld and WebArena, but only 33.3% and 6.5%, respectively, on ClawBench, highlighting the difficulty of real-world everyday web tasks.
+Figure 2: Main results: success rate on ClawBench for 7 frontier models. Even the strongest model (Claude Sonnet 4.6) completes only 33.3% of tasks, while two of seven models score below 5%. See Table 2 for the per-category breakdown.
+1 Introduction
+AI agents powered by large language models can now navigate graphical interfaces, fill forms, and execute multi-step workflows autonomously (Yao et al., 2023; Wang et al., 2024), as demonstrated by commercial systems such as OpenAI Operator (OpenAI, 2025) and Anthropic Computer Use (Anthropic, 2025b), and the open-source agent OpenClaw (Steinberger, 2025).
+However, the extent to which they can serve as truly general online assistants is unknown.
+To be general assistants, agents need to do more than summarize emails.
+They need to reliably handle the everyday online tasks that people depend on, for example booking flights, ordering groceries, and submitting job applications.
+These tasks are individually straightforward for a human, typically requiring under thirty minutes, yet they involve production websites with dynamic content, authentication flows, anti-bot defenses, and constantly evolving layouts.
+Evaluating agents on such tasks is challenging precisely because real websites are unpredictable and consequential.
+To avoid safety risks, most existing benchmarks—WebArena (Zhou et al., 2024), VisualWebArena (Koh et al., 2024), OSWorld (Xie et al., 2024), TheAgentCompany (Xu et al., 2025)—evaluate agents in offline sandboxes with static HTML, fixed DOM structures, no authentication, and no dynamic content (Figure 1, middle top).
+This controlled setting simplifies evaluation but removes the very complexities that make real-world web interaction difficult: cookie consent pop-ups, dynamic JavaScript rendering, complex and multi-step interaction.
+Benchmarks that do operate on real websites—WebVoyager (He et al., 2024), AssistantBench (Yoran et al., 2024), Online-Mind2Web (Xue et al., 2025), Claw-Eval (Ye et al., 2026)—are limited to read-only information retrieval or mock APIs for testing simple write operations.
+As a result, write-heavy task completion on live platforms—the category most directly relevant to people’s daily lives—remains unevaluated.
+We have no reliable picture of how well agents can actually “get things done” on the real web.
+We present ClawBench, a benchmark of 153 everyday online tasks spanning 15 life categories across 144 live platforms (Figure 1, left).
+Rather than recreating websites in sandboxes, we let the agent operate on production sites and address the safety concern with a single targeted mechanism: a lightweight Chrome extension that records low-level browser actions, paired with a CDP-based instrumentation server that monitors outgoing network traffic and intercepts the final submission request—the single HTTP call that would commit an irreversible transaction (Figure 1, middle bottom).
+During each task, five layers of behavioral data are captured (Figure 3): session replay via Xvfb virtual display and FFmpeg, per-step action screenshots, HTTP traffic, agent messages (reasoning traces and tool calls), and low-level browser actions (clicks, keystrokes, scrolls).
+Human annotators complete every task under the same setup to produce ground-truth trajectories.
+Agent trajectories are then scored by comparing against these human references.
+We evaluate each recorded trajectory using an Agentic Evaluator, implemented by invoking a Claude Code sub-agent under a fixed evaluation rubric.
+The evaluator consumes the task instruction together with the human reference actions and payloads and the agent’s executed actions and payloads, and judges whether the task was completed correctly.
+Instead of relying on a single final-state check, it applies predefined evaluation criteria to compare the agent trajectory against the human reference and produces a binary verdict with a structured justification grounded in the request schema and step-level evidence.
+As a result, the evaluation is not only outcome-based but also traceable: it reveals not just whether the agent failed, but which required fields or steps were incorrect and where the agent diverged from the reference trajectory.
+Figure 3: The ClawBench evaluation pipeline. Setup: a human-authored task with explicit verification conditions. Execution: the agent operates in a real browser while five layers of behavioral data are recorded. Evaluation: the recorded trajectory is scored against a human ground-truth trajectory via an Agentic Evaluator, producing a binary pass/fail verdict with step-level justification.
+We evaluate 7 frontier models on ClawBench: Claude Sonnet 4.6 (Anthropic, 2026), GPT-5.4 (OpenAI, 2026), Gemini 3.1 Flash Lite (Google DeepMind, 2026), Claude Haiku 4.5 (Anthropic, 2025a), Gemini 3 Flash (Google DeepMind, 2025), GLM-5 (Zeng et al., 2026), and Kimi K2.5 (Team et al., 2026).
+As shown in Figure 1 (right), Claude Sonnet 4.6 (Anthropic, 2026) and GPT-5.4 (OpenAI, 2026) score 65–75% on traditional web benchmarks (OSWorld (Xie et al., 2024), WebArena (Zhou et al., 2024)) but only 33.3% and 6.5%, respectively, on ClawBench. The five-layer recording makes each failure traceable to specific steps, providing concrete diagnostic signals for future agent development.
+Our contributions are as follows:
+(1) We introduce ClawBench, a benchmark of 153 everyday online tasks across 15 life categories and 144 live platforms, targeting write-heavy, consequential web interactions that existing benchmarks do not cover.
+(2) We design a Chrome extension and CDP-based instrumentation mechanism that records browser actions and intercepts only the final submission request, enabling safe evaluation on production websites without sacrificing ecological validity.
+(3) We develop a five-layer recording infrastructure and an agentic evaluator that provides step-level alignment against human ground truth, along with fully traceable failure diagnostics.
+(4) We open-source the complete data collection and evaluation pipeline to support community-driven benchmark maintenance and expansion.
+(5) We benchmark 7 frontier models and provide step-level failure analysis, documenting a large gap between agent performance on structured coding tasks and real-world everyday web tasks.
+2 Benchmark
+We present ClawBench, an evaluation infrastructure for measuring how well AI agents can complete everyday online tasks on the real web.
+Unlike prior benchmarks that retreat to sandboxes or restrict evaluation to read-only information retrieval, ClawBench operates on 144 live platforms, targets write-heavy transactions (purchases, reservations, applications), and verifies outcomes by comparing the agent’s full behavioral trajectory against a human ground-truth reference.
+Table 1 positions ClawBench among existing web-agent benchmarks across four axes: real-world environment, write-heavy task coverage, evaluation reliability, and diagnostic traceability.
+Figure 3 illustrates the three-stage architecture: task definition, agent execution with five-layer recording, and automated evaluation via the Agentic Evaluator.
+Table 1: 
+Comparison of ClawBench with existing web agent benchmarks across four axes:
+real-world environment fidelity, write-heavy task coverage, evaluation reliability, and diagnostic traceability.
+ClawBench is the only benchmark that combines live-website execution, write-heavy state-changing tasks, human-grounded comparative evaluation, and multi-layer trajectory recording.
+Environment: Offline = static cached pages; Sandbox = self-hosted or VM-based replicas; Real Web = live production websites.
+Task Type: Read-only = information retrieval / QA; Mixed = includes some write operations in controlled settings; Write-heavy = majority of tasks involve state-changing submissions on live platforms.
+Recording: None = no behavioral trace beyond the final output; Screenshot = per-step or final screenshots only; 5-Layer = session replay, action screenshots, HTTP traffic, agent messages, and browser actions.
+Human Traj.: whether full human ground-truth trajectories (recorded under the same infrastructure) are available for evaluation.
+Benchmark
+Environment
+# Tasks
+# Sites
+Task Type
+Verification
+Recording
+Human Traj.
+Mind2Web (Deng et al., 2023)
+Offline (static traces)
+2,350
+137
+Read-only
+Action seq. match
+None
+Partial (action seq.)
+WebArena (Zhou et al., 2024)
+Sandbox (self-hosted)
+812
+5
+Mixed
+Script-based
+None
+✗
+VisualWebArena (Koh et al., 2024)
+Sandbox (self-hosted)
+910
+3
+Mixed
+Script-based
+None
+✗
+OSWorld (Xie et al., 2024)
+Sandbox (VM)
+369
+9
+Mixed
+Script + screenshot
+Screenshot
+✗
+WebVoyager (He et al., 2024)
+Real Web
+643
+15
+Read-only
+LLM-as-judge
+Screenshot
+✗
+TheAgentCompany (Xu et al., 2025)
+Sandbox (self-hosted)
+175
+6
+Mixed
+Checkpoint-based
+None
+✗
+Online-Mind2Web (Xue et al., 2025)
+Real Web
+300
+136
+Read-only
+Human + LLM judge
+Screenshot
+✗
+EconWebArena (Liu and Quan, 2025)
+Real Web
+360
+82
+Read-only
+Exact numeric + URL
+None
+✗
+Claw-Eval (Ye et al., 2026)
+Sandbox (Docker + FastAPI)
+139
+15
+Mixed
+API state check
+CLI logs
+✗
+ClawBench (Ours)
+Real Web
+153
+144
+Write-heavy
+Agentic Evaluator
+5-Layer
+✓ (all tasks)
+Table 2: Main results on ClawBench. Success rate (%) of seven AI agents on the 153-task ClawBench benchmark, reported overall and for each of the 8 high-level task category groups. Models are ordered by overall success rate. Bold marks the best result in each column; underline marks the second best. †\dagger denotes a text-only model without vision capability.
+Rank
+Model
+Overall
+Task
+Categories
+Daily
+Finance
+Work
+Dev
+Academic
+Travel
+Social
+Pets
+1
+Claude Sonnet 4.6
+33.3
+44.2
+50.0
+19.0
+11.1
+50.0
+23.1
+38.9
+18.2
+2
+GLM-5†
+24.2
+30.8
+16.7
+38.1
+16.7
+28.6
+0.0
+16.7
+18.2
+3
+Gemini 3 Flash
+19.0
+15.4
+33.3
+23.8
+22.2
+28.6
+30.8
+11.1
+0.0
+4
+Claude Haiku 4.5
+18.3
+15.4
+33.3
+19.0
+27.8
+21.4
+7.7
+16.7
+18.2
+5
+GPT-5.4
+6.5
+9.6
+0.0
+0.0
+11.1
+7.1
+7.7
+0.0
+9.1
+6
+Gemini 3.1 Flash Lite
+3.3
+1.9
+0.0
+0.0
+5.6
+14.3
+0.0
+0.0
+9.1
+7
+Kimi K2.5
+0.7
+1.9
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+2.1 Task Design and Collection
+ClawBench focuses on write-heavy web tasks: actions that modify server-side state through form submissions, reservations, purchases, applications, and similar state-changing operations.
+We target these tasks because (i) they are the category most directly relevant to people’s daily lives—each task is something an ordinary person might need to accomplish in under thirty minutes, and (ii) they produce observable HTTP payloads that enable objective verification.
+Candidate generation.
+We construct ClawBench by curating realistic everyday online tasks on live websites and retaining 153 tasks in the final benchmark.
+Each task is defined by three elements: a natural-language user instruction, a starting URL, and a terminal submission target specified at the HTTP-request level.
+Human annotators survey representative platforms across life categories, instantiate realistic user goals, and complete each task end-to-end within our recording framework.
+For every task, this yields a human reference trajectory together with the corresponding intercepted submission payload, which later serves as the basis for evaluation.
+Multi-stage filtering.
+We apply a rigorous filtering pipeline that removes tasks requiring paid subscriptions, geographically restricted services, or websites that have gone offline.
+At each stage, independent annotators verify that the task remains completable and that the ground-truth trajectory is reproducible.
+The final dataset comprises 153 tasks across 144 unique platforms.
+Interception signal annotation.
+A distinguishing aspect of our data collection is that every task’s interception signal—the specific HTTP endpoint, request method, and payload schema that identifies the dangerous, inreversable submission—is manually annotated by a human expert.
+This annotator inspects the browser’s network traffic during the ground-truth execution, identifies the exact request that would commit the irreversible transaction, and records a declarative specification (URL pattern, HTTP method, and required payload field names).
+This human-in-the-loop design ensures that the ClawBench framework intercepts precisely the intended request, avoiding both false positives (blocking benign navigation requests) and false negatives (allowing the submission to reach the server).
+The result is a safe, targeted interception that preserves the full complexity of live-site interaction while guaranteeing zero real-world side effects—no orders are placed, no applications are submitted, and no critical server-side state is modified.
+2.2 Task Taxonomy
+To support fine-grained analysis, we organize the 153 tasks into a two-level taxonomy (Figure 4).
+The top level consists of 8 high-level category groups—Daily, Work, Dev, Social, Academic, Travel, Pets, and Finance—that capture broad domains of everyday web activity.
+Each group is further divided into 15 fine-grained categories (e.g., “Daily Life &amp; Shopping &amp; Entertainment,” “Job Search &amp; Office &amp; Personal Management,” “Academic &amp; Education”).
+Figure 4: Task taxonomy of ClawBench. Inner ring: 8 high-level category groups; outer ring: 15 fine-grained categories. The dataset spans 153 tasks across diverse real-world domains.
+Figure 5: Benchmark saturation comparison. Claude-Sonnet-4.6 performs substantially better on existing web-agent benchmarks than on ClawBench, indicating that ClawBench remains challenging for frontier agents.
+2.3 Interception Mechanism
+The central design insight of ClawBench is that evaluating agents on real websites does not require preventing them from interacting with real websites—it only requires intercepting the final request.
+We implement this via a lightweight Chrome extension and a CDP server that is loaded alongside the agent’s browser session.
+How it works.
+The instrumentation server connects to the browser through CDP to monitor all outgoing HTTP requests against the human-annotated interception specifications (Section 2.1).
+When the agent’s action triggers a request matching the declared URL pattern and HTTP method, the system (i) captures the full request body, including all form fields, payloads, headers, and query parameters; (ii) blocks the request before it leaves the browser, preventing it from reaching the server; and (iii) logs the captured payload to a local file alongside a timestamp and the originating tab URL.
+All other requests—page loads, AJAX calls for dynamic content, image fetches, analytics pings—pass through unmodified, so the agent experiences the website exactly as a human user would.
+Safety guarantees.
+Because interception signals are human-annotated at the endpoint level rather than inferred by heuristics, the mechanism achieves high precision: in a validation study over all 153 tasks, the extension correctly intercepted the terminal request in 100% of the human ground-truth runs with zero false positives on navigation traffic.
+This targeted approach avoids the risks associated with letting agents operate freely on production servers (e.g., accidentally placing orders or submitting real applications) while also avoiding the ecological validity loss inherent in sandbox-based alternatives.
+2.4 Five-Layer Recording Infrastructure
+A distinctive feature of ClawBench is that every agent run produces five synchronized layers of behavioral data, enabling both automated evaluation and deep post-hoc diagnosis.
+(1) Session Recording. The Chrome browser is running on a Xvfb virtual display which is monitored by ffmpeg, producing a full-session video recording of the browser window.
+(2) Action Screenshots. A per-step screenshot is captured immediately after each agent browser action (click, type, scroll), providing a chronological visual record of the agent’s observations and the resulting page states.
+(3) HTTP Traffic. All HTTP requests are logged via the Chrome DevTools Protocol, including request bodies, payloads and timing information. The intercepted terminal payload is a special case of this layer.
+(4) Agent Messages. The full chain of reasoning traces, tool calls, and intermediate outputs produced by the agent framework is recorded in a structured JSON format, preserving the agent’s “thought process” at each decision point.
+(5) Browser Actions. Low-level browser events—mouse clicks (with coordinates), keystrokes, scroll offsets, tab switches, and navigation events—are captured via the Chrome extension, providing a fine-grained behavioral log independent of the agent’s self-reported actions.
+Human annotators produce ground-truth recordings under the same five-layer setup for every task.
+The parallel structure between agent and human recordings is what enables the Agentic Evaluator (Section 2.5): both trajectories are represented in the same multi-modal format, making step-level alignment and comparison feasible.
+The five layers are complementary by design.
+Session recording and screenshots capture what the agent saw; agent messages capture what the agent thought; browser actions capture what the agent did; and HTTP traffic captures what effect the agent’s actions had on the network.
+Together, they enable a level of failure diagnosis that goes far beyond a binary pass/fail score: when an agent fails, a developer can trace the failure to the exact step, inspect the page state the agent observed, read the reasoning that led to the wrong decision, and compare the agent’s action against the human annotator’s action at the corresponding step.
+Figure 6: 
+Agentic Evaluator Inference Pipeline.
+The evaluator determines whether a browser agent successfully completes a real-world web task by comparing the agent trajectory against a reference trajectory across five evidence layers: session replay, action screenshots, HTTP traffic, browser actions, and agent messages.
+A Claude Code sub-agent applies a structured evaluation prompt that enforces key behavioral rules.
+The evaluator performs cross-referencing and verification over these multimodal traces to produce a final decision.
+PASS indicates the agent has effectively executed the task (including cases where completion is blocked but all prior actions are correct), while FAIL indicates unsuccessful execution or violation of required behaviors.
+2.5 Evaluation Protocol
+Given the five-layer recordings from both the agent and the human annotator, we need an evaluation method that can reliably determine whether the agent completed the task correctly.
+We investigate three evaluator designs that operate on different subsets of the recorded data, each representing a different modality and comparison strategy.
+As illustrated in Figure 6, our evaluation is grounded in a multi-layer comparison between the agent trajectory and a human reference trajectory.
+The evaluator operates over synchronized evidence streams—including session replay, screenshots, HTTP traffic, browser actions, and agent messages—and applies a structured rubric to determine task success.
+Agentic Evaluator.
+We evaluate each task using a single Agentic Evaluator, implemented by invoking a Claude Code sub-agent under a fixed evaluation rubric.
+Given the task instruction, the agent trajectory, and the human reference trajectory, the evaluator performs an explicit alignment between the two executions: it identifies corresponding steps, detects divergences, checks whether the required fields and actions are correct, and determines whether the agent reaches a terminal state equivalent to the human reference.
+This design leverages the full multi-layer recordings from both runs and grounds evaluation in a concrete human demonstration rather than in the task instruction alone.
+Figure 7 provides a schematic view of this evaluation process, where the evaluator takes both the agent and human trajectories as input and produces a binary verdict with structured justification.
+Scoring.
+For each task t∈Tt\in T, let q(t)q^{(t)} denote the task instruction, 𝒯a(t)\mathcal{T}_{a}^{(t)} the recorded agent trajectory, and 𝒯h(t)\mathcal{T}_{h}^{(t)} the recorded human reference trajectory.
+We denote the Agentic Evaluator by 𝒜\mathcal{A}, which maps these inputs to a binary task-level verdict:
+Score​(t)=𝒜​(q(t),𝒯a(t),𝒯h(t)),\text{Score}(t)=\mathcal{A}\!\left(q^{(t)},\;\mathcal{T}_{a}^{(t)},\;\mathcal{T}_{h}^{(t)}\right),
+(1)
+where Score​(t)∈{0,1}\text{Score}(t)\in\{0,1\}, with 11 indicating successful task completion and 0 indicating failure.
+The overall success rate over a task set TT is then defined as
+SR=1|T|​∑t∈TScore​(t),\text{SR}=\frac{1}{|T|}\sum_{t\in T}\text{Score}(t),
+(2)
+where |T||T| is the number of evaluated tasks.
+Unlike evaluators that judge an agent trajectory in isolation, 𝒜\mathcal{A} performs an explicit comparison between the agent trajectory and the human reference trajectory under a fixed evaluation rubric.
+This comparative signal provides a concrete specification of successful task completion, including platform-specific details such as field bindings, interaction order, and terminal submission structure, which may be difficult to infer reliably from the task instruction alone.
+Figure 7: Evaluation protocol. The evaluator takes as input the task instruction together with the human reference actions and payloads and the agent’s executed actions and payloads. It then invokes a Claude Code sub-agent under a fixed evaluation rubric to determine whether the task was completed correctly, producing a binary verdict and a structured justification grounded in schema-level checks over the request payload.
+3 Experiments
+We evaluate 7 frontier AI models on ClawBench, spanning both proprietary and open-source systems.
+This section describes the experimental setup, presents the main results, analyzes failure modes, and reports ablation studies on the observation modality.
+3.1 Experimental Setup
+Models.
+We evaluate 5 proprietary models (Claude Sonnet 4.6 (Anthropic, 2026), GPT-5.4 (OpenAI, 2026), Gemini 3.1 Flash Lite (Google DeepMind, 2026), Claude Haiku 4.5 (Anthropic, 2025a), and Gemini 3 Flash (Google DeepMind, 2025)) and 2 open-source models (GLM-5 (Zeng et al., 2026) and Kimi K2.5 (Team et al., 2026)).
+Infrastructure.
+Each model is given control of a Chromium browser instance via the OpenClaw agent framework.
+The OpenClaw agent is connected to a managed isolated browser. It then can use the OpenClaw framework’s browser toolset to interact with the browser (click, type, scroll, navigate, etc.).
+The ClawBench Chrome extension and CDP instrumentation server runs in the background throughout the session, intercepting HTTP requests and agent actions for post-hoc evaluation.
+Reproducibility controls.
+Each benchmark run uses an encapsulated container, ensuring environment isolation and cross-run consistency. Chrome is launched with flags that disable UI prompts, sync, and irrelevant extensions to minimize environmental variance.
+Metrics.
+Our primary metric is success rate (SR): the percentage of tasks for which the agent receives a binary score of 1 (Section 2).
+We report SR both overall and broken down by the 8 high-level category groups.
+3.2 Main Results
+Table 2 reveals three main findings. First, Claude Sonnet 4.6 is the strongest model overall, achieving 33.3% success rate, followed by GLM-5 at 24.2%. This gap suggests that frontier models differ substantially in their ability to handle realistic everyday web workflows.
+Second, model performance varies considerably across task categories. Claude Sonnet 4.6 leads on Daily, Finance, Academic, and Social, while GLM-5 performs best on Work, Gemini 3 Flash on Travel, and Claude Haiku 4.5 on Dev. These patterns indicate that current agents do not yet exhibit uniform competence across domains, but instead show category-specific strengths and weaknesses. At the same time, even the best category-level results remain far from saturation, underscoring the overall difficulty of ClawBench.
+4 Related Work
+Web Agent Benchmarks.
+Early web agent benchmarks such as MiniWoB (Shi et al., 2017) evaluated agents on simplified, synthetic web interfaces with short action sequences.
+WebArena (Zhou et al., 2024) introduced self-hosted, realistic web environments with 812 tasks across 5 domains, using URL and element matching for evaluation.
+VisualWebArena (Koh et al., 2024) extended this to visually grounded tasks on 3 self-hosted sites.
+Mind2Web (Deng et al., 2023) scaled to 2,350 tasks on 137 real-world domains but evaluated action sequences rather than end-to-end task completion.
+OSWorld (Xie et al., 2024) broadened the scope to full operating system tasks across 9 applications.
+More recently, REAL Bench (Garg et al., 2025) evaluated agents on live websites but relied on manual rating for scoring.
+ClawBench differs from all prior work by (i) operating on 144 live platforms rather than self-hosted sandboxes, (ii) focusing on write-heavy, state-changing tasks, and (iii) providing traceable, comparative evaluation against human reference trajectories through an agentic evaluator.
+LLM-Based Web Agents.
+The emergence of large language models has driven rapid progress in autonomous web agents.
+Systems such as WebGPT (Nakano et al., 2021), WebAgent (Gur et al., 2023), and SeeAct (Zheng et al., 2024) demonstrated that LLMs can interpret web pages and execute multi-step browsing tasks when given appropriate observation and action interfaces.
+Recent approaches combine visual perception (screenshots) with structured page representations (accessibility trees, HTML) to improve grounding accuracy.
+Agent frameworks including AgentGPT, AutoGPT, and OpenClaw provide standardized interfaces for deploying LLMs as web agents with tool use and action execution capabilities.
+ClawBench is designed to evaluate any agent system that can control a Chromium browser, independent of the underlying model or framework.
+Evaluation Methods for Agent Systems.
+Evaluating autonomous agents remains challenging due to the diversity of possible action trajectories and the difficulty of defining success criteria.
+Prior work has used action sequence matching, URL-based success detection, screenshot comparison, and human judgement.
+Action-level metrics suffer from the problem of multiple valid paths: an agent may complete a task correctly through a different sequence of actions than the reference trajectory.
+Screenshot-based methods require visual similarity thresholds that introduce non-determinism.
+Human evaluation, while flexible, is expensive and non-reproducible.
+ClawBench sidesteps these issues by combining intercepted submission payloads with an agentic evaluator that performs explicit step-level alignment between the agent trajectory and a human reference trajectory, producing a binary verdict together with a structured justification grounded in the recorded evidence.
+Concurrent and Complementary Work.
+Several recent benchmarks address related but distinct aspects of web agent evaluation.
+TheAgentCompany (Xu et al., 2025) provides a self-hosted sandbox simulating a software company with 175 tasks and checkpoint-based partial credit; ClawBench trades environmental control for real-world breadth across 144 live platforms.
+EconWebArena (Liu and Quan, 2025) is a live-web benchmark for economic research tasks featuring 360 read-only tasks with exact numeric matching and URL provenance; ClawBench extends the live-web paradigm to write-heavy, state-changing tasks.
+MCP-Bench (Wang et al., 2025) evaluates LLM agents on tool invocation via the Model Context Protocol with strict schema validation; ClawBench targets browser-based web interaction rather than structured API calls.
+TrickyArena (Ersoy et al., 2025) studies dark pattern susceptibility in web agents across 4 controlled applications—an orthogonal safety concern that highlights the importance of evaluating on real websites where dark patterns occur naturally.
+AssistantBench (Yoran et al., 2024) defines 214 realistic open-web tasks with automated evaluation, focusing on information retrieval; ClawBench complements this with write-heavy tasks.
+WebCanvas (Pan et al., 2024) proposes key-node evaluation for 542 tasks on dynamic websites in a similar live-web setting but without HTTP payload verification.
+Taken together, these efforts illustrate a fundamental realism-vs-reproducibility trade-off: sandboxed benchmarks offer perfect reproducibility but may not reflect the complexity of real websites, while live-web benchmarks expose agents to authentic challenges at the cost of environmental variability. ClawBench deliberately chooses realism and mitigates reproducibility concerns through human-grounded comparative evaluation and full multi-layer trajectory recording.
+5 Conclusion
+We introduce ClawBench, a benchmark of 153 real-world everyday web tasks spanning 144 live platforms across 8 high-level category groups. By evaluating agents on live production websites and focusing on write-heavy, state-changing workflows, ClawBench provides a substantially more realistic testbed than prior benchmarks built on static pages or sandboxed environments. Our framework combines final-request interception, five-layer trajectory recording, and an agentic evaluator. Experiments on 7 frontier models show that strong performance on existing web-agent benchmarks does not transfer to ClawBench, underscoring the gap between controlled benchmark success and real-world everyday web competence. We release the benchmark, evaluation toolkit, and supporting infrastructure to support future research on realistic web-agent evaluation.
+References
+Anthropic (2025a)
+Claude haiku 4.5.
+Note: https://www.anthropic.com/news/claude-haiku-4-5
+Cited by: §1,
+§3.1.
+Anthropic (2025b)
+Introducing computer use.
+Note: https://www.anthropic.com/news/3-5-models-and-computer-useAccessed: 2026-03-20
+Cited by: §1.
+Anthropic (2026)
+Claude sonnet 4.6.
+Note: https://www.anthropic.com/news/claude-sonnet-4-6
+Cited by: §1,
+§3.1.
+X. Deng, Y. Gu, B. Zheng, S. Chen, S. Stevens, B. Wang, H. Sun, and Y. Su (2023)
+Mind2Web: towards a generalist agent for the web.
+In Advances in Neural Information Processing Systems (NeurIPS),
+Cited by: Table 1,
+§4.
+D. Ersoy, B. Lee, A. Shreekumar, A. Arunasalam, M. Ibrahim, A. Bianchi, and Z. B. Celik (2025)
+Investigating the impact of dark patterns on llm-based web agents.
+arXiv preprint arXiv:2510.18113.
+Cited by: §4.
+D. Garg, S. VanWeelden, D. Caples, A. Draguns, N. Ravi, P. Putta, N. Garg, T. Abraham, M. Lara, F. Lopez, et al. (2025)
+Real: benchmarking autonomous agents on deterministic simulations of real websites.
+arXiv preprint arXiv:2504.11543.
+Cited by: §4.
+Google DeepMind (2025)
+Gemini 3 flash.
+Note: https://deepmind.google/models/gemini/flash/
+Cited by: §1,
+§3.1.
+Google DeepMind (2026)
+Gemini 3.1 flash-lite.
+Note: https://deepmind.google/models/gemini/flash-lite/
+Cited by: §1,
+§3.1.
+I. Gur, H. Furuta, A. Huang, M. Saber, Y. Matsuo, D. Eck, and A. Fishi (2023)
+A real-world WebAgent with planning, long context understanding, and program synthesis.
+arXiv preprint.
+Note: arXiv:2307.12856
+Cited by: §4.
+H. He, W. Yao, K. Ma, W. Yu, Y. Dai, H. Zhang, Z. Lan, and D. Yu (2024)
+WebVoyager: building an end-to-end web agent with large multimodal models.
+In Annual Meeting of the Association for Computational Linguistics (ACL),
+Cited by: §1,
+Table 1.
+J. Y. Koh, R. Lo, L. Jang, V. Duvvur, M. C. Lim, P. Huang, G. Neubig, S. Zhou, R. Salakhutdinov, and D. Fried (2024)
+VisualWebArena: evaluating multimodal agents on realistic visual web tasks.
+In Annual Meeting of the Association for Computational Linguistics (ACL),
+Cited by: §1,
+Table 1,
+§4.
+Z. Liu and Y. Quan (2025)
+Econwebarena: benchmarking autonomous agents on economic tasks in realistic web environments.
+arXiv preprint arXiv:2506.08136.
+Cited by: Table 1,
+§4.
+R. Nakano, J. Hilton, S. Balaji, J. Wu, L. Ouyang, C. Kim, C. Hesse, S. Jain, V. Kosaraju, W. Saunders, X. Jiang, K. Cobbe, T. Eloundou, G. Krueger, K. Button, M. Knight, B. Chess, and J. Schulman (2021)
+WebGPT: browser-assisted question-answering with human feedback.
+arXiv preprint.
+Note: arXiv:2112.09332
+Cited by: §4.
+OpenAI (2025)
+Introducing operator.
+Note: https://openai.com/index/introducing-operator/
+Cited by: §1.
+OpenAI (2026)
+GPT-5.4.
+Note: https://platform.openai.com/docs/models/gpt-5.4
+Cited by: §1,
+§3.1.
+Y. Pan, D. Kong, S. Zhou, C. Cui, Y. Leng, B. Jiang, H. Liu, Y. Shang, S. Zhou, T. Wu, et al. (2024)
+Webcanvas: benchmarking web agents in online environments.
+arXiv preprint arXiv:2406.12373.
+Cited by: §4.
+T. Shi, A. Karpathy, L. Fan, J. Hernandez, and P. Liang (2017)
+World of bits: an open-domain platform for web-based agents.
+In Proceedings of the 34th International Conference on Machine Learning,
+ pp. 3135–3144.
+Cited by: §4.
+P. Steinberger (2025)
+OpenClaw: your own personal AI assistant.
+Note: https://github.com/openclaw/openclawAccessed: 2026-03-20
+Cited by: §1.
+K. Team, T. Bai, Y. Bai, Y. Bao, S. Cai, Y. Cao, Y. Charles, H. Che, C. Chen, G. Chen, et al. (2026)
+Kimi k2. 5: visual agentic intelligence.
+arXiv preprint arXiv:2602.02276.
+Cited by: §1,
+§3.1.
+L. Wang, C. Ma, X. Feng, Z. Zhang, H. Yang, J. Zhang, Z. Chen, J. Tang, X. Chen, Y. Lin, et al. (2024)
+A survey on large language model based autonomous agents.
+Frontiers of Computer Science 18 (6),  pp. 186345.
+Cited by: §1.
+Z. Wang, Q. Chang, H. Patel, S. Biju, C. Wu, Q. Liu, A. Ding, A. Rezazadeh, A. Shah, Y. Bao, et al. (2025)
+Mcp-bench: benchmarking tool-using llm agents with complex real-world tasks via mcp servers.
+arXiv preprint arXiv:2508.20453.
+Cited by: §4.
+T. Xie, D. Zhang, J. Chen, X. Li, S. Zhao, R. Cao, T. J. Hua, Z. Cheng, D. Shin, F. Lei, et al. (2024)
+OSWorld: benchmarking multimodal agents for open-ended tasks in real computer environments.
+In Advances in Neural Information Processing Systems (NeurIPS),
+Cited by: §1,
+§1,
+Table 1,
+§4.
+F. F. Xu, Y. Song, B. Li, Y. Tang, K. Jain, M. Bao, Z. Z. Wang, X. Zhou, Z. Guo, M. Cao, et al. (2025)
+TheAgentCompany: benchmarking LLM agents on consequential real world tasks.
+In Advances in Neural Information Processing Systems (NeurIPS), Datasets and Benchmarks Track,
+Cited by: §1,
+Table 1,
+§4.
+T. Xue, W. Qi, T. Shi, C. H. Song, B. Gou, D. Song, H. Sun, and Y. Su (2025)
+An illusion of progress? assessing the current state of web agents.
+In Conference on Language Modeling (COLM),
+Cited by: §1,
+Table 1.
+S. Yao, J. Zhao, D. Yu, N. Du, I. Shafran, K. Narasimhan, and Y. Cao (2023)
+ReAct: synergizing reasoning and acting in language models.
+In International Conference on Learning Representations (ICLR),
+Cited by: §1.
+B. Ye, R. Li, Q. Yang, and L. Li (2026)
+Claw-eval: a transparent benchmark for real-world agents.
+Note: https://github.com/claw-eval/claw-evalPeking University &amp; University of Hong Kong. Accessed: 2026-03-20
+Cited by: §1,
+Table 1.
+O. Yoran, S. J. Amouyal, C. Malaviya, B. Bogin, O. Press, and J. Berant (2024)
+Assistantbench: can web agents solve realistic and time-consuming tasks?.
+In Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing,
+ pp. 8938–8968.
+Cited by: §1,
+§4.
+A. Zeng, X. Lv, Z. Hou, Z. Du, Q. Zheng, B. Chen, D. Yin, C. Ge, C. Xie, C. Wang, et al. (2026)
+GLM-5: from vibe coding to agentic engineering.
+arXiv preprint arXiv:2602.15763.
+Cited by: §1,
+§3.1.
+B. Zheng, B. Gou, J. Kil, H. Sun, and Y. Su (2024)
+SeeAct: GPT-4V(ision) as a generalist web agent, if grounded.
+arXiv preprint.
+Note: arXiv:2401.01614
+Cited by: §4.
+S. Zhou, F. F. Xu, H. Zhu, X. Zhou, R. Lo, A. Sridhar, X. Cheng, Y. Bisk, D. Fried, U. Alon, et al. (2024)
+WebArena: a realistic web environment for building autonomous agents.
+In International Conference on Learning Representations (ICLR),
+Cited by: §1,
+§1,
+Table 1,
+§4.
+    Experimental support, please
+    <a href="./2604.08523v1/__stdout.txt" class="ltx_ref"
+    target="_blank" rel="nofollow">view the build logs
+    for errors. Generated by
+        L
+        A
+        T
+        E
+      xml
+      <img alt="[LOGO]"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==">
+    .
+    Instructions for reporting errors
+    We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+      support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+      methods listed below:
+      Click the "Report Issue" (<svg role="presentation"
+            style="display: inline-block; vertical-align: middle; fill: var(--text-color);" aria-hidden="true"
+            height="1em" viewBox="0 0 640 640">
+            <path
+              d="M224 160C224 107 267 64 320 64C373 64 416 107 416 160L416 163.6C416 179.3 403.3 192 387.6 192L252.5 192C236.8 192 224.1 179.3 224.1 163.6L224.1 160zM569.6 172.8C580.2 186.9 577.3 207 563.2 217.6L465.4 290.9C470.7 299.8 474.7 309.6 477.2 320L576 320C593.7 320 608 334.3 608 352C608 369.7 593.7 384 576 384L480 384L480 416C480 418.6 479.9 421.3 479.8 423.9L563.2 486.4C577.3 497 580.2 517.1 569.6 531.2C559 545.3 538.9 548.2 524.8 537.6L461.7 490.3C438.5 534.5 395.2 566.5 344 574.2L344 344C344 330.7 333.3 320 320 320C306.7 320 296 330.7 296 344L296 574.2C244.8 566.5 201.5 534.5 178.3 490.3L115.2 537.6C101.1 548.2 81 545.3 70.4 531.2C59.8 517.1 62.7 497 76.8 486.4L160.2 423.9C160.1 421.3 160 418.7 160 416L160 384L64 384C46.3 384 32 369.7 32 352C32 334.3 46.3 320 64 320L162.8 320C165.3 309.6 169.3 299.8 174.6 290.9L76.8 217.6C62.7 207 59.8 186.9 70.4 172.8C81 158.7 101.1 155.8 115.2 166.4L224 248C236.3 242.9 249.8 240 264 240L376 240C390.2 240 403.7 242.8 416 248L524.8 166.4C538.9 155.8 559 158.7 569.6 172.8z" />
+          ) button, located in the page header.
+    Tip: You can select the relevant text first, to include it in your report.
+    Our team has already identified <a class="ltx_ref" href="https://github.com/arXiv/html_feedback/issues"
+        target="_blank">the following issues. We appreciate your time reviewing and reporting rendering errors we
+      may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+      should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+      all.
+    Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a <a
+        class="ltx_ref" href="https://github.com/brucemiller/LaTeXML/wiki/Porting-LaTeX-packages-for-LaTeXML"
+        target="_blank">list of packages that need conversion, and welcome <a class="ltx_ref"
+        href="https://github.com/brucemiller/LaTeXML/issues" target="_blank">developer contributions.
+  BETA
+  <a id="disable-reading-mode-btn" class="header-button" href="javascript:toggleReadingMode();"
+    title="Disable reading mode, show header and footer">
+    <svg role="presentation" height="1.25rem"
+      viewBox="0 0 448 512">
+      <path
+        d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />

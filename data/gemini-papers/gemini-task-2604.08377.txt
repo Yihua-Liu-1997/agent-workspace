@@ -1,0 +1,22 @@
+请分析这篇 arXiv 论文并写一篇详细的长文。
+
+请先读取论文 PDF 获取论文内容：@/home/useradmin/gemini_workspace/paper-reviews/2026-04-13/2604.08377.pdf
+
+论文链接：https://arxiv.org/abs/2604.08377
+
+要求：
+1. 搜索这篇论文的相关内容，整合
+2. 仔细阅读论文 PDF 原文
+3. 长文必须包含以下章节：
+   - 标题（论文原标题 + 中文翻译）
+   - 论文信息（作者、机构、arXiv 链接）
+   - 背景与动机
+   - 核心方法
+   - 实验设计
+   - 结果与分析
+   - 评价与思考（个人见解，要有深度）
+   - 适用场景
+4. 用 Markdown 格式
+5. 最后写完后，将完整长文保存到文件：/home/useradmin/gemini_workspace/paper-reviews/2026-04-13/2604.08377.md
+
+重要：一定要把完整内容写入 /home/useradmin/gemini_workspace/paper-reviews/2026-04-13/2604.08377.md 文件！

@@ -1,0 +1,559 @@
+\begin{thebibliography}{106}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Adam et~al.(2014)]{adam2014method}
+Kingma DP Ba~J Adam et~al.
+\newblock A method for stochastic optimization.
+\newblock \emph{arXiv preprint arXiv:1412.6980}, 1412\penalty0 (6), 2014.
+
+\bibitem[Anagnostopoulos et~al.(1973)Anagnostopoulos, Michel, Sockut, Stabler, and van Dam]{anagnostopoulos1973computer}
+Paul~Constantine Anagnostopoulos, MJ~Michel, Gary~H Sockut, George~M Stabler, and Andries van Dam.
+\newblock Computer architecture and instruction set design.
+\newblock In \emph{Proceedings of the June 4-8, 1973, national computer conference and exposition}, pages 519--527, 1973.
+
+\bibitem[Anthropic()]{claudeComputerTool}
+Anthropic.
+\newblock {C}omputer use tool --- platform.claude.com.
+\newblock \url{https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool}.
+\newblock [Accessed 02-02-2026].
+
+\bibitem[Anthropic(2025)]{anthropic_claude_sonnet4_5_2025}
+Anthropic.
+\newblock Introducing claude sonnet 4.5.
+\newblock \url{https://www.anthropic.com/news/claude-sonnet-4-5}, September 2025.
+
+\bibitem[Austin et~al.(2021)Austin, Odena, Nye, Bosma, Michalewski, Dohan, Jiang, Cai, Terry, Le, et~al.]{austin2021program}
+Jacob Austin, Augustus Odena, Maxwell Nye, Maarten Bosma, Henryk Michalewski, David Dohan, Ellen Jiang, Carrie Cai, Michael Terry, Quoc Le, et~al.
+\newblock Program synthesis with large language models.
+\newblock \emph{arXiv preprint arXiv:2108.07732}, 2021.
+
+\bibitem[Backus et~al.(1957)Backus, Beeber, Best, Goldberg, Haibt, Herrick, Nelson, Sayre, Sheridan, Stern, et~al.]{backus1957fortran}
+John~W Backus, Robert~J Beeber, Sheldon Best, Richard Goldberg, Lois~M Haibt, Harlan~L Herrick, Robert~A Nelson, David Sayre, Peter~B Sheridan, Harold Stern, et~al.
+\newblock The fortran automatic coding system.
+\newblock In \emph{Papers presented at the February 26-28, 1957, western joint computer conference: Techniques for reliability}, pages 188--198, 1957.
+
+\bibitem[Backus et~al.(1963)Backus, Bauer, Green, Katz, McCarthy, Perlis, Rutishauser, Samelson, Vauquois, Wegstein, et~al.]{backus1963revised}
+John~W Backus, Friedrich~L Bauer, Julien Green, Charles Katz, John McCarthy, Alan~J Perlis, Heinz Rutishauser, Klaus Samelson, Bernard Vauquois, Joseph~Henry Wegstein, et~al.
+\newblock Revised report on the algorithmic language algol 60.
+\newblock \emph{Communications of the ACM}, 6\penalty0 (1):\penalty0 1--17, 1963.
+
+\bibitem[Bengio et~al.(2013)Bengio, Courville, and Vincent]{bengio2013representation}
+Yoshua Bengio, Aaron Courville, and Pascal Vincent.
+\newblock Representation learning: A review and new perspectives.
+\newblock \emph{IEEE transactions on pattern analysis and machine intelligence}, 35\penalty0 (8):\penalty0 1798--1828, 2013.
+
+\bibitem[Bishop(2006)]{Bishop2006}
+Christopher~M Bishop.
+\newblock \emph{{Pattern Recognition and Machine Learning}}, volume~4 of \emph{Information science and statistics}.
+\newblock Springer, 2006.
+\newblock ISBN 9780387310732.
+\newblock \doi{10.1117/1.2819119}.
+\newblock \url{http://www.library.wisc.edu/selectedtocs/bg0137.pdf}.
+
+\bibitem[Bommasani(2021)]{bommasani2021opportunities}
+Rishi Bommasani.
+\newblock On the opportunities and risks of foundation models.
+\newblock \emph{arXiv preprint arXiv:2108.07258}, 2021.
+
+\bibitem[Brooks(1991)]{BROOKS1991139}
+Rodney~A. Brooks.
+\newblock Intelligence without representation.
+\newblock \emph{Artificial Intelligence}, 47\penalty0 (1):\penalty0 139--159, 1991.
+\newblock ISSN 0004-3702.
+\newblock \doi{https://doi.org/10.1016/0004-3702(91)90053-M}.
+\newblock \url{https://www.sciencedirect.com/science/article/pii/000437029190053M}.
+
+\bibitem[Brown et~al.(2020)Brown, Mann, Ryder, Subbiah, Kaplan, Dhariwal, Neelakantan, Shyam, Sastry, Askell, et~al.]{brown2020language}
+Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared~D Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, et~al.
+\newblock Language models are few-shot learners.
+\newblock \emph{Advances in neural information processing systems}, 33:\penalty0 1877--1901, 2020.
+
+\bibitem[Bruce et~al.(2024)Bruce, Dennis, Edwards, Parker-Holder, Shi, Hughes, Lai, Mavalankar, Steigerwald, Apps, et~al.]{bruce2024genie}
+Jake Bruce, Michael~D Dennis, Ashley Edwards, Jack Parker-Holder, Yuge Shi, Edward Hughes, Matthew Lai, Aditi Mavalankar, Richie Steigerwald, Chris Apps, et~al.
+\newblock Genie: Generative interactive environments.
+\newblock In \emph{Forty-first International Conference on Machine Learning}, 2024.
+
+\bibitem[Calanzone et~al.(2025)Calanzone, Teso, and Vergari]{calanzonelogically}
+Diego Calanzone, Stefano Teso, and Antonio Vergari.
+\newblock Logically consistent language models via neuro-symbolic integration.
+\newblock In \emph{The Thirteenth International Conference on Learning Representations}, 2025.
+
+\bibitem[Church(1935)]{Church:35}
+A.~Church.
+\newblock An unsolvable problem of elementary number theory.
+\newblock \emph{Bulletin of the American Mathematical Society}, 41:\penalty0 332--333, 1935.
+
+\bibitem[Clements et~al.(2019)Clements, Van~Delft, Robaglia, Slaoui, and Toth]{clements2019estimating}
+William~R Clements, Bastien Van~Delft, Beno{\^\i}t-Marie Robaglia, Reda~Bahi Slaoui, and S{\'e}bastien Toth.
+\newblock Estimating risk and uncertainty in deep reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:1905.09638}, 2019.
+
+\bibitem[Cypher and Halbert(1993)]{cypher1993watch}
+Allen Cypher and Daniel~Conrad Halbert.
+\newblock \emph{Watch what I do: programming by demonstration}.
+\newblock MIT press, 1993.
+
+\bibitem[Davis et~al.(2022)Davis, Katz, Gentili, and Reggia]{davis2022neurolisp}
+Gregory~P Davis, Garrett~E Katz, Rodolphe~J Gentili, and James~A Reggia.
+\newblock Neurolisp: High-level symbolic programming with attractor neural networks.
+\newblock \emph{Neural Networks}, 146:\penalty0 200--219, 2022.
+
+\bibitem[Dosovitskiy et~al.(2017)Dosovitskiy, Ros, Codevilla, Lopez, and Koltun]{dosovitskiy2017carla}
+Alexey Dosovitskiy, German Ros, Felipe Codevilla, Antonio Lopez, and Vladlen Koltun.
+\newblock Carla: An open urban driving simulator.
+\newblock In \emph{Conference on robot learning}, pages 1--16. PMLR, 2017.
+
+\bibitem[Dubey et~al.(2024)Dubey, Jauhri, Pandey, Kadian, Al-Dahle, Letman, Mathur, Schelten, Yang, Fan, et~al.]{dubey2024llama}
+Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad Al-Dahle, Aiesha Letman, Akhil Mathur, Alan Schelten, Amy Yang, Angela Fan, et~al.
+\newblock The llama 3 herd of models.
+\newblock \emph{arXiv preprint arXiv:2407.21783}, 2024.
+
+\bibitem[Feng et~al.(2023)Feng, Hansen, Xiong, Rajagopalan, and Wang]{feng2023finetuning}
+Yunhai Feng, Nicklas Hansen, Ziyan Xiong, Chandramouli Rajagopalan, and Xiaolong Wang.
+\newblock Finetuning offline world models in the real world.
+\newblock \emph{arXiv preprint arXiv:2310.16029}, 2023.
+
+\bibitem[Flener and Schmid(2008)]{flener2008introduction}
+Pierre Flener and Ute Schmid.
+\newblock An introduction to inductive programming.
+\newblock \emph{Artificial Intelligence Review}, 29\penalty0 (1):\penalty0 45--62, 2008.
+
+\bibitem[Fukushima(1980)]{fukushima1980neocognitron}
+Kunihiko Fukushima.
+\newblock Neocognitron: A self-organizing neural network model for a mechanism of pattern recognition unaffected by shift in position.
+\newblock \emph{Biological cybernetics}, 36\penalty0 (4):\penalty0 193--202, 1980.
+
+\bibitem[Garcia et~al.(2023)Garcia, Strudel, Chen, Arlaud, Laptev, and Schmid]{garcia2023robust}
+Ricardo Garcia, Robin Strudel, Shizhe Chen, Etienne Arlaud, Ivan Laptev, and Cordelia Schmid.
+\newblock Robust visual sim-to-real transfer for robotic manipulation.
+\newblock In \emph{2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, pages 992--999. ieee, 2023.
+
+\bibitem[G\"{o}del(1931)]{Goedel:31}
+K.~G\"{o}del.
+\newblock \"{U}ber formal unentscheidbare {S\"{a}tze der Principia Mathematica und verwandter Systeme I}.
+\newblock \emph{Monatshefte f\"{u}r Mathematik und Physik}, 38:\penalty0 173--198, 1931.
+
+\bibitem[Google(2025)]{google_veo3_1_2025}
+Google.
+\newblock Break the silence with veo 3.1.
+\newblock \url{https://gemini.google/overview/video-generation/}, November 2025.
+
+\bibitem[{Google DeepMind}(2025)]{deepmind_veo_2025}
+{Google DeepMind}.
+\newblock Veo.
+\newblock \url{https://deepmind.google/models/veo/}, May 2025.
+
+\bibitem[Graves et~al.(2014)Graves, Wayne, and Danihelka]{graves2014neural}
+Alex Graves, Greg Wayne, and Ivo Danihelka.
+\newblock Neural turing machines.
+\newblock \emph{arXiv preprint arXiv:1410.5401}, 2014.
+
+\bibitem[Graves et~al.(2016)Graves, Wayne, Reynolds, Harley, Danihelka, Grabska-Barwi{\'n}ska, G{\'o}mez~Colmenarejo, Grefenstette, Ramalho, Agapiou, et~al.]{graves2016hybrid}
+Alex Graves, Greg Wayne, Malcolm Reynolds, Tim Harley, Ivo Danihelka, Agnieszka Grabska-Barwi{\'n}ska, Sergio G{\'o}mez~Colmenarejo, Edward Grefenstette, Tiago Ramalho, John Agapiou, et~al.
+\newblock Hybrid computing using a neural network with dynamic external memory.
+\newblock \emph{Nature}, 538\penalty0 (7626):\penalty0 471--476, 2016.
+
+\bibitem[Gregg(2014)]{gregg2014systems}
+Brendan Gregg.
+\newblock \emph{Systems performance: enterprise and the cloud}.
+\newblock Pearson Education, 2014.
+
+\bibitem[Ha and Schmidhuber(2018)]{ha2018world}
+David Ha and J{\"u}rgen Schmidhuber.
+\newblock World models.
+\newblock \emph{arXiv preprint arXiv:1803.10122}, 2018.
+
+\bibitem[Ha et~al.(2016)Ha, Dai, and Le]{ha2016hypernetworks}
+David Ha, Andrew Dai, and Quoc~V Le.
+\newblock Hypernetworks.
+\newblock \emph{arXiv preprint arXiv:1609.09106}, 2016.
+
+\bibitem[Hafner et~al.(2019{\natexlab{a}})Hafner, Lillicrap, Ba, and Norouzi]{hafner2019dream}
+Danijar Hafner, Timothy Lillicrap, Jimmy Ba, and Mohammad Norouzi.
+\newblock Dream to control: Learning behaviors by latent imagination.
+\newblock \emph{arXiv preprint arXiv:1912.01603}, 2019{\natexlab{a}}.
+
+\bibitem[Hafner et~al.(2019{\natexlab{b}})Hafner, Lillicrap, Fischer, Villegas, Ha, Lee, and Davidson]{hafner2019learning}
+Danijar Hafner, Timothy Lillicrap, Ian Fischer, Ruben Villegas, David Ha, Honglak Lee, and James Davidson.
+\newblock Learning latent dynamics for planning from pixels.
+\newblock In \emph{International conference on machine learning}, pages 2555--2565. PMLR, 2019{\natexlab{b}}.
+
+\bibitem[Hartmanis and Simon(1974)]{hartmanis1974power}
+Juris Hartmanis and Janos Simon.
+\newblock On the power of multiplication in random access machines.
+\newblock In \emph{15th Annual Symposium on Switching and Automata Theory (swat 1974)}, pages 13--23. IEEE, 1974.
+
+\bibitem[He et~al.(2025)He, Peng, Liu, Wang, Zhang, Cui, Kang, Jiang, An, Ren, et~al.]{he2025matrix}
+Xianglong He, Chunli Peng, Zexiang Liu, Boyang Wang, Yifan Zhang, Qi~Cui, Fei Kang, Biao Jiang, Mengyin An, Yangyang Ren, et~al.
+\newblock {Matrix-game 2.0}: An open-source, real-time, and streaming interactive world model.
+\newblock \emph{arXiv preprint arXiv:2508.13009}, 2025.
+
+\bibitem[Hinton et~al.(1986)Hinton, McClelland, and Rumelhart]{Hinton1986}
+G.~E. Hinton, J.~L. McClelland, and D.~E. Rumelhart.
+\newblock \emph{Distributed representations}, page 77–109.
+\newblock MIT Press, Cambridge, MA, USA, 1986.
+\newblock ISBN 026268053X.
+
+\bibitem[Hochreiter and Schmidhuber(1997)]{hochreiter1997long}
+Sepp Hochreiter and J{\"u}rgen Schmidhuber.
+\newblock Long short-term memory.
+\newblock \emph{Neural computation}, 9\penalty0 (8):\penalty0 1735--1780, 1997.
+
+\bibitem[Hong et~al.(2023)Hong, Zhuge, Chen, Zheng, Cheng, Wang, Zhang, Wang, Yau, Lin, et~al.]{hong2023metagpt}
+Sirui Hong, Mingchen Zhuge, Jonathan Chen, Xiawu Zheng, Yuheng Cheng, Jinlin Wang, Ceyao Zhang, Zili Wang, Steven Ka~Shing Yau, Zijuan Lin, et~al.
+\newblock Metagpt: Meta programming for a multi-agent collaborative framework.
+\newblock In \emph{The Twelfth International Conference on Learning Representations}, 2023.
+
+\bibitem[Innes et~al.(2019)Innes, Edelman, Fischer, Rackauckas, Saba, Shah, and Tebbutt]{innes2019differentiable}
+Mike Innes, Alan Edelman, Keno Fischer, Chris Rackauckas, Elliot Saba, Viral~B Shah, and Will Tebbutt.
+\newblock A differentiable programming system to bridge machine learning and scientific computing.
+\newblock \emph{arXiv preprint arXiv:1907.07587}, 2019.
+
+\bibitem[Ivakhnenko and Lapa(1965)]{ivakhnenko1965}
+Alekse{\u\i}~Grigorʹevich Ivakhnenko and Valentin~Grigor{\'e}vich Lapa.
+\newblock \emph{Cybernetic Predicting Devices}.
+\newblock CCM Information Corporation, 1965.
+
+\bibitem[Ivakhnenko(1968)]{ivakhnenko1968}
+Aleksey~Grigorievitch Ivakhnenko.
+\newblock The group method of data handling -- a rival of the method of stochastic approximation.
+\newblock \emph{Soviet Automatic Control}, 13\penalty0 (3):\penalty0 43--55, 1968.
+
+\bibitem[Ivakhnenko(1971)]{ivakhnenko1971}
+Aleksey~Grigorievitch Ivakhnenko.
+\newblock Polynomial theory of complex systems.
+\newblock \emph{IEEE Transactions on Systems, Man and Cybernetics}, \penalty0 (4):\penalty0 364--378, 1971.
+
+\bibitem[Ivakhnenko et~al.(1967)Ivakhnenko, Lapa, and McDonough]{ivakhnenko1967}
+Aleksey~Grigorievitch Ivakhnenko, Valentin~Grigorievitch Lapa, and Robert~N McDonough.
+\newblock \emph{Cybernetics and forecasting techniques}.
+\newblock American Elsevier, NY, 1967.
+
+\bibitem[Jurafsky and Martin(2026)]{jm3}
+Daniel Jurafsky and James~H. Martin.
+\newblock \emph{Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition, with Language Models}.
+\newblock 3rd edition, 2026.
+\newblock \url{https://web.stanford.edu/~jurafsky/slp3/}.
+\newblock Online manuscript released January 6, 2026.
+
+\bibitem[Kanervisto et~al.(2025)Kanervisto, Bignell, Wen, Grayson, Georgescu, Valcarcel~Macua, Tan, Rashid, Pearce, Cao, et~al.]{kanervisto2025world}
+Anssi Kanervisto, Dave Bignell, Linda~Yilin Wen, Martin Grayson, Raluca Georgescu, Sergio Valcarcel~Macua, Shan~Zheng Tan, Tabish Rashid, Tim Pearce, Yuhan Cao, et~al.
+\newblock World and human action models towards gameplay ideation.
+\newblock \emph{Nature}, 638\penalty0 (8051):\penalty0 656--663, 2025.
+
+\bibitem[Katz et~al.(2019)Katz, Davis, Gentili, and Reggia]{katz2019programmable}
+Garrett~E Katz, Gregory~P Davis, Rodolphe~J Gentili, and James~A Reggia.
+\newblock A programmable neural virtual machine based on a fast store-erase learning rule.
+\newblock \emph{Neural Networks}, 119:\penalty0 10--30, 2019.
+
+\bibitem[Kingma and Welling(2013)]{kingma2013auto}
+Diederik~P Kingma and Max Welling.
+\newblock Auto-encoding variational bayes.
+\newblock \emph{arXiv preprint arXiv:1312.6114}, 2013.
+
+\bibitem[Kirkpatrick et~al.(2017)Kirkpatrick, Pascanu, Rabinowitz, Veness, Desjardins, Rusu, Milan, Quan, Ramalho, Grabska-Barwinska, et~al.]{kirkpatrick2017overcoming}
+James Kirkpatrick, Razvan Pascanu, Neil Rabinowitz, Joel Veness, Guillaume Desjardins, Andrei~A Rusu, Kieran Milan, John Quan, Tiago Ramalho, Agnieszka Grabska-Barwinska, et~al.
+\newblock Overcoming catastrophic forgetting in neural networks.
+\newblock \emph{Proceedings of the national academy of sciences}, 114\penalty0 (13):\penalty0 3521--3526, 2017.
+
+\bibitem[Lake and Baroni(2018)]{lake2018generalization}
+Brenden Lake and Marco Baroni.
+\newblock Generalization without systematicity: On the compositional skills of sequence-to-sequence recurrent networks.
+\newblock In \emph{International conference on machine learning}, pages 2873--2882. PMLR, 2018.
+
+\bibitem[Marcus(2018)]{marcus2018deep}
+Gary Marcus.
+\newblock Deep learning: A critical appraisal.
+\newblock \emph{arXiv preprint arXiv:1801.00631}, 2018.
+
+\bibitem[Mead and Ismail(2012)]{mead2012analog}
+Carver Mead and Mohammed Ismail.
+\newblock \emph{Analog VLSI implementation of neural systems}, volume~80.
+\newblock Springer Science \& Business Media, 2012.
+
+\bibitem[Myers(2002)]{myers2002demonstrational}
+Brad~A Myers.
+\newblock Demonstrational interfaces: A step beyond direct manipulation.
+\newblock \emph{Computer}, 25\penalty0 (8):\penalty0 61--73, 2002.
+
+\bibitem[Newell and Simon(1976)]{Newell1976}
+Allen Newell and Herbert~A. Simon.
+\newblock Computer science as empirical inquiry: symbols and search.
+\newblock \emph{Commun. ACM}, 19\penalty0 (3):\penalty0 113–126, March 1976.
+\newblock ISSN 0001-0782.
+\newblock \doi{10.1145/360018.360022}.
+\newblock \url{https://doi.org/10.1145/360018.360022}.
+
+\bibitem[OpenAI(2023)]{openaiComputerUsingAgent}
+OpenAI.
+\newblock {C}omputer-{U}sing {A}gent --- openai.com.
+\newblock \url{https://openai.com/index/computer-using-agent/}, 2023.
+\newblock [Accessed 07-02-2026].
+
+\bibitem[OpenAI(2024)]{openai2024sora}
+OpenAI.
+\newblock Sora by openai.
+\newblock \url{https://openai.com/sora/}, 2024.
+\newblock Accessed: 2025-07-14.
+
+\bibitem[OpenAI(2025)]{openai_sora2_2025}
+OpenAI.
+\newblock Sora 2 is here.
+\newblock \url{https://openai.com/index/sora-2/}, September 2025.
+
+\bibitem[Ouyang et~al.(2022)Ouyang, Wu, Jiang, Almeida, Wainwright, Mishkin, Zhang, Agarwal, Slama, Ray, et~al.]{ouyang2022training}
+Long Ouyang, Jeffrey Wu, Xu~Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, et~al.
+\newblock Training language models to follow instructions with human feedback.
+\newblock \emph{Advances in neural information processing systems}, 35:\penalty0 27730--27744, 2022.
+
+\bibitem[Parisi et~al.(2019)Parisi, Kemker, Part, Kanan, and Wermter]{parisi2019continual}
+German~I Parisi, Ronald Kemker, Jose~L Part, Christopher Kanan, and Stefan Wermter.
+\newblock Continual lifelong learning with neural networks: A review.
+\newblock \emph{Neural networks}, 113:\penalty0 54--71, 2019.
+
+\bibitem[Paszke et~al.(2019)Paszke, Gross, Massa, Lerer, Bradbury, Chanan, Killeen, Lin, Gimelshein, Antiga, et~al.]{paszke2019pytorch}
+Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory Chanan, Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, et~al.
+\newblock Pytorch: An imperative style, high-performance deep learning library.
+\newblock \emph{Advances in neural information processing systems}, 32, 2019.
+
+\bibitem[P{\'e}rez et~al.(2021)P{\'e}rez, Barcel{\'o}, and Marinkovic]{perez2021attention}
+Jorge P{\'e}rez, Pablo Barcel{\'o}, and Javier Marinkovic.
+\newblock Attention is turing-complete.
+\newblock \emph{Journal of Machine Learning Research}, 22\penalty0 (75):\penalty0 1--35, 2021.
+
+\bibitem[Pierrot et~al.(2019)Pierrot, Ligner, Reed, Sigaud, Perrin, Laterre, Kas, Beguir, and de~Freitas]{pierrot2019learning}
+Thomas Pierrot, Guillaume Ligner, Scott~E Reed, Olivier Sigaud, Nicolas Perrin, Alexandre Laterre, David Kas, Karim Beguir, and Nando de~Freitas.
+\newblock Learning compositional neural programs with recursive tree search and planning.
+\newblock \emph{Advances in Neural Information Processing Systems}, 32, 2019.
+
+\bibitem[Poggio et~al.(2019)Poggio, Banburski, and Liao]{poggio2019theoretical}
+Tomaso Poggio, Andrzej Banburski, and Qianli Liao.
+\newblock Theoretical issues in deep networks: Approximation.
+\newblock \emph{Optimization and Generalization}, 2019.
+
+\bibitem[Polyak et~al.(2024)Polyak, Zohar, Brown, Tjandra, Sinha, Lee, Vyas, Shi, Ma, Chuang, et~al.]{polyak2024movie}
+Adam Polyak, Amit Zohar, Andrew Brown, Andros Tjandra, Animesh Sinha, Ann Lee, Apoorv Vyas, Bowen Shi, Chih-Yao Ma, Ching-Yao Chuang, et~al.
+\newblock Movie gen: A cast of media foundation models.
+\newblock \emph{arXiv preprint arXiv:2410.13720}, 2024.
+
+\bibitem[Queloz(2025)]{queloz2025explainability}
+Matthieu Queloz.
+\newblock Explainability through systematicity: The hard systematicity challenge for artificial intelligence.
+\newblock \emph{Minds and machines}, 35\penalty0 (3):\penalty0 35, 2025.
+
+\bibitem[Radford et~al.(2019)Radford, Wu, Child, Luan, Amodei, Sutskever, et~al.]{radford2019language}
+Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, Ilya Sutskever, et~al.
+\newblock Language models are unsupervised multitask learners.
+\newblock \emph{OpenAI blog}, 1\penalty0 (8):\penalty0 9, 2019.
+
+\bibitem[Radford et~al.(2021)Radford, Kim, Hallacy, Ramesh, Goh, Agarwal, Sastry, Askell, Mishkin, Clark, et~al.]{radford2021learning}
+Alec Radford, Jong~Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, et~al.
+\newblock Learning transferable visual models from natural language supervision.
+\newblock In \emph{International conference on machine learning}, pages 8748--8763. PmLR, 2021.
+
+\bibitem[Raffel et~al.(2020)Raffel, Shazeer, Roberts, Lee, Narang, Matena, Zhou, Li, and Liu]{raffel2020exploring}
+Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, and Peter~J Liu.
+\newblock Exploring the limits of transfer learning with a unified text-to-text transformer.
+\newblock \emph{Journal of machine learning research}, 21\penalty0 (140):\penalty0 1--67, 2020.
+
+\bibitem[Ramachandram and Taylor(2017)]{ramachandram2017deep}
+Dhanesh Ramachandram and Graham~W Taylor.
+\newblock Deep multimodal learning: A survey on recent advances and trends.
+\newblock \emph{IEEE signal processing magazine}, 34\penalty0 (6):\penalty0 96--108, 2017.
+
+\bibitem[Reed and De~Freitas(2015)]{reed2015neural}
+Scott Reed and Nando De~Freitas.
+\newblock Neural programmer-interpreters.
+\newblock \emph{arXiv preprint arXiv:1511.06279}, 2015.
+
+\bibitem[Reed et~al.(2022)Reed, Zolna, Parisotto, Colmenarejo, Novikov, Barth-Maron, Gimenez, Sulsky, Kay, Springenberg, et~al.]{reed2022generalist}
+Scott Reed, Konrad Zolna, Emilio Parisotto, Sergio~Gomez Colmenarejo, Alexander Novikov, Gabriel Barth-Maron, Mai Gimenez, Yury Sulsky, Jackie Kay, Jost~Tobias Springenberg, et~al.
+\newblock A generalist agent.
+\newblock \emph{arXiv preprint arXiv:2205.06175}, 2022.
+
+\bibitem[Reynolds and McDonell(2021)]{Reynolds2021}
+Laria Reynolds and Kyle McDonell.
+\newblock Prompt programming for large language models: Beyond the few-shot paradigm.
+\newblock In \emph{Extended Abstracts of the 2021 CHI Conference on Human Factors in Computing Systems}, CHI EA '21, New York, NY, USA, 2021. Association for Computing Machinery.
+\newblock ISBN 9781450380959.
+\newblock \doi{10.1145/3411763.3451760}.
+\newblock \url{https://doi.org/10.1145/3411763.3451760}.
+
+\bibitem[Richter et~al.(2016)Richter, Vineet, Roth, and Koltun]{richter2016playing}
+Stephan~R Richter, Vibhav Vineet, Stefan Roth, and Vladlen Koltun.
+\newblock Playing for data: Ground truth from computer games.
+\newblock In \emph{European conference on computer vision}, pages 102--118. Springer, 2016.
+
+\bibitem[Rivard et~al.(2025)Rivard, Sun, Guo, Chen, and Deng]{rivard2025neuralos}
+Luke Rivard, Sun Sun, Hongyu Guo, Wenhu Chen, and Yuntian Deng.
+\newblock Neuralos: Towards simulating operating systems via neural generative models.
+\newblock \emph{arXiv preprint arXiv:2507.08800}, 2025.
+
+\bibitem[Rusu et~al.(2016)Rusu, Rabinowitz, Desjardins, Soyer, Kirkpatrick, Kavukcuoglu, Pascanu, and Hadsell]{rusu2016progressive}
+Andrei~A Rusu, Neil~C Rabinowitz, Guillaume Desjardins, Hubert Soyer, James Kirkpatrick, Koray Kavukcuoglu, Razvan Pascanu, and Raia Hadsell.
+\newblock Progressive neural networks.
+\newblock \emph{arXiv preprint arXiv:1606.04671}, 2016.
+
+\bibitem[Sager et~al.(2025)Sager, Meyer, Yan, von Wartburg-Kottler, Etaiwi, Enayati, Nobel, Abdulkadir, Grewe, and Stadelmann]{sager2025comprehensivesurveyagentscomputer}
+Pascal~J. Sager, Benjamin Meyer, Peng Yan, Rebekka von Wartburg-Kottler, Layan Etaiwi, Aref Enayati, Gabriel Nobel, Ahmed Abdulkadir, Benjamin~F. Grewe, and Thilo Stadelmann.
+\newblock A comprehensive survey of agents for computer use: Foundations, challenges, and future directions, 2025.
+\newblock \url{https://arxiv.org/abs/2501.16150}.
+
+\bibitem[Schmidhuber(1992)]{schmidhuber92fastweights}
+J.~Schmidhuber.
+\newblock Learning to control fast-weight memories: An alternative to recurrent nets.
+\newblock \emph{Neural Computation}, 4\penalty0 (1):\penalty0 131--139, 1992.
+
+\bibitem[Schmidhuber(1993{\natexlab{a}})]{schmidhuber93ratio}
+J.~Schmidhuber.
+\newblock On decreasing the ratio between learning complexity and number of time-varying variables in fully recurrent nets.
+\newblock In \emph{Proceedings of the International Conference on Artificial Neural Networks, Amsterdam}, pages 460--463. Springer, 1993{\natexlab{a}}.
+
+\bibitem[Schmidhuber(1993{\natexlab{b}})]{schmidhuber93selfref}
+J.~Schmidhuber.
+\newblock A self-referential weight matrix.
+\newblock In \emph{Proceedings of the International Conference on Artificial Neural Networks, Amsterdam}, pages 446--451. Springer, 1993{\natexlab{b}}.
+
+\bibitem[Schmidhuber(1990)]{schmidhuber1990making}
+J{\"u}rgen Schmidhuber.
+\newblock \emph{Making the world differentiable: on using self supervised fully recurrent neural networks for dynamic reinforcement learning and planning in non-stationary environments}, volume 126.
+\newblock Inst. f{\"u}r Informatik, 1990.
+
+\bibitem[Schmidhuber(2015)]{schmidhuber2015learning}
+J{\"u}rgen Schmidhuber.
+\newblock On learning to think: Algorithmic information theory for novel combinations of reinforcement learning controllers and recurrent neural world models.
+\newblock \emph{arXiv preprint arXiv:1511.09249}, 2015.
+
+\bibitem[Schmidhuber(2018)]{schmidhuber2018one}
+J{\"u}rgen Schmidhuber.
+\newblock One big net for everything.
+\newblock \emph{arXiv preprint arXiv:1802.08864}, 2018.
+
+\bibitem[Siegelmann and Sontag(1992)]{siegelmann1992computational}
+Hava~T Siegelmann and Eduardo~D Sontag.
+\newblock On the computational power of neural nets.
+\newblock In \emph{Proceedings of the fifth annual workshop on Computational learning theory}, pages 440--449, 1992.
+
+\bibitem[Silberschatz et~al.(2019)Silberschatz, Galvin, and Gagne]{silberschatz2019operating}
+Abraham Silberschatz, Peter~B Galvin, and Greg Gagne.
+\newblock \emph{Operating system concepts}.
+\newblock John Wiley \& Sons, 2019.
+
+\bibitem[Silver et~al.(2017)Silver, Schrittwieser, Simonyan, Antonoglou, Huang, Guez, Hubert, Baker, Lai, Bolton, et~al.]{silver2017mastering}
+David Silver, Julian Schrittwieser, Karen Simonyan, Ioannis Antonoglou, Aja Huang, Arthur Guez, Thomas Hubert, Lucas Baker, Matthew Lai, Adrian Bolton, et~al.
+\newblock Mastering the game of go without human knowledge.
+\newblock \emph{nature}, 550\penalty0 (7676):\penalty0 354--359, 2017.
+
+\bibitem[Smolensky(1988)]{Smolensky1988-SMOOTP-2}
+Paul Smolensky.
+\newblock On the proper treatment of connectionism.
+\newblock \emph{Behavioral and Brain Sciences}, 11\penalty0 (1):\penalty0 1--23, 1988.
+\newblock \doi{10.1017/s0140525x00052432}.
+
+\bibitem[Sze et~al.(2017)Sze, Chen, Yang, and Emer]{sze2017efficient}
+Vivienne Sze, Yu-Hsin Chen, Tien-Ju Yang, and Joel~S Emer.
+\newblock Efficient processing of deep neural networks: A tutorial and survey.
+\newblock \emph{Proceedings of the IEEE}, 105\penalty0 (12):\penalty0 2295--2329, 2017.
+
+\bibitem[Tanenbaum and Austin(2013)]{tanenbaum2013structured}
+A.S. Tanenbaum and T.~Austin.
+\newblock \emph{Structured Computer Organization}.
+\newblock Pearson, 2013.
+\newblock ISBN 9780132916523.
+\newblock \url{https://books.google.com.sa/books?id=m0HHygAACAAJ}.
+
+\bibitem[Tobin et~al.(2017)Tobin, Fong, Ray, Schneider, Zaremba, and Abbeel]{tobin2017domain}
+Josh Tobin, Rachel Fong, Alex Ray, Jonas Schneider, Wojciech Zaremba, and Pieter Abbeel.
+\newblock Domain randomization for transferring deep neural networks from simulation to the real world.
+\newblock In \emph{2017 IEEE/RSJ international conference on intelligent robots and systems (IROS)}, pages 23--30. IEEE, 2017.
+
+\bibitem[Turing et~al.(1936)]{turing1936computable}
+Alan~Mathison Turing et~al.
+\newblock On computable numbers, with an application to the entscheidungsproblem.
+\newblock \emph{J. of Math}, 58\penalty0 (345-363):\penalty0 5, 1936.
+
+\bibitem[Vasilache et~al.(2018)Vasilache, Zinenko, Theodoridis, Goyal, DeVito, Moses, Verdoolaege, Adams, and Cohen]{vasilache2018tensor}
+Nicolas Vasilache, Oleksandr Zinenko, Theodoros Theodoridis, Priya Goyal, Zachary DeVito, William~S Moses, Sven Verdoolaege, Andrew Adams, and Albert Cohen.
+\newblock Tensor comprehensions: Framework-agnostic high-performance machine learning abstractions.
+\newblock \emph{arXiv preprint arXiv:1802.04730}, 2018.
+
+\bibitem[Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser, and Polosukhin]{vaswani2017attention}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan~N Gomez, {\L}ukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock \emph{Advances in neural information processing systems}, 30, 2017.
+
+\bibitem[Von~Neumann(1993)]{von1993first}
+John Von~Neumann.
+\newblock First draft of a report on the edvac.
+\newblock \emph{IEEE Annals of the History of Computing}, 15\penalty0 (4):\penalty0 27--75, 1993.
+
+\bibitem[Wan et~al.(2025)Wan, Wang, Ai, Wen, Mao, Xie, Chen, Yu, Zhao, Yang, et~al.]{wan2025wan}
+Team Wan, Ang Wang, Baole Ai, Bin Wen, Chaojie Mao, Chen-Wei Xie, Di~Chen, Feiwu Yu, Haiming Zhao, Jianxiao Yang, et~al.
+\newblock Wan: Open and advanced large-scale video generative models.
+\newblock \emph{arXiv preprint arXiv:2503.20314}, 2025.
+
+\bibitem[Wei et~al.(2022)Wei, Wang, Schuurmans, Bosma, Xia, Chi, Le, Zhou, et~al.]{wei2022chain}
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Fei Xia, Ed~Chi, Quoc~V Le, Denny Zhou, et~al.
+\newblock Chain-of-thought prompting elicits reasoning in large language models.
+\newblock \emph{Advances in neural information processing systems}, 35:\penalty0 24824--24837, 2022.
+
+\bibitem[Wei et~al.(2023)Wei, Wang, Schuurmans, Bosma, Ichter, Xia, Chi, Le, and Zhou]{wei2023chainofthoughtpromptingelicitsreasoning}
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed~Chi, Quoc Le, and Denny Zhou.
+\newblock Chain-of-thought prompting elicits reasoning in large language models, 2023.
+\newblock \url{https://arxiv.org/abs/2201.11903}.
+
+\bibitem[Wiedemer et~al.(2025)Wiedemer, Li, Vicol, Gu, Matarese, Swersky, Kim, Jaini, and Geirhos]{wiedemer2025video}
+Thadd{\"a}us Wiedemer, Yuxuan Li, Paul Vicol, Shixiang~Shane Gu, Nick Matarese, Kevin Swersky, Been Kim, Priyank Jaini, and Robert Geirhos.
+\newblock Video models are zero-shot learners and reasoners.
+\newblock \emph{arXiv preprint arXiv:2509.20328}, 2025.
+
+\bibitem[Wierstra et~al.(2014)Wierstra, Schaul, Glasmachers, Sun, Peters, and Schmidhuber]{wierstra2014natural}
+Daan Wierstra, Tom Schaul, Tobias Glasmachers, Yi~Sun, Jan Peters, and J{\"u}rgen Schmidhuber.
+\newblock Natural evolution strategies.
+\newblock \emph{The Journal of Machine Learning Research}, 15\penalty0 (1):\penalty0 949--980, 2014.
+
+\bibitem[Wilkes(1981)]{wilkes1981best}
+Maurice Wilkes.
+\newblock The best way to design an automatic calculating machine.
+\newblock 1981.
+
+\bibitem[Yao et~al.(2022{\natexlab{a}})Yao, Chen, Yang, and Narasimhan]{yao2022webshop}
+Shunyu Yao, Howard Chen, John Yang, and Karthik Narasimhan.
+\newblock Webshop: Towards scalable real-world web interaction with grounded language agents.
+\newblock \emph{Advances in Neural Information Processing Systems}, 35:\penalty0 20744--20757, 2022{\natexlab{a}}.
+
+\bibitem[Yao et~al.(2022{\natexlab{b}})Yao, Zhao, Yu, Du, Shafran, Narasimhan, and Cao]{yao2022react}
+Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik~R Narasimhan, and Yuan Cao.
+\newblock React: Synergizing reasoning and acting in language models.
+\newblock In \emph{The eleventh international conference on learning representations}, 2022{\natexlab{b}}.
+
+\bibitem[Zhang et~al.(2023)Zhang, Rao, and Agrawala]{zhang2023adding}
+Lvmin Zhang, Anyi Rao, and Maneesh Agrawala.
+\newblock Adding conditional control to text-to-image diffusion models.
+\newblock In \emph{Proceedings of the IEEE/CVF international conference on computer vision}, pages 3836--3847, 2023.
+
+\bibitem[Zhuge et~al.(2024{\natexlab{a}})Zhuge, Wang, Kirsch, Faccio, Khizbullin, and Schmidhuber]{zhuge2024gptswarm_icml}
+Mingchen Zhuge, Wenyi Wang, Louis Kirsch, Francesco Faccio, Dmitrii Khizbullin, and J{\"u}rgen Schmidhuber.
+\newblock Gptswarm: Language agents as optimizable graphs.
+\newblock In \emph{Forty-first International Conference on Machine Learning}, 2024{\natexlab{a}}.
+
+\bibitem[Zhuge et~al.(2024{\natexlab{b}})Zhuge, Zhao, Ashley, Wang, Khizbullin, Xiong, Liu, Chang, Krishnamoorthi, Tian, et~al.]{zhuge2024agent_judge}
+Mingchen Zhuge, Changsheng Zhao, Dylan Ashley, Wenyi Wang, Dmitrii Khizbullin, Yunyang Xiong, Zechun Liu, Ernie Chang, Raghuraman Krishnamoorthi, Yuandong Tian, et~al.
+\newblock Agent-as-a-judge: Evaluate agents with agents.
+\newblock \emph{arXiv preprint arXiv:2410.10934}, 2024{\natexlab{b}}.
+
+\bibitem[Zhuge et~al.(2026{\natexlab{a}})Zhuge, Zeng, Zhu, Yang, Chandra, and Schmidhuber]{zhuge2026ai}
+Mingchen Zhuge, Ailing Zeng, Deyao Zhu, Sherry Yang, Vikas Chandra, and J{\"u}rgen Schmidhuber.
+\newblock Ai with recursive self-improvement.
+\newblock In \emph{ICLR 2026 Workshop Proposals}, 2026{\natexlab{a}}.
+
+\bibitem[Zhuge et~al.(2026{\natexlab{b}})Zhuge, Zeng, Zhu, Yang, Chandra, and Schmidhuber]{zhuge2026ai_recursive}
+Mingchen Zhuge, Ailing Zeng, Deyao Zhu, Sherry Yang, Vikas Chandra, and J{\"u}rgen Schmidhuber.
+\newblock Ai with recursive self-improvement.
+\newblock In \emph{ICLR 2026 Workshop Proposals}, 2026{\natexlab{b}}.
+
+\end{thebibliography}

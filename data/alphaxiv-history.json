@@ -1,0 +1,754 @@
+{
+  "pushed": [
+    {
+      "arxiv_id": "2603.11653",
+      "title": "Simple Recipe Works: Vision-Language-Action Models are Natural Continual Learners with Reinforcement Learning",
+      "date": 1773625390117
+    },
+    {
+      "arxiv_id": "2603.10910",
+      "title": "GLM-OCR Technical Report",
+      "date": 1773625390117
+    },
+    {
+      "arxiv_id": "2603.12245",
+      "title": "One Model, Many Budgets: Elastic Latent Interfaces for Diffusion Transformers",
+      "date": 1773625390117
+    },
+    {
+      "arxiv_id": "2603.12185",
+      "title": "ComFree-Sim: A GPU-Parallelized Analytical Contact Physics Engine for Scalable Contact-Rich Robotics Simulation and Control",
+      "date": 1773625390117
+    },
+    {
+      "arxiv_id": "2603.11863",
+      "title": "CreativeBench: Benchmarking and Enhancing Machine Creativity via Self-Evolving Challenges",
+      "date": 1773625390117
+    },
+    {
+      "arxiv_id": "2603.12254",
+      "title": "Attend Before Attention: Efficient and Scalable Video Understanding via Autoregressive Gazing",
+      "date": 1773709234699
+    },
+    {
+      "arxiv_id": "2603.12686",
+      "title": "Learning Athletic Humanoid Tennis Skills from Imperfect Human Motion Data",
+      "date": 1773709234699
+    },
+    {
+      "arxiv_id": "2603.13023",
+      "title": "daVinci-Env: Open SWE Environment Synthesis at Scale",
+      "date": 1773709234699
+    },
+    {
+      "arxiv_id": "2603.12793",
+      "title": "Cheers: Decoupling Patch Details from Semantic Representations Enables Unified Multimodal Comprehension and Generation",
+      "date": 1773709234699
+    },
+    {
+      "arxiv_id": "2603.13032",
+      "title": "Multimodal OCR: Parse Anything from Documents",
+      "date": 1773709234699
+    },
+    {
+      "arxiv_id": "2603.15031",
+      "title": "Attention Residuals",
+      "date": 1773795626561
+    },
+    {
+      "arxiv_id": "2603.15619",
+      "title": "Mixture-of-Depths Attention",
+      "date": 1773795626561
+    },
+    {
+      "arxiv_id": "2603.15583",
+      "title": "Grounding World Simulation Models in a Real-World Metropolis",
+      "date": 1773795626561
+    },
+    {
+      "arxiv_id": "2603.14482",
+      "title": "V-JEPA 2.1: Unlocking Dense Features in Video Self-Supervised Learning",
+      "date": 1773795626561
+    },
+    {
+      "arxiv_id": "2603.15330",
+      "title": "MeMix: Writing Less, Remembering More for Streaming 3D Reconstruction",
+      "date": 1773795626561
+    },
+    {
+      "arxiv_id": "2603.15569",
+      "title": "Mamba-3: Improved Sequence Modeling using State Space Principles",
+      "date": 1773889678208
+    },
+    {
+      "arxiv_id": "2603.15381",
+      "title": "Why AI systems don't learn and what to do about it: Lessons on autonomous learning from cognitive science",
+      "date": 1773889678208
+    },
+    {
+      "arxiv_id": "2603.14312",
+      "title": "Autonomous Agents Coordinating Distributed Discovery Through Emergent Artifact Exchange",
+      "date": 1773889678208
+    },
+    {
+      "arxiv_id": "2603.16856",
+      "title": "Online Experiential Learning for Language Models",
+      "date": 1773889678208
+    },
+    {
+      "arxiv_id": "2603.16870",
+      "title": "Demystifing Video Reasoning",
+      "date": 1773889678208
+    },
+    {
+      "arxiv_id": "2603.15726",
+      "title": "MiroThinker-1.7 & H1: Towards Heavy-Duty Research Agents via Verification",
+      "date": 1773968453572
+    },
+    {
+      "arxiv_id": "2603.14608",
+      "title": "Delightful Policy Gradient",
+      "date": 1773968453572
+    },
+    {
+      "arxiv_id": "2603.16177",
+      "title": "The Finetuner's Fallacy: When to Pretrain with Your Finetuning Data",
+      "date": 1773968453572
+    },
+    {
+      "arxiv_id": "2603.17187",
+      "title": "MetaClaw: Just Talk -- An Agent That Meta-Learns and Evolves in the Wild",
+      "date": 1773968453572
+    },
+    {
+      "arxiv_id": "2603.17673",
+      "title": "Post-Training Local LLM Agents for Linux Privilege Escalation with Verifiable Rewards",
+      "date": 1773968453572
+    },
+    {
+      "arxiv_id": "2603.15594",
+      "title": "OpenSeeker: Democratizing Frontier Search Agents by Fully Open-Sourcing Training Data",
+      "date": 1773969268471
+    },
+    {
+      "arxiv_id": "2603.17117",
+      "title": "MosaicMem: Hybrid Spatial Memory for Controllable Video World Models",
+      "date": 1773969268471
+    },
+    {
+      "arxiv_id": "2603.17621",
+      "title": "Complementary Reinforcement Learning",
+      "date": 1773969268471
+    },
+    {
+      "arxiv_id": "2603.17240",
+      "title": "GigaWorld-Policy: An Efficient Action-Centered World--Action Model",
+      "date": 1773969268471
+    },
+    {
+      "arxiv_id": "2603.16666",
+      "title": "Fast-WAM: Do World Action Models Need Test-time Future Imagination?",
+      "date": 1773969268471
+    },
+    {
+      "arxiv_id": "2603.19220",
+      "title": "Nemotron-Cascade 2: Post-Training LLMs with Cascade RL and Multi-Domain On-Policy Distillation",
+      "date": 1774055000188
+    },
+    {
+      "arxiv_id": "2603.17074",
+      "title": "PRISM: Demystifying Retention and Interaction in Mid-Training",
+      "date": 1774055000188
+    },
+    {
+      "arxiv_id": "2603.19199",
+      "title": "FASTER: Rethinking Real-Time Flow VLAs",
+      "date": 1774055000188
+    },
+    {
+      "arxiv_id": "2603.14473",
+      "title": "AI Can Learn Scientific Taste",
+      "date": 1774055000188
+    },
+    {
+      "arxiv_id": "2603.19232",
+      "title": "Cubic Discrete Diffusion: Discrete Visual Generation on High-Dimensional Representation Tokens",
+      "date": 1774055000188
+    },
+    {
+      "arxiv_id": "2603.18992",
+      "title": "Foundations of Schrödinger Bridges for Generative Modeling",
+      "date": 1774141329914
+    },
+    {
+      "arxiv_id": "2603.18534",
+      "title": "Data-efficient pre-training by scaling synthetic megadocs",
+      "date": 1774141329914
+    },
+    {
+      "arxiv_id": "2603.18886",
+      "title": "Reasoning over mathematical objects: on-policy reward modeling and test time aggregation",
+      "date": 1774141329914
+    },
+    {
+      "arxiv_id": "2603.18387",
+      "title": "Mathematical Foundations of Deep Learning",
+      "date": 1774141329914
+    },
+    {
+      "arxiv_id": "2603.18161",
+      "title": "How LLMs Distort Our Written Language",
+      "date": 1774141329914
+    },
+    {
+      "arxiv_id": "2603.18297",
+      "title": "Path-Constrained Mixture-of-Experts",
+      "date": 1774227838976
+    },
+    {
+      "arxiv_id": "2603.19209",
+      "title": "Do VLMs Need Vision Transformers? Evaluating State Space Models as Vision Encoders",
+      "date": 1774227838976
+    },
+    {
+      "arxiv_id": "2603.18620",
+      "title": "Learning to Self-Evolve",
+      "date": 1774227838976
+    },
+    {
+      "arxiv_id": "2603.19183",
+      "title": "Sparse Autoencoders Reveal Interpretable and Steerable Features in VLA Models",
+      "date": 1774227838976
+    },
+    {
+      "arxiv_id": "2603.19173",
+      "title": "SOL-ExecBench: Speed-of-Light Benchmarking for Real-World GPU Kernels Against Hardware Limits",
+      "date": 1774227838976
+    },
+    {
+      "arxiv_id": "2603.19979",
+      "title": "X-World: Controllable Ego-Centric Multi-Camera World Models for Scalable End-to-End Driving",
+      "date": 1774314220607
+    },
+    {
+      "arxiv_id": "2603.19685",
+      "title": "A Subgoal-driven Framework for Improving Long-Horizon LLM Agents",
+      "date": 1774314220607
+    },
+    {
+      "arxiv_id": "2603.20155",
+      "title": "Beyond Single Tokens: Distilling Discrete Diffusion Models via Discrete MMD",
+      "date": 1774314220607
+    },
+    {
+      "arxiv_id": "2603.19697",
+      "title": "Plug-and-Steer: Decoupling Separation and Selection in Audio-Visual Target Speaker Extraction",
+      "date": 1774314220607
+    },
+    {
+      "arxiv_id": "2603.18743",
+      "title": "Memento-Skills: Let Agents Design Agents",
+      "date": 1774314220607
+    },
+    {
+      "arxiv_id": "2603.21986",
+      "title": "Speed by Simplicity: A Single-Stream Architecture for Fast Audio-Video Generative Foundation Model",
+      "date": 1774400541960
+    },
+    {
+      "arxiv_id": "2603.20826",
+      "title": "Simple Projection-Free Algorithm for Contextual Recommendation with Logarithmic Regret and Robustness",
+      "date": 1774400541960
+    },
+    {
+      "arxiv_id": "2603.21191",
+      "title": "On the Role of Batch Size in Stochastic Conditional Gradient Methods",
+      "date": 1774400541960
+    },
+    {
+      "arxiv_id": "2603.22137",
+      "title": "Tangent equations of motion for nonlinear response functions",
+      "date": 1774400541960
+    },
+    {
+      "arxiv_id": "2603.22078",
+      "title": "Do World Action Models Generalize Better than VLAs? A Robustness Study",
+      "date": 1774400541960
+    },
+    {
+      "arxiv_id": "2603.22212",
+      "title": "Omni-WorldBench: Towards a Comprehensive Interaction-Centric Evaluation for World Models",
+      "date": 1774487010982
+    },
+    {
+      "arxiv_id": "2603.22281",
+      "title": "ThinkJEPA: Empowering Latent World Models with Large Vision-Language Reasoning Model",
+      "date": 1774487010982
+    },
+    {
+      "arxiv_id": "2603.21383",
+      "title": "PivotRL: High Accuracy Agentic Post-Training at Low Compute Cost",
+      "date": 1774487010982
+    },
+    {
+      "arxiv_id": "2603.23500",
+      "title": "UniGRPO: Unified Policy Optimization for Reasoning-Driven Visual Generation",
+      "date": 1774487010982
+    },
+    {
+      "arxiv_id": "2603.23376",
+      "title": "ABot-PhysWorld: Interactive World Foundation Model for Robotic Manipulation with Physics Alignment",
+      "date": 1774487010982
+    },
+    {
+      "arxiv_id": "2603.24517",
+      "title": "AVO: Agentic Variation Operators for Autonomous Evolutionary Search",
+      "date": 1774573342351
+    },
+    {
+      "arxiv_id": "2603.24472",
+      "title": "Why Does Self-Distillation (Sometimes) Degrade the Reasoning Capability of LLMs?",
+      "date": 1774573342351
+    },
+    {
+      "arxiv_id": "2603.24329",
+      "title": "GameplayQA: A Benchmarking Framework for Decision-Dense POV-Synced Multi-Video Understanding of 3D Virtual Agents",
+      "date": 1774573342351
+    },
+    {
+      "arxiv_id": "2603.22455",
+      "title": "SkillRouter: Retrieve-and-Rerank Skill Selection for LLM Agents at Scale",
+      "date": 1774573342351
+    },
+    {
+      "arxiv_id": "2603.22387",
+      "title": "Efficient Universal Perception Encoder",
+      "date": 1774573342351
+    },
+    {
+      "arxiv_id": "2603.24511",
+      "title": "Claudini: Autoresearch Discovers State-of-the-Art Adversarial Attack Algorithms for LLMs",
+      "date": 1774660479583
+    },
+    {
+      "arxiv_id": "2603.24584",
+      "title": "TAG: Target-Agnostic Guidance for Stable Object-Centric Inference in Vision-Language-Action Models",
+      "date": 1774660479583
+    },
+    {
+      "arxiv_id": "2603.24533",
+      "title": "UI-Voyager: A Self-Evolving GUI Agent Learning via Failed Experience",
+      "date": 1774660479583
+    },
+    {
+      "arxiv_id": "2603.25040",
+      "title": "Intern-S1-Pro: Scientific Multimodal Foundation Model at Trillion Scale",
+      "date": 1774660479583
+    },
+    {
+      "arxiv_id": "2603.24581",
+      "title": "Latent-WAM: Latent World Action Modeling for End-to-End Autonomous Driving",
+      "date": 1774660479583
+    },
+    {
+      "arxiv_id": "2603.24844",
+      "title": "Reaching Beyond the Mode: RL for Distributional Reasoning in Language Models",
+      "date": 1774837706988
+    },
+    {
+      "arxiv_id": "2603.24477",
+      "title": "Composer 2 Technical Report",
+      "date": 1774837706988
+    },
+    {
+      "arxiv_id": "2603.21687",
+      "title": "Mirage The Illusion of Visual Understanding",
+      "date": 1774837706988
+    },
+    {
+      "arxiv_id": "2603.25158",
+      "title": "Trace2Skill: Distill Trajectory-Local Lessons into Transferable Agent Skills",
+      "date": 1774837706988
+    },
+    {
+      "arxiv_id": "2603.25744",
+      "title": "MuRF: Unlocking the Multi-Scale Potential of Vision Foundation Models",
+      "date": 1774837706988
+    },
+    {
+      "arxiv_id": "2603.26524",
+      "title": "Mathematical methods and human thought in the age of AI",
+      "date": 1774919195339
+    },
+    {
+      "arxiv_id": "2603.25681",
+      "title": "Self-Improvement of Large Language Models: A Technical Overview and Future Outlook",
+      "date": 1774919195339
+    },
+    {
+      "arxiv_id": "2603.26499",
+      "title": "AIRA_2: Overcoming Bottlenecks in AI Research Agents",
+      "date": 1774919195339
+    },
+    {
+      "arxiv_id": "2603.26661",
+      "title": "GaussianGPT: Towards Autoregressive 3D Gaussian Scene Generation",
+      "date": 1774919195339
+    },
+    {
+      "arxiv_id": "2603.26666",
+      "title": "VLA-OPD: Bridging Offline SFT and Online RL for Vision-Language-Action Models via On-Policy Distillation",
+      "date": 1774919195339
+    },
+    {
+      "arxiv_id": "2603.26599",
+      "title": "VGGRPO: Towards World-Consistent Video Generation with 4D Latent Reward",
+      "date": 1774919565973
+    },
+    {
+      "arxiv_id": "2603.25551",
+      "title": "Voxtral TTS",
+      "date": 1774919565973
+    },
+    {
+      "arxiv_id": "2603.25887",
+      "title": "World Reasoning Arena",
+      "date": 1774919565973
+    },
+    {
+      "arxiv_id": "2603.26360",
+      "title": "Realtime-VLA V2: Learning to Run VLAs Fast, Smooth, and Accurate",
+      "date": 1774919565973
+    },
+    {
+      "arxiv_id": "2603.25716",
+      "title": "Out of Sight but Not Out of Mind: Hybrid Memory for Dynamic Video World Models",
+      "date": 1774919565973
+    },
+    {
+      "arxiv_id": "2603.28627",
+      "title": "Shor's algorithm is possible with as few as 10,000 reconfigurable atomic qubits",
+      "date": 1775005335823
+    },
+    {
+      "arxiv_id": "2603.28743",
+      "title": "Rethinking Language Model Scaling under Transferable Hypersphere Optimization",
+      "date": 1775005335823
+    },
+    {
+      "arxiv_id": "2603.28376",
+      "title": "Marco DeepResearch: Unlocking Efficient Deep Research Agents via Verification-Centric Design",
+      "date": 1775005335823
+    },
+    {
+      "arxiv_id": "2603.27538",
+      "title": "LongCat-Next: Lexicalizing Modalities as Discrete Tokens",
+      "date": 1775005335823
+    },
+    {
+      "arxiv_id": "2603.27646",
+      "title": "PRBench: End-to-end Paper Reproduction in Physics Research",
+      "date": 1775005335823
+    },
+    {
+      "arxiv_id": "2603.29957",
+      "title": "Think Anywhere in Code Generation",
+      "date": 1775091790950
+    },
+    {
+      "arxiv_id": "2603.29678",
+      "title": "View-oriented Conversation Compiler for Agent Trace Analysis",
+      "date": 1775091790950
+    },
+    {
+      "arxiv_id": "2603.28869",
+      "title": "Quantum Suicide in Many-Worlds Implies P=NP",
+      "date": 1775091790950
+    },
+    {
+      "arxiv_id": "2603.28975",
+      "title": "Remarks on \"Further comments on \"Rebuttal of \"Refutation of \"Comment on \"Reply to \"Comments on \"A genuinely natural information measure\" \" \" \" \" \" \"",
+      "date": 1775091790950
+    },
+    {
+      "arxiv_id": "2603.28052",
+      "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+      "date": 1775091790950
+    },
+    {
+      "arxiv_id": "2604.00813",
+      "title": "DVGT-2: Vision-Geometry-Action Model for Autonomous Driving at Scale",
+      "date": 1775178215558
+    },
+    {
+      "arxiv_id": "2603.29700",
+      "title": "First Detection of Exoplanetary Cannabinoids: Evidence for THC and CBD in the Atmosphere of K2-18b",
+      "date": 1775178215558
+    },
+    {
+      "arxiv_id": "2604.01178",
+      "title": "Screening Is Enough",
+      "date": 1775178215558
+    },
+    {
+      "arxiv_id": "2603.28990",
+      "title": "Drop the Hierarchy and Roles: How Self-Organizing LLM Agents Outperform Designed Structures",
+      "date": 1775178215558
+    },
+    {
+      "arxiv_id": "2604.01158",
+      "title": "SMASH: Mastering Scalable Whole-Body Skills for Humanoid Ping-Pong with Egocentric Vision",
+      "date": 1775178215558
+    },
+    {
+      "arxiv_id": "2604.02029",
+      "title": "The Latent Space: Foundation, Evolution, Mechanism, Ability, and Outlook",
+      "date": 1775264613668
+    },
+    {
+      "arxiv_id": "2604.00965",
+      "title": "Understanding Transformers and Attention Mechanisms: An Introduction for Applied Mathematicians",
+      "date": 1775264613668
+    },
+    {
+      "arxiv_id": "2603.29936",
+      "title": "Do Papers with Titles Ending in a Question Mark Usually Have the Answer \"No\"?",
+      "date": 1775264613668
+    },
+    {
+      "arxiv_id": "2604.00590",
+      "title": "UniMixer: A Unified Architecture for Scaling Laws in Recommendation Systems",
+      "date": 1775264613668
+    },
+    {
+      "arxiv_id": "2604.00073",
+      "title": "Terminal Agents Suffice for Enterprise Automation",
+      "date": 1775264613668
+    },
+    {
+      "arxiv_id": "2604.02097",
+      "title": "LatentUM: Unleashing the Potential of Interleaved Cross-Modal Reasoning via a Latent-Space Unified Model",
+      "date": 1775350968206
+    },
+    {
+      "arxiv_id": "2604.00626",
+      "title": "A Survey of On-Policy Distillation for Large Language Models",
+      "date": 1775350968206
+    },
+    {
+      "arxiv_id": "2604.02317",
+      "title": "A Simple Baseline for Streaming Video Understanding",
+      "date": 1775350968206
+    },
+    {
+      "arxiv_id": "2604.01658",
+      "title": "CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery",
+      "date": 1775350968206
+    },
+    {
+      "arxiv_id": "2604.00375",
+      "title": "Locally Confident, Globally Stuck: The Quality-Exploration Dilemma in Diffusion Language Models",
+      "date": 1775350968206
+    },
+    {
+      "arxiv_id": "2604.02035",
+      "title": "Reinforcement Learning for Speculative Trading under Exploratory Framework",
+      "date": 1775437375725
+    },
+    {
+      "arxiv_id": "2604.01599",
+      "title": "ByteRover: Agent-Native Memory Through LLM-Curated Hierarchical Context",
+      "date": 1775437375725
+    },
+    {
+      "arxiv_id": "2604.02288",
+      "title": "Unifying Group-Relative and Self-Distillation Policy Optimization via Sample Routing",
+      "date": 1775437375725
+    },
+    {
+      "arxiv_id": "2604.01411",
+      "title": "Test-Time Scaling Makes Overtraining Compute-Optimal",
+      "date": 1775437375725
+    },
+    {
+      "arxiv_id": "2604.01707",
+      "title": "Memory in the LLM Era: Modular Architectures and Strategies in a Unified Framework",
+      "date": 1775437375725
+    },
+    {
+      "arxiv_id": "2604.01193",
+      "title": "Embarrassingly Simple Self-Distillation Improves Code Generation",
+      "date": 1775523737680
+    },
+    {
+      "arxiv_id": "2604.02268",
+      "title": "SKILL0: In-Context Agentic Reinforcement Learning for Skill Internalization",
+      "date": 1775523737680
+    },
+    {
+      "arxiv_id": "2604.02329",
+      "title": "Generative World Renderer",
+      "date": 1775523737680
+    },
+    {
+      "arxiv_id": "2604.02296",
+      "title": "VOID: Video Object and Interaction Deletion",
+      "date": 1775523737680
+    },
+    {
+      "arxiv_id": "2604.02327",
+      "title": "Steerable Visual Representations",
+      "date": 1775523737680
+    },
+    {
+      "arxiv_id": "2604.03128",
+      "title": "Self-Distilled RLVR",
+      "date": 1775610186050
+    },
+    {
+      "arxiv_id": "2604.03016",
+      "title": "Agentic-MME: What Agentic Capability Really Brings to Multimodal Intelligence?",
+      "date": 1775610186050
+    },
+    {
+      "arxiv_id": "2604.03044",
+      "title": "JoyAI-LLM Flash: Advancing Mid-Scale LLMs with Token Efficiency",
+      "date": 1775610186050
+    },
+    {
+      "arxiv_id": "2604.04921",
+      "title": "TriAttention: Efficient Long Reasoning with Trigonometric KV Compression",
+      "date": 1775610186050
+    },
+    {
+      "arxiv_id": "2604.03208",
+      "title": "Hierarchical Planning with Latent World Models",
+      "date": 1775610186050
+    },
+    {
+      "arxiv_id": "2604.04917",
+      "title": "Vero: An Open RL Recipe for General Visual Reasoning",
+      "date": 1775696568133
+    },
+    {
+      "arxiv_id": "2604.04707",
+      "title": "OpenWorldLib: A Unified Codebase and Definition of Advanced World Models",
+      "date": 1775696568133
+    },
+    {
+      "arxiv_id": "2604.04804",
+      "title": "SkillX: Automatically Constructing Skill Knowledge Bases for Agents",
+      "date": 1775696568133
+    },
+    {
+      "arxiv_id": "2604.04891",
+      "title": "Muon Dynamics as a Spectral Wasserstein Flow",
+      "date": 1775696568133
+    },
+    {
+      "arxiv_id": "2604.04202",
+      "title": "ClawArena: Benchmarking AI Agents in Evolving Information Environments",
+      "date": 1775696568133
+    },
+    {
+      "arxiv_id": "2604.06169",
+      "title": "In-Place Test-Time Training",
+      "date": 1775782952763
+    },
+    {
+      "arxiv_id": "2604.05091",
+      "title": "MegaTrain: Full Precision Training of 100B+ Parameter Large Language Models on a Single GPU",
+      "date": 1775782952763
+    },
+    {
+      "arxiv_id": "2604.04503",
+      "title": "Memory Intelligence Agent",
+      "date": 1775782952763
+    },
+    {
+      "arxiv_id": "2604.04913",
+      "title": "A Frame is Worth One Token: Efficient Generative World Modeling with Delta Tokens",
+      "date": 1775782952763
+    },
+    {
+      "arxiv_id": "2604.05018",
+      "title": "PaperOrchestra: A Multi-Agent Framework for Automated AI Research Paper Writing",
+      "date": 1775782952763
+    },
+    {
+      "arxiv_id": "2604.06425",
+      "title": "Neural Computers",
+      "date": 1775902651726
+    },
+    {
+      "arxiv_id": "2604.06126",
+      "title": "Gym-Anything: Turn any Software into an Agent Environment",
+      "date": 1775902651726
+    },
+    {
+      "arxiv_id": "2604.07209",
+      "title": "INSPATIO-WORLD: A Real-Time 4D World Simulator via Spatiotemporal Autoregressive Modeling",
+      "date": 1775902651726
+    },
+    {
+      "arxiv_id": "2604.08455",
+      "title": "KnowU-Bench: Towards Interactive, Proactive, and Personalized Mobile Agent Evaluation",
+      "date": 1775902651726
+    },
+    {
+      "arxiv_id": "2604.07430",
+      "title": "HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents",
+      "date": 1775902651726
+    },
+    {
+      "arxiv_id": "2604.08377",
+      "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
+      "date": 1775955752082
+    },
+    {
+      "arxiv_id": "2604.08407",
+      "title": "Your Agent Is Mine: Measuring Malicious Intermediary Attacks on the LLM Supply Chain",
+      "date": 1775955752082
+    },
+    {
+      "arxiv_id": "2604.07823",
+      "title": "LPM 1.0: Video-based Character Performance Model",
+      "date": 1775955752082
+    },
+    {
+      "arxiv_id": "2604.06543",
+      "title": "The Illusion of Stochasticity in LLMs",
+      "date": 1775955752082
+    },
+    {
+      "arxiv_id": "2604.07639",
+      "title": "Exponential quantum advantage in processing massive classical data",
+      "date": 1775955752082
+    },
+    {
+      "arxiv_id": "2604.07569",
+      "title": "Learning is Forgetting: LLM Training As Lossy Compression",
+      "date": 1776148310112
+    },
+    {
+      "arxiv_id": "2604.08224",
+      "title": "Externalization in LLM Agents: A Unified Review of Memory, Skills, Protocols and Harness Engineering",
+      "date": 1776148310112
+    },
+    {
+      "arxiv_id": "2604.08523",
+      "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
+      "date": 1776148310112
+    },
+    {
+      "arxiv_id": "2604.08423",
+      "title": "Synthetic Data for any Differentiable Target",
+      "date": 1776148310112
+    },
+    {
+      "arxiv_id": "2604.08542",
+      "title": "Scal3R: Scalable Test-Time Training for Large-Scale 3D Reconstruction",
+      "date": 1776148310112
+    }
+  ]
+}

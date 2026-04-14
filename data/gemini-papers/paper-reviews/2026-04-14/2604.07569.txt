@@ -1,0 +1,899 @@
+Learning is Forgetting: LLM Training As Lossy Compression
+  // Restore the saved color scheme preference, or
+  // enact the browser preference if "automatic", 
+  // without expecting DOM load to have completed.
+  //
+  // Also restore any saved readingmode and ToC display preferences.
+  function initializeReadingPreferences() {
+    let saved_theme = localStorage.getItem("ar5iv_theme") || "automatic";
+    if (saved_theme === "automatic") {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        saved_theme = "dark";
+      }
+    }
+    if (saved_theme == "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+    const tocDisplay = localStorage.getItem('arxiv_html_paper_toc_display');
+    if (tocDisplay) {
+      document.documentElement.setAttribute("data-toc-display", tocDisplay);
+    }
+    const readingMode = localStorage.getItem('arxiv_html_paper_reading_mode');
+    if (readingMode) {
+      document.documentElement.setAttribute("data-reading-mode", readingMode);
+    }
+  }
+  // Run as soon as JS starts, to minimize repainting
+  initializeReadingPreferences();
+<link rel="apple-touch-icon" sizes="180x180"
+  href="/static/browse/0.3.4/images/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+  href="/static/browse/0.3.4/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+  href="/static/browse/0.3.4/images/icons/favicon-16x16.png">
+      Report GitHub Issue
+      ×
+      Title:
+      Content selection saved. Describe the issue below:
+      Description:
+      <textarea class="form-control" id="description" name="description" required maxlength="500"
+        placeholder="500 characters maximum">
+      Submit without GitHub
+      Submit in GitHub
+      <img alt="arXiv logo" class="logo desktop-only" width="100"
+        src="/static/browse/0.3.4/images/arxiv-logo-one-color-white.svg">
+      Back to arXiv
+    <a class="header-button hover-effect desktop-only" href="https://info.arxiv.org/about/accessible_HTML.html"
+      target="_blank">Why HTML?
+    <a class="header-button" title="Report an Issue" href="#" title="Report an issue"
+      onclick="event.preventDefault(); showModalForm();">
+      <svg role="presentation" class="mobile-only toggle-icon" aria-hidden="true" height="1.25rem"
+        viewBox="0 0 640 640">
+        <path
+          d="M224 160C224 107 267 64 320 64C373 64 416 107 416 160L416 163.6C416 179.3 403.3 192 387.6 192L252.5 192C236.8 192 224.1 179.3 224.1 163.6L224.1 160zM569.6 172.8C580.2 186.9 577.3 207 563.2 217.6L465.4 290.9C470.7 299.8 474.7 309.6 477.2 320L576 320C593.7 320 608 334.3 608 352C608 369.7 593.7 384 576 384L480 384L480 416C480 418.6 479.9 421.3 479.8 423.9L563.2 486.4C577.3 497 580.2 517.1 569.6 531.2C559 545.3 538.9 548.2 524.8 537.6L461.7 490.3C438.5 534.5 395.2 566.5 344 574.2L344 344C344 330.7 333.3 320 320 320C306.7 320 296 330.7 296 344L296 574.2C244.8 566.5 201.5 534.5 178.3 490.3L115.2 537.6C101.1 548.2 81 545.3 70.4 531.2C59.8 517.1 62.7 497 76.8 486.4L160.2 423.9C160.1 421.3 160 418.7 160 416L160 384L64 384C46.3 384 32 369.7 32 352C32 334.3 46.3 320 64 320L162.8 320C165.3 309.6 169.3 299.8 174.6 290.9L76.8 217.6C62.7 207 59.8 186.9 70.4 172.8C81 158.7 101.1 155.8 115.2 166.4L224 248C236.3 242.9 249.8 240 264 240L376 240C390.2 240 403.7 242.8 416 248L524.8 166.4C538.9 155.8 559 158.7 569.6 172.8z" />
+      Report Issue
+    <a class="header-button" title="Back to abstract page" aria-label="Back to abstract page"
+      href="/abs/2604.07569v1">
+      <svg class="mobile-only toggle-icon" role="presentation" height="1.25rem" viewBox="0 0 512 512" fill="#ffffff"
+        aria-hidden="true">
+        <path
+          d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z">
+      Back to Abstract
+    <a class="header-button" title="Download PDF" href="/pdf/2604.07569v1"
+      target="_blank">
+        <path
+          d="M208 48L96 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l80 0 0 48-80 0c-35.3 0-64-28.7-64-64L32 64C32 28.7 60.7 0 96 0L229.5 0c17 0 33.3 6.7 45.3 18.7L397.3 141.3c12 12 18.7 28.3 18.7 45.3l0 149.5-48 0 0-128-88 0c-39.8 0-72-32.2-72-72l0-88zM348.1 160L256 67.9 256 136c0 13.3 10.7 24 24 24l68.1 0zM240 380l32 0c33.1 0 60 26.9 60 60s-26.9 60-60 60l-12 0 0 28c0 11-9 20-20 20s-20-9-20-20l0-128c0-11 9-20 20-20zm32 80c11 0 20-9 20-20s-9-20-20-20l-12 0 0 40 12 0zm96-80l32 0c28.7 0 52 23.3 52 52l0 64c0 28.7-23.3 52-52 52l-32 0c-11 0-20-9-20-20l0-128c0-11 9-20 20-20zm32 128c6.6 0 12-5.4 12-12l0-64c0-6.6-5.4-12-12-12l-12 0 0 88 12 0zm76-108c0-11 9-20 20-20l48 0c11 0 20 9 20 20s-9 20-20 20l-28 0 0 24 28 0c11 0 20 9 20 20s-9 20-20 20l-28 0 0 44c0 11-9 20-20 20s-20-9-20-20l0-128z" />
+      Download PDF
+    <a class="header-button toggle-icon" href="javascript:toggleNavTOC();" title="Toggle navigation"
+      aria-label="Toggle navigation">
+        <path
+          d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z">
+    <a class="header-button toggle-icon" href="javascript:toggleReadingMode();"
+      title="Disable reading mode, show header and footer">
+      <svg role="presentation" height="1.25rem"
+        viewBox="0 0 448 512">
+        <path
+          d="M32 32C14.3 32 0 46.3 0 64l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64 64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 32zM64 352c0-17.7-14.3-32-32-32S0 334.3 0 352l0 96c0 17.7 14.3 32 32 32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0 0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32l-96 0zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l96 0c17.7 0 32-14.3 32-32l0-96z" />
+          <path
+            d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z">
+          <path
+            d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z">
+          <path
+            d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z">
+Abstract
+1 Introduction
+2 Background &amp; Related Work
+2.1 Learning, Inference, and Compression
+2.2 Rate Distortion Theory
+The Information Bottleneck (IB)
+Applying the Information Bottleneck to Deep Learning
+2.3 Interpreting Neural Networks
+3 Methods
+3.1 Entropy Estimation
+3.2 Mutual Informations &amp; Back-off
+Data and Sampling
+4 Experiments
+4.1 Pre-training Approaches Optimal Compression
+Models More Optimally Compress Contextual Information
+Embeddings Largely Encode Local Context
+The Effect of Scale: Smaller Models Struggle to Compress
+A Wide Array of Open-Weight Models Converge Along the Bound
+4.2 Relating Representation Structure to Performance
+More Contextual Information Improves Performance
+Optimal Compression
+Preference
+5 Conclusion
+6 Acknowledgements
+7 Ethics Statement
+8 Reproducibility Statement
+References
+A Open-Weights Models, Detailed Visuals
+B Post-Training And Preference Information
+C Predicting Performance on Individual Tasks
+D Additional Model Timecourses
+E Entropy Estimation
+E.1 Estimator Hyperparameters
+E.1.1 Temperature calibration.
+E.2 Approximating the Input Distribution
+E.3 Approximating the Output Distribution
+E.4 Estimating Mutual Informations
+E.5 Conditional Mutual Informations and The Residual
+E.5.1 Conditional Mutual Informations and Performance
+E.6 On The Use of Shannon Entropy
+E.7 Scalability of Prior Work
+E.8 The Information Bottleneck Bound
+F Relating Compression to Training Loss
+G Estimator Robustness
+G.1 Robustness to Data Distribution
+G.2 Robustness to Number of Reference Points
+G.3 Language is a Long-Tailed Distribution — Computing ‘Mutual Information’ With Means
+H Datasets, Models, and Compute
+H.1 Licenses for Models and Datasets
+H.2 Compute Resource and Complexity
+    License: CC BY 4.0
+arXiv:2604.07569v1 [cs.LG] 08 Apr 2026
+Learning is Forgetting: 
+LLM Training As Lossy Compression
+Henry C. Conklin∘,∙, Tom Hosking∙, Tan Yi-Chern∙, Julian Gold∘, Jonathan D. Cohen∘
+Thomas L. Griffiths∘, Max Bartolo∙, Seraphina Goldfarb-Tarrant∙ 
+∘Princeton University, ∙Cohere 
+henry.conklin@princeton.edu
+Code available at https://github.com/hcoxec/soft_h — Additional visuals available here.
+Abstract
+Despite the increasing prevalence of large language models (LLMs), we still have a limited understanding of how their representational spaces are structured. This limits our ability to interpret how and what they learn or relate them to learning in humans. We argue LLMs are best seen as an instance of lossy compression, where over training they learn by retaining only information in their training data relevant to their objective(s). We show pre-training results in models that are optimally compressed for next-sequence prediction, approaching the Information Bottleneck bound on compression. Across an array of open weights models, each compresses differently, likely due to differences in the data and training recipes used. However even across different families of LLMs the optimality of a model’s compression, and the information present in it, can predict downstream performance on across a wide array of benchmarks, letting us directly link representational structure to actionable insights about model performance. In the general case the work presented here offers a unified Information-Theoretic framing for how these models learn that is deployable at scale.
+1 Introduction
+We still have a limited understanding of how Large Language Models (LLMs) achieve impressive results across a wide array of tasks [15, 32]. While a growing body of work interprets LLMs using behavioural experiments, probing, or causal interventions, the scale of these models makes understanding how their representation spaces are structured a continued challenge. Here we look at an LLM as an instance of lossy compression, offering an account of how models represent information during training and what information matters for performance.
+Lossy compression represents data efficiently by preserving only the information from a source relevant to a goal. While uncompressed audio recordings intended for human listeners can be gigabytes in size, MP3 files save space by discarding frequencies typically outside the range of human hearing [38]; similarly, a JPEG file omits subtle colour variations that are difficult for the human eye to perceive. We draw a parallel with LLMs, which are expected to generate responses humans prefer, after being trained on trillions of tokens – more language data than a human hears in 200 lifetimes. More generally, compression is thought to underpin learning in both humans and models [20, see], and giving a formal account of LLM pre-training in terms of compression allows us to work towards a unified theory of representation learning. We present results showing that over the course of pre-training LLMs optimally compress the information present in their training data for next sequence prediction.
+Compression is inherently opinionated – some information from the source is preserved, some is forgotten to save space. Information Theory [65] provides a formal framework to describe this process, letting us both quantify the information present in a representation and compute a bound where it is optimally compressed with respect to the data it represents. Our results build on the Information Bottleneck (IB) theory of deep learning [70], showing pre-training follows a two phase trajectory: first increasing mutual information with the training objective, before compressing input information. Across a wide array of LLMs we find each model compresses differently, with the optimality of a model’s compression and the information it preserves predicting performance on downstream benchmarks.
+Figure 1: LLMs Learn an Optimal Compression of the Internet (Left) The information plane for pre-training of the OLMo2 7B model. The horizontal axis shows mutual information between representations and the input (complexity), the vertical axis shows mutual information with the predicted output (expressivity).
+The dotted line indicates the bound where models are optimally compressed, hue indicates timepoint in training in terms of tokens in billions. Estimates are based on 10,000 samples from the C4 dataset which is a broad crawl of the internet. (Right) The vertical axis shows the OLMo2 7B model’s loss on next-token-prediction of C4. The Horizontal axis shows the model’s proximity to the bound. Representations begin to approach the bound as the loss saturates. 
+A hallmark of large-scale distributed systems, like neural networks, is that they are difficult to understand as a function of their parts alone [4, 48]. Our approach to interpretability allows us to consider learning and generalisation at the scale of an entire model, rather than studying individual circuits, heads, or neurons within it. Additionally, it allows us to frame how models do so well at so much in terms of existing theories of learning and compression, while providing actionable insights at LLM scale.
+In what follows we focus on offering concrete answers to three questions: Do LLMs optimally compress their representations? What information survives that compression? What representational structures drive performance? In summary, our core findings are:
+• 
+Pre-training dynamics for LLMs closely follow theoretical predictions from the Information Bottleneck, with models first expanding representations before slowly approaching optimal compression.
+• 
+Scale conditions these dynamics, with smaller models (below 7 billion parameters) struggling to achieve meaningful compression later in training.
+• 
+How optimally compressed a model is correlates significantly with performance across six benchmarks for six families of open-weights large language models, letting us directly relate representation structure to behaviour.
+• 
+By quantifying the amount of preference information in a model we get a quantification of how aligned representations are with preference distinctions which significantly predicts downstream performance across 47 LLMs (r=0.76,p&lt;0.001r=0.76,p&lt;0.001).
+• 
+Finally, we compare a wide array of open-weight models across 5 model families, showing they all converge near optimal compression.
+2 Background &amp; Related Work
+2.1 Learning, Inference, and Compression
+Compression has been argued to underpin learning and inference in humans [12, 11, 19, 56] and models [55, 46]. Increasingly, probabilistic inference and complexity minimisation are seen as deeply intertwined [20] – a point perhaps made clearest by Bayesian inference, which implicitly prefers the simplest hypotheses consistent with observed data [40, 16, 73]. Bayesian approaches to human cognition offer accounts of how a broad array of human behaviour can be productively thought of as this kind of inference [33, see]. In machine learning Occam’s Razor has long been used as a model selection criterion, where the best model is the simplest one consistent with the data [76, 61, 10]. The bias variance trade-off [28] makes this explicit in the context of neural networks, showing more complex models may achieve better fit to the training data, but they also generalise worse than their simpler counterparts. While some work has studied whether or not LLMs can match lossless compression algorithms in-context [14, e.g.], this is distinct from giving an account of LLM training itself as a process of lossy compression – the object of study here. It is worth noting that there is not universal agreement about how to assess compression [46, see], but here we follow in the information-theoretic tradition [65].
+2.2 Rate Distortion Theory
+Consider a function θ\theta that encodes an input XX in a representation ZZ, Z=θ​(X)Z=\theta(X). This representation is then decoded by a function ϕ\phi to produce predictions Y^\hat{Y} for an output with true label YY, Y^=ϕ​(Z)\hat{Y}=\phi(Z). Assuming that XX and YY are not independent, if θ\theta were to losslessly preserve all the information from the input, we would expect ϕ\phi to be able to precisely recover the corresponding output, with Y^=Y\hat{Y}=Y. Rate Distortion Theory (RDT) [65] instead considers the lossy case Y^≠Y\hat{Y}\neq Y, where some amount of error in the prediction – distortion – is acceptable. It then becomes a question of how much information about the input – termed the rate – the encoder needs to preserve to achieve a given level of distortion.
+The Information Bottleneck (IB)
+[69] looks at a particular case, where the rate is given as the mutual information between inputs and their representation I​(X;Z)I(X;Z), and distortion as the mutual information between a representation and the corresponding target prediction I​(Y;Z)I(Y;Z) – the 2D space this creates is called the information plane (shown in Figure 1). Since I​(X;Z)I(X;Z) reflects how much information about the input space is preserved it can be referred to as complexity [80, e.g.]. Likewise I​(Y;Z)I(Y;Z) is referred to as accuracy given it quantifies how much information a representation has about the target output it will be used to predict. To distinguish this quantity from behavioural accuracy (e.g., exact match on a task) we refer to it as expressivity – how uniquely a representation can refer to its target [44, in line with]. Optimal compression within the IB occurs when an encoding Z|XZ|X preserves only the information about XX relevant to predicting YY, or when Z|XZ|X minimises
+ℱβ​[p​(Z|X)]=I​(X;Z)−β​I​(Y;Z)\mathcal{F}_{\beta}[p(Z|X)]=I(X;Z)-\beta I(Y;Z)
+(1)
+where β\beta is a trade-off parameter controlling the allowable level of distortion. When β\beta approaches 0 all inputs are compressed to a single point, as β→∞\beta\rightarrow\infty we approach the lossless case, where using XX or its encoding ZZ tells us the same information about YY; I​(Y;Z)=I​(Y;X)I(Y;Z)=I(Y;X). The curve traced by varying β\beta draws a bound, where the encoding p​(Z|X)p(Z|X) is optimally compressed – everything above the curve is unachievable and everything below it is suboptimal. This bound starts off with a linear relationship where I​(X;Z)=I​(Z;Y)I(X;Z)=I(Z;Y), until ZZ captures all information shared between XX and YY. Intuitively, in an optimal encoding each additional bit of complexity gets you an additional bit of expressivity, until all information shared by X and Y are represented such that I​(Y;Z)=I​(Y;X)I(Y;Z)=I(Y;X)111The bound I​(X;Z)=I​(Z;Y)I(X;Z)=I(Z;Y) follows from the data processing inequality and is generally looser than the true information bottleneck frontier, which for a given joint distribution p​(X,Y)p(X,Y) may require I​(X;Z)&gt;I​(Z;Y)I(X;Z)&gt;I(Z;Y). We use this simpler bound here as it suffices to illustrate the key intuition.. In the cases studied here all models stay well below this saturation point, so for clarity we refer to the bound as the line I​(X;Z)=I​(Z;Y)I(X;Z)=I(Z;Y). For further discussion of the bound and computing it numerically see Appendix E.8.
+Applying the Information Bottleneck to Deep Learning
+[70] offers a theoretical characterisation of training a multi-layered neural network as optimising an Information Bottleneck. They theorise two phases of training: first, a fitting phase during which representations increase mutual information with the target labels I​(Y;Z)I(Y;Z); and second, a compression phase, during which models compress irrelevant information about the input I​(X;Z)I(X;Z) and in so doing begin to approach the optimal bound. It is this latter phase that is hypothesised to result in representations that generalise robustly.
+[66] confirm the two-phase prediction from the IB theory of deep-learning empirically in feed forward networks trained on MNIST. Subsequent work has questioned the generality of these findings, showing how – at least in linear networks – the compression phase can be driven by the type of non-linearity used [63], or that compression is not necessarily required for generalisation [31].
+Prior work has not investigated whether these dynamics extend beyond simple feed-forward networks to sequence models (e.g. Transformers) trained on complex tasks – the object of study here.
+2.3 Interpreting Neural Networks
+A broad literature on the theory of deep learning tries to give an accounting of learning dynamics in small multi-layer networks [22, 64, e.g.]. While there has been some extension of these kinds of representational analyses to larger models – like applying information theoretic methods to transformers [74] – much of the work on interpretability in LLMs leverages behavioural or probing evidence. Behavioural approaches treat models as akin to psycholinguistic subjects [24, 23], taking model outputs as behaviours [47, 78, 37]. Probing [72, 54, 75] trains a smaller model – like a linear classifier – to predict labels from a model’s latent representations, as evidence that information relevant to those labels is present. While valuable, these approaches are removed from the models’ representations themselves, characterising downstream behaviours rather than characterising the representational structures that drive them.
+Mechanistic interpretability follows in a similar vein but aims to describe how circuits within a model implement the functions that solve a task. These analyses have given accounts of how two layer linear and non-linear models represent features from synthetic data [18] or how single-layer attention only transformers solve modular addition [49]. When deployed at scale, to LLMs, this work often relies on training unsupervised probes termed sparse auto-encoders [17] to identify correspondences between parameters and different words or concepts from the training data [9]. In the general case this work often looks for ‘mono-semanticity’ – looking for lossless, one-to-one correspondences between input features and parts of a model. More recently studies of when features emerge during pre-training have aligned with the expansion/compression pattern described by the IB theory [27].
+To be sure, there is an abundance of methods for analysing deep-learning models. Here, we highlight a disconnect between work on the theory of learning in humans and neural networks, and work on interpretability. Interpretability methods can be deployed at scale on complex models and tasks, but lack clear relationship to existing theoretical work. In the sections that follow we operationalise Rate Distortion Theory, and related work on learning as compression, at a scale commensurate with current LLMs. This allows us to analyse training dynamics while contextualising our conclusions in pre-existing and well-studied theoretical frameworks. Our approach is both theoretically motivated and able to be applied to any model at any scale.
+3 Methods
+3.1 Entropy Estimation
+Let T∈ℤB×ST\in\mathbb{Z}^{B\times S} be a batch of BB tokenized samples with sequence length SS, drawn from a corpus of text data 𝒯\mathcal{T}, and let θ\theta be a model with LL layers and representation dimension hh; the corresponding encoded representations are Z∈ℝL×B×S×hZ\in\mathbb{R}^{L\times B\times S\times h}. Let X∈ℤB×SX\in\mathbb{Z}^{B\times S} be feature labels for the text in TT. For example, when we look at optimal compression with respect to the IB bound, these labels XX are the token ids for the model inputs; however, when analysing representation information more generally, these can be other input features, such as preference label or language ID. It is desirable to compute the mutual information I​(X;Z)I(X;Z) using Shannon entropy as opposed to differential entropy to accomplish this. Previous work quantises ZZ into nn bins, to get a discrete encoding Z^\hat{Z} [74, 66]. Unfortunately these approaches have memory and resource requirements that make them difficult to apply at LLM scale222For discussion of Shannon entropy and why previous approaches are not scalable see Appendices E.6,E.7..
+As a result we use the soft-entropy estimator from [13], an efficient differentiable relaxation of a binning-based estimate that has been shown to converge to the true entropy of a distribution. This estimator is not original to our work, but we are the first to apply it to analyse LLMs using rate distortion theory. We now describe the estimation process in detail – illustrated in figure 2 with an interactive visual available here.
+We first compute Z¯\bar{Z}, the normalization of ZZ to lie on the surface of the unit sphere 𝕊h\mathbb{S}^{h} in ℝh\mathbb{R}^{h}. Then we compute WW by sampling nn points {wi}i=1n\{w_{i}\}_{i=1}^{n} uniformly at random from 𝕊h\mathbb{S}^{h}.333This is equivalent to sampling from an isometric hh-dimensional multivariate normal, w~i∼𝒩​(0,I​dh)\tilde{w}_{i}\sim\mathcal{N}(0,Id_{h}), and scaling to unit length, wi=w~i‖w~i‖w_{i}=\frac{\tilde{w}_{i}}{||\tilde{w}_{i}||}. For each normalized representation z¯∈ℝh\bar{z}\in\mathbb{R}^{h}, we compute a vector whose it​hi^{th} entry is the cosine between z¯\bar{z} and wiw_{i}, then apply softmax to that vector – softly assigning each embedding z¯\bar{z} to the points in WW. More formally, each (l,b,s)∈[L]×[B]×[S](l,b,s)\in[L]\times[B]\times[S] tensor Z¯\bar{Z} (whose shape coincides with ZZ) is defined so that Z¯l,b,s,:=Zl,b,s,:/‖Zl,b,s,:‖\bar{Z}_{l,b,s,:}=Z_{l,b,s,:}/\|Z_{l,b,s,:}\|, and we stack the uniform samples {wi}i=1n\{w_{i}\}_{i=1}^{n} into a matrix W∈ℝh×nW\in\mathbb{R}^{h\times n}. The soft-quantisation of ZZ is then given by Zˇ∈ℝL×B×S×n\check{Z}\in\mathbb{R}^{L\times B\times S\times n} for (l,b,s)∈[L]×[B]×[S](l,b,s)\in[L]\times[B]\times[S],
+{wi}i=1n∼Unif​(𝕊h),W:,i=wi,Zˇl,b,s,:=softmax​(∑j=1hZ¯l,b,s,j​Wj,:ϵ),\{w_{i}\}_{i=1}^{n}\sim\mathcal{\text{{Unif}}}(\mathbb{S}^{h}),\qquad W_{:,i}=w_{i},\qquad\check{Z}_{l,b,s,:}=\mathrm{softmax}\Big(\frac{\sum_{j=1}^{h}\bar{Z}_{l,b,s,j}W_{j,:}}{\epsilon}\Big),
+(2)
+where ϵ\epsilon is a temperature parameter, which we set to enable direct comparison of representations with different dimensionalities following the calibration procedure described in Appendix E.1.1. Each vector Zˇl,b,s,:\check{Z}_{l,b,s,:} defined this way is a probability vector. Let Z^∈ℝL×n\hat{Z}\in\mathbb{R}^{L\times n} be the matrix obtained from tensor Zˇ\check{Z} by averaging over the batch and sequence dimensions, and let z^l\hat{z}_{l} be the ll-th row of this matrix, a probability vector of length nn by construction,
+Z^=1B​S​∑b=1B∑s=1SZˇ:,b,s,:,z^l=Z^l,:,H​(z^l)=−∑j=1nz^l,j​log⁡z^l,j.\hat{Z}=\frac{1}{BS}\sum_{b=1}^{B}\sum_{s=1}^{S}\check{Z}_{:,b,s,:},\qquad\hat{z}_{l}=\hat{Z}_{l,:},\quad H(\hat{z}_{l})=-\sum_{j=1}^{n}\hat{z}_{l,j}\log\hat{z}_{l,j}.
+(3)
+Vectors z^ℓ\hat{z}_{\ell} are probability vectors for each layer l∈[L]l\in[L] describing a categorical distribution over nn categories.
+Therefore we can compute the Shannon entropy H​(z^l)H(\hat{z}_{l}) as above.
+Figure 2: Illustration of Soft Entropy Estimation: (Top) These facets illustrate the normalisation, sampling, and soft assignment formalised in equation 2. (Bottom) Soft Assignments are aggregated into a distribution that describes the space P​(Z^)P(\hat{Z}) of which we take the Shannon entropy (equation 3). An interactive visual of this process is available here
+Due to the normalisation step during quantisation, this distribution intuitively estimates the probability that a representation in a layer ll lies along a particular angle with respect to the origin. To estimate the entropy in an entire model, denoted H​(Z)H(Z), we average entropy across layers. Efficiency [79] normalises HH by the entropy of a uniform distribution log⁡(n)\log(n), thereby bounding the entropic quantity between 0 and 1 – to aid interpretability here we convert H​(Z)H(Z) to an efficiency ℋ​(Z)\mathcal{H}(Z) by additionally normalising by the entropy of a uniform distribution at each layer. These definitions can also be conditioned on the feature labels XX,
+ℋ​(Z):=1L​log⁡(n)​∑l=1LH​(z^l),ℋ​(Z|X=x):=1L​log⁡(n)​∑l=1LH​(z^l|X=x).\mathcal{H}(Z):=\frac{1}{L\log(n)}\sum\limits_{l=1}^{L}H(\hat{z}_{l}),\qquad\mathcal{H}(Z|X=x):=\frac{1}{L\log(n)}\sum_{l=1}^{L}H(\hat{z}_{l}|X=x).
+(4)
+This now allows us to efficiently compute the mutual information
+between input features XX and encodings across an entire model, regardless of model size,
+I​(X;Z):=ℋ​(Z)−∑x∈XP​(X=x)​ℋ​(Z|X=x).\qquad I(X;Z):=\mathcal{H}(Z)-\sum\limits_{x\in X}P(X=x)~\mathcal{H}(Z|X=x).
+(5)
+3.2 Mutual Informations &amp; Back-off
+To determine whether or not a model is optimally compressed with respect to some data we need to compute mutual informations with respect to input and output labels. LLMs are trained with inputs as preceding context and outputs as trailing context (for discussion of this, and examples of the labelling procedure see Appendix E.4). Maintaining conditional estimates of a token embedding given a preceding context P​(Z|X)P(Z|X) for every possible context window proves intractable, and many contexts occur only once in the training data. Accordingly, like many other works on language modelling we approximate the distribution over possible sequences using n-grams with a kind of back-off [43]. By conditioning on finite widths of preceding context we can tractably approximate P​(Z|X)P(Z|X); the maximum width we consider here are quad-grams by which point I​(X;Z)I(X;Z) begins to converge and past which point computation becomes intractable in an LLM setting. By backing off further (e.g. to trigrams, bigrams, and tokens) we can also estimate how much different context widths contribute to information in a model - for clarity the majority of results in the following sections use token level backoff, with other levels of backoff explicitly noted where presented. We vary the degree of backoff equally for both the input P​(Z|X)P(Z|X) and output P​(Z|Y)P(Z|Y) distributions, because during training a model receives gradient information from the full trailing context YY due to teacher forcing. The labelling procedure is visualised in 3 – see Appendices E.2, E.3 for further discussion. In comparing different models we would like to be able to determine how close a given representation system is to the IB bound – by extension, how optimally compressed it is. When on the bound, representations preserve only the information from the input relevant to predicting the output. We quantify this with a summary statistic optimality.
+Optimality=ExpressivityComplexity=I​(Y;Z)I​(X;Z)\text{Optimality}=\frac{\text{Expressivity}}{\text{Complexity}}=\frac{I(Y;Z)}{I(X;Z)}
+(6)
+Intuitively this quantity approaches 1.0 as a representation system approaches the bound, regardless of where along the bound the system is placed (i.e. which beta value along the bound the system is closest to). More generally this is a relative quantity reflecting how many bits of expressivity a system has for each bit of complexity.
+In addition to mutual information with input and output labels, we also consider preference information. A growing body of work stresses the importance of post-training approaches for aligning models with human preference [6, 57, 51]. We can quantify this information in a model using preference data, where a prompt has two continuations, one of which is labelled preferred by raters and the other as rejected. Conditioning on this label lets us compute P​(Z|preferred)P(Z|\text{preferred}) and I​(Z;preferred)I(Z;\text{preferred}).
+Figure 3: Illustration of conditional probability estimates. An example sentence is provided, assuming word-level tokenization for simplicity. At left are the indices for the input and output tokens when the current input word is wherefore. At right is shown the sub-setting procedure for estimating conditional probabilities. This illustrates how bigram estimates do not compute entropy of two token embeddings, rather the embedding for the current token embedding conditioned on preceding context.
+Data and Sampling
+Getting a true estimate of the entropy of a vector space remains a major challenge, with most approaches underestimating the true entropy [53]. As a result we do not claim our experiments estimate the entropy of a model’s true latent distribution, but rather an estimate of the entropy with respect to a particular sample of data. By holding the data constant across models and experiments we can compute an estimate that is useful for comparisons, even if it does not exactly match the true entropy. Unless otherwise noted, token, bigram, trigram and quad-gram estimates are with respect to 10,000 samples from C4 [58], and preference estimates are based on 10,000 samples from Tulu [45]; in both cases we consider a maximum context length of 512.
+4 Experiments
+In order to study training time-courses our pre-training analyses look at the OLMo2 family of models [50], which makes available intermediate checkpoints 444Appendix D includes additional pre-training analyses of the Smol LM2 [2] and Pythia [7] models which also make intermediate checkpoints available. These follow a similar pattern to the results presented here.. We focus analysis on the 7B model unless otherwise noted, while including results for the 32B and 1B variants to show where conclusions hold or differ across model scales. In addition, to show our conclusions hold outside of this particular family of models we compare a wide array of open-weights LLMs (which do not make intermediate training checkpoints available), showing where they lie on the information plane at the end of training.
+4.1 Pre-training Approaches Optimal Compression
+The majority of pre-training appears to be a slow compression of a model’s training data. The Information Bottleneck theory of deep learning predicts two phases: a fitting phase during which output information I​(Y;Z)I(Y;Z) increases, followed by a compression phase during which input information I​(X;Z)I(X;Z) decreases and representations approach the bound. This transition to compression is believed to occur when error on the training set saturates.
+Shown in Figure 1 (and reproduced in Figure 4) is the training trajectory for the OLMo2 7B model with respect to data from English C4. Strikingly, the 7B model closely follows the two-phase prediction from the Information Bottleneck, first increasing mutual information with outputs, before compressing input information and progressing towards the bound on optimal compression. Additionally this transition appears to happen as the model’s loss on next-token prediction begins to saturate (Figure 1 right). This shows how, even at scale, deep-learning models appear to thread a needle between representational complexity and expressivity. It also demonstrates how LLMs can be effectively studied from the perspective of Rate Distortion Theory, as they try to converge to an optimal lossy compression of their training data.
+Figure 4: Models Largely Encode Local Context. (Top) The information plane over pre-training for the different levels of backoff. By changing how many tokens we condition the mutual information on in the context window, we see how the OLMo2 7B model compresses not just token but also local context information. Across all context windows we see the same two phase pattern predicted by the Information Bottleneck – with more contextual representations approaching greater optimality - indicated by hue. As context increases models compress both the target and source over training, rather than compressing the target independently. We hypothesise this is because in language modelling with full context the target and source distributions are nearly identical. (Bottom) By computing the conditional mutual information for a level of back-off given the others we can quantify what proportion of a model’s information encodes each level of context information. Each facet shows a different model size, with the horizontal axis reflecting training step and the vertical axis reflecting proportion of information from the source – hue indicates level of back-off
+Models More Optimally Compress Contextual Information
+By varying the degree of back-off in the source and target distributions used to compute mutual information, we can examine how contextual information evolves over pre-training at the token, bigram, trigram, and quad-gram levels (Figure 4 top). All cases result in a similar two-phase pattern of expansion and compression, with larger conditioning context converging closer to the bound (indicated by hue). For token-level back-off late training aligns with previous work on MNIST [66], with models compressing the source distribution – reducing complexity – while maintaining expressivity. At higher levels of contextualisation both complexity and expressivity are reduced. We hypothesise this is because in language modelling the source and target are sampled from the same distribution; what counts as an ‘input’ vs. an ‘output’ is a product of what point in the sequence the model is during generation. This is unlike tasks with an inherent difference between the distributions (e.g. MNIST classification where the source is over images and the target is over discrete labels). While individual tokens or words can have divergent source and target distributions – an adjective almost always precedes a noun and follows a determiner; permuting that order will render a sentence ungrammatical – at the phrase, sentence, or paragraph level the difference between preceding and trailing context – between target and source – becomes harder to identify. This makes it difficult to compress one without also compressing the other, resulting in the reduction of both complexity and expressivity in the trigram and quadgram facets of Figure 4. The higher degree of optimality in contextual encodings likely reflects an inherent pressure in the pre-training objective for models to not only develop token representations, but representations of a token in context.
+Embeddings Largely Encode Local Context
+We compute the proportion of information in a model explained by each level of back-off in the source distribution independently (this relies on estimating conditional mutual informations via the procedure described in E.5). As shown in Figure 4 (bottom) the majority of information in a model encodes local context (token to quadgram), likely reflecting the information locality of the natural language on which they’re trained [30, 29, 34]. The 1 billion parameter model also has more token information and less contextual information than its larger counterparts. The residual information likely encodes the finer-grained contextual distinctions found in the remainder of the 512 token context window (i.e. information up to an n-gram width of 512) – given the sparsity of n-grams greater than a quadgram those mutual informations are intractable for us to compute.
+However this gives an interpretation of an LLM from the perspective of earlier work in NLP as akin to an context-window-width n-gram model that is smoothed enough to be tractable to train from finite data.
+Figure 5: Models Converge Along the Bound With Smaller Models Struggling to Compress. (Top Left) Open-Weights models across 6 families at the end of training, lie along the bound on optimal compression. Hue indicates performance on MMLU Pro. (Top Right) The vertical axis indicates mutual information with preference, with models with more preference information exhibiting better performance (Bottom) Zooming in on later pre-training for each model size the 1B model matches Phase 1 but struggles to achieve meaningful compression later on, oscillating for much of pre-training off the frontier. All results use back-off to the trigram level. A full legend identifying each dot, with additional levels of back-off, is given in Appendix Figures 8 and 9.
+The Effect of Scale: Smaller Models Struggle to Compress
+Parameter count shows a marked effect on the degree of compression achievable by a model. Figure 5 shows pre-training trajectories for the 1B, 7B, and 32B parameter models. The larger models both closely follow the hypothesized Information Bottleneck trajectory, exhibiting phases of expansion and compression, ultimately approaching optimal compression. The 1B parameter model exhibits markedly different behaviour. While it successfully completes the initial expansion phase – increasing output information I​(Y;Z)I(Y;Z) – it fails to approach optimal compression. Instead, in the second phase the smaller model oscillates while moving slowly away from the bound (Figure 5 bottom-left).
+This suggests that for a given level of data complexity, a certain parameter threshold may be necessary for models to achieve an optimal compression – an observation in line with work on scaling laws [42].
+A Wide Array of Open-Weight Models Converge Along the Bound
+In addition to looking at the OLMo2 family of models, we compute complexity and expressivity estimates across a diverse array of open-weight models. A striking convergence pattern emerges: across different model families, hyper-parameters, and training methodologies, representations ultimately converge and cluster near the bound on compression (Figure 5, Top Left; with full model names in Appendix, Figures 8 and 9). Furthermore, models all approach the same point on the bound, suggesting they all converge to a similar information structure. This suggests that training as a process of compression is not an artifact of a single LLM’s training trajectory, but more fundamentally applies to deep-learning models as a class, and to the data and the objectives used to train them.
+Figure 6: Representation Information Relates Significantly to Performance Vertical axes, shared across all plots, show aggregate performance across 6 benchmarks (MMLU Pro, BBH, Math LVL5, IFEval, GPQA, MuSR). Horizontal axes use token back-off to show complexity significantly correlates with downstream performance (Top Left), while expressivity alone does not (Top Right). The ratio of how many bits of expressivity a model has per bit of complexity does correlate significantly – this quantity indicates how optimally compressed a model is (Bottom Left). The amount of preference information in a model also correlates with downstream performance (Bottom Right). Above each facet are results from a spearman correlation between their axes, and a partial spearman that treats a model’s number of parameters as a covariate. Expressivity and complexity are calculated using token back-off in all four facets.
+4.2 Relating Representation Structure to Performance
+So far we have studied how information in an LLM is structured; we now consider how that structure relates to downstream performance. We look at how representational information for 47 open weights models from 6 different families relates to performance across six benchmarks [21, MMLU Pro, BBH, Math LVL5, IFEval, GPQA, MuSR – Evaluations and aggregation from].
+Figure 6 shows that at the token level, lower complexity relates significantly to performance (r=−0.38r=-0.38, p=0.006p=0.006), while expressivity alone does not (r=0.08r=0.08, p=0.575p=0.575). However, the ratio between expressivity and complexity, a measure of how close a model is to optimal compression, is a significant predictor of downstream performance(r=0.52r=0.52, p&lt;0.001p&lt;0.001). This tells us that better performing models have less token complexity, and are more optimally compressed.
+More Contextual Information Improves Performance
+Looking beyond token-level backoff we see a pattern emerge. We again turn to conditional mutual informations with respect to the source distribution, which allows us isolate the information contributed by each level of context. For example, I​(Z;bigram|token)I(Z;\text{bigram}|\text{token}) indicates information explained by a bigram that is not already explained by tokens - the procedure for estimating these quantities is described in detail in appendix E.5. Shown in Figure 7, proportionally less token information correlates with downstream performance but having more bigram, trigram, and quadgram information correlates positively performance. Intuitively this shows how models that have a better representation of context, allocating less of their representations to token-level distinctions, perform better downstream. This aligns with our finding that larger models allocate more of their representation space to contextual information (Figure 5, bottom).
+Figure 7: Proportions of Information Vs. Performance: Across 47 models less token information and more local contextual information relates significantly to performance based on a spearman correlation reported above each facet. Hue indicate model, legend is provided in figure 6.
+Optimal Compression
+At all levels of back-off we see a consistent relationship between how close a model is to the information bottleneck bound on compression, and its performance downstream (Figure 7, bottom row – Spearman correlations are reported above each facet). Closer to the bound, representations preserve only the information from the input that is relevant to predicting the output. While higher performing models have more context information and less token information, how close to the bound representations are at each level of context is consistently positively related to performance. This allows us to link the simplest representation, at a given level of expressivity, to the most generalisable representation across the benchmarks considered here. Critically these compression estimates are computed with general data from the internet (C4) rather than data from the evaluations themselves, showing our methods can identify sufficiently general properties of a compression that we can predict downstream performance without knowledge of the test distribution.
+Preference
+While LLMs approach optimal compression for next sequence prediction over pre-training, a large body of work also tries to improve their ability to follow instructions, and generate responses humans prefer [51, e.g.]. We use preference data [45] to compute mutual information with preference. As shown in Figure 6 (bottom right), the amount of preference information in a model proves a significant predictor of downstream performance (r=0.76r=0.76, p=0.001p=0.001). This suggests that not only does the optimality of a model’s compression matter, but exactly what information survives that compression does too. In Appendix B we include results showing that post-training can increase the amount of preference information across different models in two different families while minimally changing their complexity. This suggests that pre-training is responsible for the broad compression learned by a model, while post-training edits the information it contains; we leave a more complete assessment of how different phases of training affect representational compression to future work.
+Results here focus on aggregate performance across 6 benchmarks, in Appendix C we discuss each of the benchmarks individually. At the individual task level optimal compression of C4 significantly predicts performance across math, reasoning, and factual knowledge benchmarks - but not instruction following. Instruction following is, however, predicted by the amount of preference information in a model. This helps us better understand what behaviours optimal compression of C4 is likely to give rise to - like broad factual knowledge - and what it is unlikely to give rise to — e.g. the ability to respond to questions with precise formatting and word counts.
+More broadly these results also indicate how the information theoretic approach taken here could potentially be leveraged during training. Optimality could be used as a stopping-criterion – ceasing pre-training when distance to the bound no longer decreases, or as a model-selection criterion – picking the checkpoint that is the most optimally compressed, or with the highest proportion of preference information. Given the estimates here are computed with a single-forward pass using teacher forcing, computing an entropy estimate for candidate selection would be substantively less costly than evaluating a model across a suite of benchmarks. We look to experimentally validate these potential use cases of our approach in future work.
+5 Conclusion
+The work presented here bridges the gap between theoretical accounts of learning and the practical complexities of LLMs. We show that LLMs learn an optimal compression of the data on which they are trained, with a wide array of open-weights models converging along the IB bound – with the optimality of a model’s compression predicting downstream performance. Each compression is different; we can account for the information that survives the compressive process, showing how representations encode information about different levels of local context and human preferences.
+The approach to interpretability we introduce here interprets a model as a whole – rather than focussing on a particular circuit, or attention head, or representational measures for just the final embedding from the final layer – because complex distributed systems are not best understood in terms of their parts alone. Giving a holistic account of what it means to train an entire model on the entire internet is a challenge, but we argue that LLMs are best understood as lossy compression. In doing so, we place them in the context of a long history of work on representation learning across the sciences.
+6 Acknowledgements
+We would like to thank Kenny Smith for his role in developing the core ideas presented here in earlier versions of this project.
+7 Ethics Statement
+All experiments reported here use publicly available datasets and pretrained models obtained under their original licenses; see Appendix H.1 for details. To our knowledge, these datasets contain no personally identifiable information, and we are in compliance with their terms of use. No additional data were collected. More generally, all authors have read and adhered to the ICLR Code of Ethics. To the best of our knowledge, these results and their dissemination do not raise any ethical concerns.
+8 Reproducibility Statement
+All datasets and pre-trained models used in our experiments are publicly available (see Appendix H.1). All code has been released at https://github.com/hcoxec/soft_h. Appendix H.2 contains details of compute resources necessary to reproduce these findings.
+References
+[1]
+C. C. Aggarwal, A. Hinneburg, and D. A. Keim (2001)
+On the surprising behavior of distance metrics in high dimensional space.
+In International Conference on Database Theory (ICDT),
+ pp. 420–434.
+Cited by: §E.1.1.
+[2]
+L. B. Allal, A. Lozhkov, E. Bakouch, G. M. Blázquez, G. Penedo, L. Tunstall, A. Marafioti, H. Kydlíček, A. P. Lajarín, V. Srivastav, J. Lochner, C. Fahlgren, X. Nguyen, C. Fourrier, B. Burtenshaw, H. Larcher, H. Zhao, C. Zakka, M. Morlon, C. Raffel, L. von Werra, and T. Wolf (2025)
+SmolLM2: when smol goes big – data-centric training of a small language model.
+External Links: arXiv:2502.02737
+Cited by: Appendix D,
+footnote 4.
+[3]
+D. E. Amos (1974)
+Computation of modified bessel functions and their ratios.
+Mathematics of computation 28 (125),  pp. 239–251.
+Cited by: §E.1.1.
+[4]
+P. W. Anderson (1972)
+More is different: broken symmetry and the nature of the hierarchical structure of science..
+Science 177 (4047),  pp. 393–396.
+Cited by: §1.
+[5]
+S. Arimoto (1972)
+An algorithm for computing the capacity of arbitrary discrete memoryless channels.
+IEEE Transactions on Information Theory 18 (1),  pp. 14–20.
+Cited by: §E.8.
+[6]
+Y. Bai, A. Jones, K. Ndousse, A. Askell, A. Chen, N. DasSarma, D. Drain, S. Fort, D. Ganguli, T. Henighan, et al. (2022)
+Training a helpful and harmless assistant with reinforcement learning from human feedback.
+arXiv preprint arXiv:2204.05862.
+Cited by: §3.2.
+[7]
+S. Biderman, H. Schoelkopf, Q. G. Anthony, H. Bradley, K. O’Brien, E. Hallahan, M. A. Khan, S. Purohit, U. S. Prashanth, E. Raff, et al. (2023)
+Pythia: a suite for analyzing large language models across training and scaling.
+In International Conference on Machine Learning,
+ pp. 2397–2430.
+Cited by: Appendix D,
+footnote 4.
+[8]
+R. Blahut (1972)
+Computation of channel capacity and rate-distortion functions.
+IEEE transactions on Information Theory 18 (4),  pp. 460–473.
+Cited by: §E.8.
+[9]
+T. Bricken, A. Templeton, J. Batson, B. Chen, A. Jermyn, T. Conerly, N. Turner, C. Anil, C. Denison, A. Askell, et al. (2023)
+Towards monosemanticity: decomposing language models with dictionary learning.
+Transformer Circuits Thread 2.
+Cited by: §2.3.
+[10]
+K. P. Burnham and D. R. Anderson (2002)
+Model selection and multimodel inference: a practical information-theoretic approach.
+ Springer.
+Cited by: §2.1.
+[11]
+N. Chater and P. Vitányi (2003-01)
+Simplicity: a unifying principle in cognitive science?.
+Trends in Cognitive Sciences 7 (1),  pp. 19–22 (en).
+External Links: ISSN 13646613,
+Link,
+Document
+Cited by: §2.1.
+[12]
+N. Chater (1997)
+Simplicity and the mind..
+The Psychologist.
+Cited by: §2.1.
+[13]
+H. C. Conklin (2025)
+Information structure in mappings: an approach to learning, representation and generalisation.
+The University of Edinburgh.
+Cited by: §E.1,
+§E.7,
+§G.2,
+§3.1.
+[14]
+G. Delétang, A. Ruoss, P. Duquenne, E. Catt, T. Genewein, C. Mattern, J. Grau-Moya, L. K. Wenliang, M. Aitchison, L. Orseau, et al. (2023)
+Language modeling is compression.
+arXiv preprint arXiv:2309.10668.
+Cited by: §2.1.
+[15]
+J. Devlin, M. Chang, K. Lee, and K. Toutanova (2019)
+Bert: pre-training of deep bidirectional transformers for language understanding.
+In Proceedings of the 2019 conference of the North American chapter of the association for computational linguistics: human language technologies, volume 1 (long and short papers),
+ pp. 4171–4186.
+Cited by: §1.
+[16]
+A. W. F. Edwards (1972)
+Likelihood.
+Cited by: §2.1.
+[17]
+N. Elhage, T. Hume, C. Olsson, N. Schiefer, T. Henighan, S. Kravec, Z. Hatfield-Dodds, R. Lasenby, D. Drain, C. Chen, et al. (2022)
+Toy models of superposition.
+arXiv preprint arXiv:2209.10652.
+Cited by: §2.3.
+[18]
+N. Elhage, N. Nanda, C. Olsson, T. Henighan, N. Joseph, B. Mann, A. Askell, Y. Bai, A. Chen, T. Conerly, et al. (2021)
+A mathematical framework for transformer circuits.
+Transformer Circuits Thread 1,  pp. 1.
+Cited by: §2.3.
+[19]
+J. Feldman (2000)
+Minimization of boolean complexity in human concept learning.
+Nature 407 (6804),  pp. 630–633.
+Cited by: §2.1.
+[20]
+J. Feldman (2016)
+The simplicity principle in perception and cognition.
+Wiley Interdisciplinary Reviews: Cognitive Science 7 (5),  pp. 330–340.
+Cited by: §1,
+§2.1.
+[21]
+C. Fourrier, N. Habib, A. Lozovskaya, K. Szafer, and T. Wolf (2024)
+Open llm leaderboard v2.
+Note: https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard
+Cited by: §4.2.
+[22]
+J. Frankle and M. Carbin (2018)
+The lottery ticket hypothesis: finding sparse, trainable neural networks.
+arXiv preprint arXiv:1803.03635.
+Cited by: §2.3.
+[23]
+R. Futrell, E. Wilcox, T. Morita, and R. Levy (2018)
+RNNs as psycholinguistic subjects: syntactic state and grammatical dependency.
+arXiv preprint arXiv:1809.01329.
+Cited by: §2.3.
+[24]
+R. Futrell, E. Wilcox, T. Morita, P. Qian, M. Ballesteros, and R. Levy (2019)
+Neural language models as psycholinguistic subjects: representations of syntactic state.
+arXiv preprint arXiv:1903.03260.
+Cited by: §2.3.
+[25]
+L. Gao, S. Biderman, S. Black, L. Golding, T. Hoppe, C. Foster, J. Phang, H. He, A. Thite, N. Nabeshima, et al. (2020)
+The pile: an 800gb dataset of diverse text for language modeling.
+arXiv preprint arXiv:2101.00027.
+Cited by: Appendix D.
+[26]
+T. Gao, X. Yao, and D. Chen (2021)
+SimCSE: simple contrastive learning of sentence embeddings.
+In Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP),
+Online and Punta Cana, Dominican Republic,  pp. 6894–6910.
+External Links: Link,
+Document
+Cited by: §E.7.
+[27]
+X. Ge, W. Shu, J. Wu, Y. Zhou, Z. He, and X. Qiu (2025)
+Evolution of concepts in language model pre-training.
+External Links: arXiv:2509.17196
+Cited by: §2.3.
+[28]
+S. Geman, E. Bienenstock, and R. Doursat (1992)
+Neural networks and the bias/variance dilemma.
+Neural computation 4 (1),  pp. 1–58.
+Cited by: §2.1.
+[29]
+E. Gibson et al. (2000)
+The dependency locality theory: a distance-based theory of linguistic complexity.
+Image, language, brain 2000,  pp. 95–126.
+Cited by: §4.1.
+[30]
+E. Gibson (1998)
+Linguistic complexity: locality of syntactic dependencies.
+Cognition 68 (1),  pp. 1–76.
+Cited by: §4.1.
+[31]
+Z. Goldfeld, E. v. d. Berg, K. Greenewald, I. Melnyk, N. Nguyen, B. Kingsbury, and Y. Polyanskiy (2019-05)
+Estimating Information Flow in Deep Neural Networks.
+ arXiv.
+Note: arXiv:1810.05728 [cs, stat]
+External Links: Link
+Cited by: §2.2.
+[32]
+A. Grattafiori, A. Dubey, A. Jauhri, A. Pandey, A. Kadian, A. Al-Dahle, A. Letman, A. Mathur, A. Schelten, A. Vaughan, et al. (2024)
+The llama 3 herd of models.
+arXiv preprint arXiv:2407.21783.
+Cited by: §1.
+[33]
+T. L. Griffiths, N. Chater, and J. B. Tenenbaum (2024)
+Bayesian models of cognition: reverse engineering the mind.
+ MIT Press.
+Cited by: §2.1.
+[34]
+M. Hahn, R. Futrell, R. Levy, and E. Gibson (2022)
+A resource-rational model of human processing of recursive linguistic structure.
+Proceedings of the National Academy of Sciences 119 (43),  pp. e2122602119.
+Cited by: §4.1.
+[35]
+D. Hendrycks, C. Burns, S. Basart, A. Zou, M. Mazeika, D. Song, and J. Steinhardt (2020)
+Measuring massive multitask language understanding.
+arXiv preprint arXiv:2009.03300.
+Cited by: §G.1.
+[36]
+D. Hendrycks, C. Burns, S. Kadavath, A. Arora, S. Basart, E. Tang, D. Song, and J. Steinhardt (2021)
+Measuring mathematical problem solving with the MATH dataset.
+NeurIPS.
+Cited by: 4th item.
+[37]
+J. Hu, J. Gauthier, P. Qian, E. Wilcox, and R. P. Levy (2020-05)
+A Systematic Assessment of Syntactic Generalization in Neural Language Models.
+arXiv:2005.03692 [cs] (en).
+Note: arXiv: 2005.03692
+External Links: Link
+Cited by: §2.3.
+[38]
+N. Jayant, J. Johnston, and R. Safranek (1993)
+Signal compression based on models of human perception.
+Proceedings of the IEEE 81 (10),  pp. 1385–1422.
+External Links: Document
+Cited by: §1.
+[39]
+E. T. Jaynes (1957)
+Information theory and statistical mechanics.
+Physical Review 106,  pp. 620–630.
+External Links: Link
+Cited by: §E.6.
+[40]
+H. Jeffreys (1939)
+The theory of probability.
+ OuP Oxford.
+Cited by: §2.1.
+[41]
+D. Jurafsky and J. H. Martin (2000)
+Speech and language processing: an introduction to natural language processing, computational linguistics, and speech recognition, 2nd edition.
+In Prentice Hall series in artificial intelligence,
+External Links: Link
+Cited by: §E.2.
+[42]
+J. Kaplan, S. McCandlish, T. Henighan, T. B. Brown, B. Chess, R. Child, S. Gray, A. Radford, J. Wu, and D. Amodei (2020)
+Scaling laws for neural language models.
+arXiv preprint arXiv:2001.08361.
+Cited by: §4.1.
+[43]
+S. Katz (1987)
+Estimation of probabilities from sparse data for the language model component of a speech recognizer.
+IEEE transactions on acoustics, speech, and signal processing 35 (3),  pp. 400–401.
+Cited by: §E.2,
+§3.2.
+[44]
+S. Kirby, M. Tamariz, H. Cornish, and K. Smith (2015)
+Compression and communication in the cultural evolution of linguistic structure.
+Cognition 141,  pp. 87–102.
+Cited by: §2.2.
+[45]
+N. Lambert, J. Morrison, V. Pyatkin, S. Huang, H. Ivison, F. Brahman, L. J. V. Miranda, A. Liu, N. Dziri, S. Lyu, Y. Gu, S. Malik, V. Graf, J. D. Hwang, J. Yang, R. L. Bras, O. Tafjord, C. Wilhelm, L. Soldaini, N. A. Smith, Y. Wang, P. Dasigi, and H. Hajishirzi (2024)
+Tülu 3: pushing frontiers in open language model post-training.
+Cited by: §G.1,
+§H.1,
+§3.2,
+§4.2.
+[46]
+D. J. MacKay (2003)
+Information theory, inference and learning algorithms.
+ Cambridge university press.
+Cited by: §2.1.
+[47]
+R. Marvin and T. Linzen (2018-08)
+Targeted Syntactic Evaluation of Language Models.
+arXiv:1808.09031 [cs],  pp. 1192–1202 (en).
+Note: arXiv: 1808.09031
+External Links: Document,
+Link
+Cited by: §2.3.
+[48]
+M. Mitchell (2009)
+Complexity: a guided tour.
+ Oxford University Press.
+Cited by: §1.
+[49]
+N. Nanda, L. Chan, T. Lieberum, J. Smith, and J. Steinhardt (2023)
+Progress Measures for Grokking via Mechanistic Interpretability.
+(en).
+Cited by: §2.3.
+[50]
+T. OLMo, P. Walsh, L. Soldaini, D. Groeneveld, K. Lo, S. Arora, A. Bhagia, Y. Gu, S. Huang, M. Jordan, N. Lambert, D. Schwenk, O. Tafjord, T. Anderson, D. Atkinson, F. Brahman, C. Clark, P. Dasigi, N. Dziri, M. Guerquin, H. Ivison, P. W. Koh, J. Liu, S. Malik, W. Merrill, L. J. V. Miranda, J. Morrison, T. Murray, C. Nam, V. Pyatkin, A. Rangapur, M. Schmitz, S. Skjonsberg, D. Wadden, C. Wilhelm, M. Wilson, L. Zettlemoyer, A. Farhadi, N. A. Smith, and H. Hajishirzi (2025-01)
+2 OLMo 2 Furious.
+ arXiv (en).
+Note: arXiv:2501.00656 [cs]
+External Links: Link,
+Document
+Cited by: Appendix F,
+§4.
+[51]
+L. Ouyang, J. Wu, X. Jiang, D. Almeida, C. Wainwright, P. Mishkin, C. Zhang, S. Agarwal, K. Slama, A. Ray, J. Schulman, J. Hilton, F. Kelton, L. Miller, M. Simens, A. Askell, P. Welinder, P. F. Christiano, J. Leike, and R. Lowe (2022)
+Training language models to follow instructions with human feedback.
+In Advances in Neural Information Processing Systems,  S. Koyejo, S. Mohamed, A. Agarwal, D. Belgrave, K. Cho, and A. Oh (Eds.),
+Vol. 35,  pp. 27730–27744.
+External Links: Link
+Cited by: §3.2,
+§4.2.
+[52]
+M. Oyama, S. Yokoi, and H. Shimodaira (2023)
+Norm of word embedding encodes information gain.
+In Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing,
+Vol. 1,  pp. 2108–2130.
+Cited by: §E.7.
+[53]
+L. Paninski (2003-06)
+Estimation of Entropy and Mutual Information.
+Neural Computation 15 (6),  pp. 1191–1253 (en).
+External Links: ISSN 0899-7667, 1530-888X,
+Link,
+Document
+Cited by: §G.2,
+§3.2.
+[54]
+T. Pimentel, J. Valvoda, R. H. Maudslay, R. Zmigrod, A. Williams, and R. Cotterell (2020)
+Information-theoretic probing for linguistic structure.
+arXiv preprint arXiv:2004.03061.
+Cited by: §2.3.
+[55]
+T. Poggio, R. Rifkin, S. Mukherjee, and P. Niyogi (2004)
+General conditions for predictivity in learning theory.
+Nature 428 (6981),  pp. 419–422.
+Cited by: §2.1.
+[56]
+E. M. Pothos and N. Chater (2001)
+4 categorization by simplicity: a minimum description length approach to un supervised clustering.
+Cited by: §2.1.
+[57]
+R. Rafailov, A. Sharma, E. Mitchell, C. D. Manning, S. Ermon, and C. Finn (2023)
+Direct preference optimization: your language model is secretly a reward model.
+In Advances in Neural Information Processing Systems,  A. Oh, T. Naumann, A. Globerson, K. Saenko, M. Hardt, and S. Levine (Eds.),
+Vol. 36,  pp. 53728–53741.
+External Links: Link
+Cited by: §3.2.
+[58]
+C. Raffel, N. Shazeer, A. Roberts, K. Lee, S. Narang, M. Matena, Y. Zhou, W. Li, and P. J. Liu (2020)
+Exploring the limits of transfer learning with a unified text-to-text transformer.
+Journal of machine learning research 21 (140),  pp. 1–67.
+Cited by: §H.1,
+§3.2.
+[59]
+N. Reimers and I. Gurevych (2019)
+Sentence-bert: sentence embeddings using siamese bert-networks.
+In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing (EMNLP) and the 9th International Joint Conference on Natural Language Processing (IJCNLP),
+Hong Kong, China,  pp. 3982–3992.
+External Links: Link,
+Document
+Cited by: §E.7.
+[60]
+D. Rein, B. L. Hou, A. C. Stickland, J. Petty, R. Y. Pang, J. Dirani, J. Michael, and S. R. Bowman (2024)
+GPQA: a graduate-level google-proof q&amp;a benchmark.
+In COLM,
+Cited by: 5th item.
+[61]
+J. Rissanen (1978)
+Modeling by shortest data description.
+Automatica 14 (5),  pp. 465–471.
+Cited by: §2.1.
+[62]
+M. S. Sajjadi, O. Bachem, M. Lucic, O. Bousquet, and S. Gelly (2018)
+Assessing generative models via precision and recall.
+Advances in neural information processing systems 31.
+Cited by: §E.6,
+§E.7.
+[63]
+A. M. Saxe, Y. Bansal, J. Dapello, M. Advani, A. Kolchinsky, B. D. Tracey, and D. D. Cox (2019-12)
+On the information bottleneck theory of deep learning.
+Journal of Statistical Mechanics: Theory and Experiment 2019 (12),  pp. 124020 (en).
+External Links: ISSN 1742-5468,
+Link,
+Document
+Cited by: §2.2.
+[64]
+A. M. Saxe, J. L. McClelland, and S. Ganguli (2019)
+A mathematical theory of semantic development in deep neural networks.
+Proceedings of the National Academy of Sciences 116 (23),  pp. 11537–11546.
+Cited by: §2.3.
+[65]
+C. E. Shannon (1948)
+A mathematical theory of communication.
+The Bell system technical journal 27 (3),  pp. 379–423.
+Cited by: §E.6,
+§1,
+§2.1,
+§2.2.
+[66]
+R. Shwartz-Ziv and N. Tishby (2017)
+Opening the black box of deep neural networks via information.
+arXiv preprint arXiv:1703.00810.
+Cited by: §E.6,
+§E.7,
+§E.7,
+§E.8,
+Appendix F,
+Appendix F,
+§2.2,
+§3.1,
+§4.1.
+[67]
+Z. Sprague, X. Ye, K. Bostrom, S. Chaudhuri, and G. Durrett (2024)
+MuSR: testing the limits of chain-of-thought with multistep soft reasoning.
+In ICLR,
+Cited by: 6th item.
+[68]
+M. Suzgun, N. Scales, N. Schärli, S. Gehrmann, Y. Tay, H. W. Chung, A. Chowdhery, Q. V. Le, E. H. Chi, D. Zhou, and J. Wei (2022)
+Challenging BIG-Bench tasks and whether chain-of-thought can solve them.
+arXiv preprint arXiv:2210.09261.
+Cited by: 3rd item.
+[69]
+N. Tishby, F. C. Pereira, and W. Bialek (2000)
+The information bottleneck method.
+arXiv preprint physics/0004057.
+Cited by: §E.8,
+§2.2.
+[70]
+N. Tishby and N. Zaslavsky (2015)
+Deep learning and the information bottleneck principle.
+In 2015 ieee information theory workshop (itw),
+ pp. 1–5.
+Cited by: §1,
+§2.2.
+[71]
+A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A. N. Gomez, Ł. Kaiser, and I. Polosukhin (2017)
+Attention is All you Need.
+ pp. 11 (en).
+Cited by: §E.1.1.
+[72]
+S. Veldhoen, D. Hupkes, and W. Zuidema (2016)
+Diagnostic classiﬁers: revealing how neural networks process hierarchical structure.
+ pp. 10 (en).
+Cited by: §2.3.
+[73]
+P. M. Vitányi and M. Li (2000)
+Minimum description length induction, bayesianism, and kolmogorov complexity.
+IEEE Transactions on information theory 46 (2),  pp. 446–464.
+Cited by: §2.1.
+[74]
+E. Voita, R. Sennrich, and I. Titov (2019-09)
+The Bottom-up Evolution of Representations in the Transformer: A Study with Machine Translation and Language Modeling Objectives.
+ arXiv.
+Note: arXiv:1909.01380 [cs]
+External Links: Link
+Cited by: §E.6,
+§E.7,
+§2.3,
+§3.1.
+[75]
+E. Voita and I. Titov (2020-03)
+Information-Theoretic Probing with Minimum Description Length.
+ arXiv.
+Note: arXiv:2003.12298 [cs]
+External Links: Link
+Cited by: §2.3.
+[76]
+C. S. Wallace and D. M. Boulton (1968)
+An information measure for classification.
+The Computer Journal 11 (2),  pp. 185–194.
+Cited by: §2.1.
+[77]
+Y. Wang, X. Ma, G. Zhang, Y. Ni, A. Chandra, S. Guo, W. Ren, A. Arulraj, X. He, Z. Jiang, et al. (2024)
+Mmlu-pro: a more robust and challenging multi-task language understanding benchmark.
+In The Thirty-eight Conference on Neural Information Processing Systems Datasets and Benchmarks Track,
+Cited by: 2nd item,
+§H.1.
+[78]
+A. Warstadt, A. Parrish, H. Liu, A. Mohananey, W. Peng, S. Wang, and S. R. Bowman (2019-12)
+BLiMP: A Benchmark of Linguistic Minimal Pairs for English.
+arXiv:1912.00582 [cs] (en).
+Note: arXiv: 1912.00582
+External Links: Link
+Cited by: §2.3.
+[79]
+A. R. Wilcox (1967)
+Indices of qualitative variation..
+Technical report
+ Oak Ridge National Lab.(ORNL), Oak Ridge, TN (United States).
+Cited by: §3.1.
+[80]
+N. Zaslavsky, C. Kemp, T. Regier, and N. Tishby (2018)
+Efficient compression in color naming and its evolution.
+Proceedings of the National Academy of Sciences 115 (31),  pp. 7937–7942.
+Cited by: §2.2.
+[81]
+T. Zhang, V. Kishore, F. Wu, K. Q. Weinberger, and Y. Artzi (2020)
+BERTScore: evaluating text generation with bert.
+In Proceedings of the International Conference on Learning Representations (ICLR),
+External Links: Link
+Cited by: §E.7.
+[82]
+J. Zhou, T. Lu, S. Mishra, S. Brahma, S. Basu, Y. Luan, D. Zhou, and L. Hou (2023)
+Instruction-following evaluation for large language models.
+arXiv preprint arXiv:2311.07911.
+Cited by: 1st item.
+Appendix A Open-Weights Models, Detailed Visuals
+Figure 8: Token &amp; Bigram Information Plane for Open Weights Models Shown here is the full, labelled token information plane for 75 open-weights models. While models lie at different levels of complexity and expressivity, they broadly approach the IB Bound on optimal compression. Hue indicates optimality - or proximity to the bound. 
+Figure 9: Trigram and Quadgram Information Plane Shown here is the full, labelled trigram and quadgram information plane for 75 open-weights models. Compared with the token case above, here models lie even closer to the frontier. The quadgram estimates are noisy due to sample sparsity, this combined with the fact that all models are close to the bound results in some estimates appearing to cross the bound.
+Appendix B Post-Training And Preference Information
+Figure 10: Post-Training and Preference Information (Above) Preference information on the vertical axis against whether or not the model is post-trained on the horizontal axis, with significance values from a paired permutation test above. (Below) Again, preference information on the vertical axis against optimality of a model’s compression on the horizontal axis axis.
+While LLMs become optimally compressed for next sequence prediction over pre-training, the final phase of the training pipeline often introduces other kinds of information. In the general case, post-training is designed to improve a model’s ability to follow instructions and better align it with human preferences; we look at how this changes the information content of a model, and how it affects the representations from pre-training. Figure 10 shows preference information across two different families of open weights models, Llama and Gemma, which release a checkpoint at the end of pre-training and one at the end of post-training. In the Llama case post trained models consistently have higher preference information than their pre- and mid-trained counterparts. This supports a framing of pre-training as imbuing the model with core semantic information, which is later augmented with task-specific and preference information. With the Gemma models the picture is more complicated, with a consistent effect for the most recent Gemma 3 release - post trained models have greater preference information - but no significant pattern across earlier models.
+Appendix C Predicting Performance on Individual Tasks
+In the main paper we focus analysis relating representational structure to performance on aggregate performance across 6 benchmarks.
+• 
+IFEval [82]: A benchmark of approximately 500 prompts containing objectively verifiable constraints such as word counts, keyword inclusion, and formatting requirements. Strong performance indicates that a model can reliably adhere to precise, compositional instructions rather than merely producing plausible text.
+• 
+MMLU-Pro [77]: An enhanced multi-task language understanding benchmark containing over 12,000 questions across 14 domains with ten answer choices per question (up from four in MMLU). It emphasizes reasoning-focused questions over pure knowledge recall. Strong performance indicates broad expert-level knowledge and robust reasoning across STEM, humanities, and social sciences.
+• 
+BBH [68]: A suite of 23 challenging tasks drawn from BIG-Bench on which prior language models failed to outperform average human raters. Tasks span algorithmic, logical, commonsense, temporal, and multi-step reasoning. Strong performance indicates the ability to carry out diverse, non-trivial reasoning that benefits from chain-of-thought prompting.
+• 
+MATH Level 5 [36]: The hardest difficulty tier of the MATH dataset, which contains competition-level mathematics problems sourced from contests such as the AMC and AIME, spanning algebra, geometry, number theory, combinatorics, and precalculus. Strong performance indicates the ability to solve multi-step problems requiring creative mathematical reasoning, not just computation.
+• 
+GPQA [60]: A set of 448 graduate-level multiple-choice questions in biology, physics, and chemistry, written by PhD-level domain experts. The questions are designed to be “Google-proof”—skilled non-experts with full web access achieve only ∼\sim34% accuracy. Strong performance indicates deep scientific reasoning beyond surface-level retrieval.
+• 
+MuSR [67]: A benchmark of multistep soft reasoning tasks embedded in natural-language narratives (e.g., ∼\sim1000-word murder mysteries). It requires extracting facts, applying commonsense, and chaining multiple inference steps. Strong performance indicates robust narrative comprehension and multi-hop reasoning in realistic settings.
+Here analysing the individual task correlations reveals a pattern. Shown in Figure 11, optimal compression of C4 - a broad crawl of the internet - predicts performance across math, reasoning, and factuality benchmarks, but not IFEval (r=0.07,p=0.631r=0.07,p=0.631). IFEval assesses a model’s ability to follow specific compositional instructions in the prompt, and performance here is predicted by the amount of preference information present in a prompt (r=0.39,p=0.004r=0.39,p=0.004). This sheds light on what drives model performance, general purpose knowledge and reasoning is related to optimal compression of the training data. By contrast instruction following is related to preference information which as discussed in the last section arises during post-training. Preference information proves prediction of math, reasoning, and factuality benchmarks as well as instruction following - but this may largely reflect the makeup of the preference data used. Tulu provides examples not just aligned with preference distinctions but also preferring more relevant, or more correct answers, which proves important across all benchmarks.
+Figure 11: Individual Task Performance Relationships: Shown on the vertical axis are individual task accuracies with each facet representing a different task. (Top) On the horizontal axis are optimality scores on C4 across 47 different open weights models hue indicating model id using the same legend as Figure 6. (Bottom) On the horziontal axes are is the amount of preference information in each model based on the Tulu dataset.
+Appendix D Additional Model Timecourses
+A major challenge in studying pre-training is the limited availability of checkpoints. While there are a huge number of checkpoints available for final trained models, intermediate checkpoints over the course of pre-training are relatively rare. We focus analysis in the main paper on the OLMo2 models as they offer comprehensive check pointing – and comparatively strong performance. Here we look at two other families of models which make available some pre-training checkpoints. The Smol LM2 models [2] released this year are models with 1.7B parameters or smaller that achieve competitive performance. The 1.7B Smol model was trained on 11 Trillion tokens and performs comparably to the 1B OLMo2 model which was trained on 4 Trillion Tokens. Broadly the 1.7B Smol model follows a similar training trajectory to the OLMo2 1B model having phases of expansion and compression but failing to approach the bound like the OLMo2 7B and 32B models. Pretraining timecourses for the Smol 1.7B model are shown in Figure 12 with token, bigram, trigram, and quadgram backoff. This figure also includes trajectories for the smaller 100M and 400M variants - these mosels struggle to show much meaningful compression, though part of the issue may be that check-pointing starts comparatively late in the pre-trianing process compared with say the OLMo2 Models.
+Figure 12: Smol LM2 Timecourses
+Figure 13: Pythia Model Timecourses
+The other family of models we analyse are the Pythia models [7]. Timecourses for two Pythia models are shown in Figure 13. Included are analyses of the 1.4B and 6.9B models. In terms of parametrisation these are roughly comparable to the 1B and 7B OLMo2 models analysed in the main paper. However it’s worth noting that the methodology for training these models is substantially different, and that their performance is substantially lower than the OLMo2 models, and other more recent open-weights models analysed above. In terms of training, Pythia models are intended for scientific analysis, as a result they use the same amount of data, batch size, and number of training steps across model sizes. Perhaps most importantly these models are trained on the Pile dataset [25]. This contains roughly 299,892,736,000, by contrast the 1B OLMo2 model is trained on 4,000,000,000,000 tokens - meaning the Pythia models see 7.5% of that data. Accordingly the 1.4B Pythia model appears to achieve better compression later in training than its OLMo counterpart. As discussed in the main paper there may be a relationship between data complexity and the model complexity needed in order to achieve substantive compression of it. By contrast the 6.9B Pythia model is still expanding representations late into pre-training; this would appear to indicate it is under-trained.
+Appendix E Entropy Estimation
+E.1 Estimator Hyperparameters
+The estimator has two parameters that need to be set: the number of bins mm and the temperature used in the softmax ε\varepsilon. As shown appendix G.2 and [13], the estimator is generally robust with respect to the number of bins - in all experiments presented here we use m=100m=100.
+E.1.1 Temperature calibration.
+Naively we could use the same temperature across all models, however models differ in the dimensionality of their hidden representations. Within self-attention, as the dimensionality dkd_{k} of query and key vectors grows, the variance of their dot products scales linearly with dkd_{k}, pushing the softmax function into saturated regions where gradients vanish [71]. This is a specific instance of the broader concentration of measure phenomenon in high-dimensional spaces, where distance and similarity metrics become increasingly uniform and less discriminative [1]. As a result [71] scales the dot product by d\sqrt{d} to avoid saturation.
+The soft entropy estimator uses dot-products on the surface of the unit hypersphere passed through a softmax in order to estimate a density. As a result, for a fixed temperature, higher-dimensional space will begin to appear more uniformly distributed. We compute a temperature which is calibrated to prevent saturation making estimates for different dimensionalities directly comparable.
+Let VεV_{\varepsilon} denote the von Mises–Fisher (vMF) distribution on unit hypersphere 𝕊d−1\mathbb{S}^{d-1} with concentration parameter 1/ε1/\varepsilon; by rotational symmetry, DKL​(Vε∥U)D_{\mathrm{KL}}(V_{\varepsilon}\|U) depends only on ε\varepsilon and dd, and measures how far a single vMF kernel is from uniform. In particular, there is no need to specify a mean direction in this KL divergence. For an arbitrary data distribution PP on the sphere, let PεP_{\varepsilon} denote the convolution of PP with the vMF kernel at temperature ε\varepsilon; the smoothed KL divergence DKL​(Pε∥U)D_{\mathrm{KL}}(P_{\varepsilon}\|U) is the estimation target, and satisfies 0≤DKL​(Pε∥U)≤DKL​(Vε∥U)0\leq D_{\mathrm{KL}}(P_{\varepsilon}\|U)\leq D_{\mathrm{KL}}(V_{\varepsilon}\|U) by Jensen’s inequality.
+For the soft entropy estimator D^(SQ)=DKL​(p^∥um)\widehat{D}^{(\mathrm{SQ})}=D_{\mathrm{KL}}(\hat{p}\|u_{m}) takes values in [0,log⁡m][0,\log m], where mm is the number of bins. To ensure this range is well-matched to the estimation target DKL​(Pε∥U)D_{\mathrm{KL}}(P_{\varepsilon}\|U), we calibrate the temperature ε\varepsilon so that the maximum possible value of the target equals log⁡m\log m. The target is bounded above by DKL​(Vε∥U)D_{\mathrm{KL}}(V_{\varepsilon}\|U), the KL divergence of a single von Mises–Fisher kernel from uniform probability measure on 𝕊d−1\mathbb{S}^{d-1}. Direct computation of DKL​(Vε∥U)D_{\mathrm{KL}}(V_{\varepsilon}\|U) requires evaluating modified Bessel functions, which is numerically unstable at large dd; however, using Amos-type bounds on Bessel function ratios [3], one can construct upper and lower envelope functions Ψε,d±\Psi^{\pm}_{\varepsilon,d} satisfying Ψε,d−≤DKL​(Vε∥U)≤Ψε,d+\Psi^{-}_{\varepsilon,d}\leq D_{\mathrm{KL}}(V_{\varepsilon}\|U)\leq\Psi^{+}_{\varepsilon,d}, with a gap of order O​(d−1)O(d^{-1}). It can be shown that DKL​(Vε∥U)D_{\mathrm{KL}}(V_{\varepsilon}\|U) is monotone decreasing,
+so the equation DKL​(Vε∥U)=log⁡mD_{\mathrm{KL}}(V_{\varepsilon}\|U)=\log m has a unique solution ε⋆​(m,d)\varepsilon^{\star}(m,d).
+Bounding functions Ψε,d±\Psi_{\varepsilon,d}^{\pm} are also strictly decreasing in ε\varepsilon, and their difference is of order O​(d−1)O(d^{-1}). These bounding functions show that,
+to leading order in dd,
+ε⋆​(m,d)≈12​d​log⁡m.\varepsilon^{\star}(m,d)\approx\frac{1}{\sqrt{2d\log m}}.
+(7)
+Throughout our experiments, we use the more exact bounds, Ψε,d±\Psi_{\varepsilon,d}^{\pm} to calibrate temperature. These bounds are numerically stable in high dimensions, and we approximate ε⋆​(m,d)\varepsilon^{\star}(m,d) by choosing the smallest temperature ε\varepsilon such that Ψε,d+≤log⁡m\Psi_{\varepsilon,d}^{+}\leq\log m.
+In practice this is computed once per model based on m=100m=100 and the model’s dimensionality. The correction here bears strong resemblance to the default scaling within self attention d\sqrt{d}.
+E.2 Approximating the Input Distribution
+We estimate the mutual information between model inputs and outputs. In an auto-regressive decoder-only LLM the input to a model is the preceding context up to the current token. We view the input as n-grams of tokens where the input at timestep xtx_{t} is an ngram of width tt containing all tokens x0​…​xtx_{0}...x_{t}. Maintaining probability distributions for every possible context proves intractable due to the combinatorial complexity of natural language. Additionally, ngrams greater than 3 tokens become sparsely distributed in the data making reliable estimation of their probabilities a challenge. As a result we condition estimates on ngrams of fixed-widths 1, 2, 3, 4 - referred to in the paper as token, bigram, trigram, quadgram. This is related to Backoff [43] which reduces n-gram size until the n-gram has non-zero probability in a corpus. Here though we do not interpolate different n-gram widths, instead maintaining separate aggregate estimates for each width – in part to be able to study how different levels of contextual information are represented in the model. Where a given n-gram, like a quadgram, does not have non-zero probability in the data it is omitted from overall quadgram mutual information estimate.
+In practice this means estimates for smaller n-gram widths are more reliable - a classical issue in language modelling [41, see]. Token, bigram, and trigram estimates can be estimated reliably from a relatively small sample of data. We judge this by looking at how estimates change as a function of the number of samples during the estimation procedure, by 5,000 samples these estimates reliably begin to converge. Quadgrams, due to their sparsity, tend to have less robust estimates - additionally the number of labels grows quadratically with each additional ngram width making quadgrams challenging to estimate for larger models with larger vocabularies. As a result our broad comparison of open-weights models uses token and bigram estimates. The pre-training model size analysis here focusses on trigram estimates (figure 5) as this widest context that still reflects a reliable estimate. The analysis of how context is represented over pretraining (figure 4) includes quadgram estimates for reference.
+E.3 Approximating the Output Distribution
+During inference models predict the next token given preceding context, but this is distinct from how they are trained. During training of an auto-regressive decoder-only LLM, causal masking means a token can only attend to preceding context, not trailing context. However transformer decoders are trained using teacher forcing, where predictions are generated for the entire sequence in parallel by assuming predictions are made correctly. This is instead of having training operate on one token at a time with a separate forward pass for each - which is how predictions are generated during inference. The result of this is that for an embedding ete_{t} at timestep tt, following embeddings et+1e_{t+1} can attend to ete_{t}. This means embeddings get gradient information from the trailing context. Put another way, the prediction for output yt+1y_{t+1} is written in terms of ete_{t}. As a result the gradient information from the next token(s) in a sequence ∇ℒθ​(yt+1)\nabla\mathcal{L}_{\theta}(y_{t+1}) affect the embedding at the current timestep.
+Given that our analysis computes embedding mutual informations over training with respect to a model’s input and outputs this fact has implications for us. It means that the output for ete_{t} is not just yt+1y_{t+1} but all following output tokens yt+1​…​yny_{t+1}...y_{n} where nn is the sequence length. This is because ete_{t} receives gradient information from the loss with respect to predicting all following tokens in a sequence. As a result we consider XX to be the entire preceding context in the input (as mentioned above), and YY to be the entire trailing context after the current point in the sequence. This means when we compute mutual informations for different n-gram widths we match the width for XX and YY - conditioning the estimates on the same width of preceding and trailing context respectively.
+Figure 14: Illustration of conditional probability estimates. An example sentence is provided, assuming word-level tokenization for simplicity. At left are the indices for the input and output tokens when the current input word is wherefore. At right is shown the sub-setting procedure for estimating conditional probabilities. This illustrates how bigram estimates do not compute entropy of two token embeddings, rather the embedding for the current token embedding conditioned on preceding context.
+E.4 Estimating Mutual Informations
+To compute mutual informations between the input XX and representations ZZ, we need two quantities: the entropy of representations ℋ​(Z)\mathcal{H}(Z) and the conditional entropy given the input ℋ​(Z|X)\mathcal{H}(Z|X). To compute ℋ​(Z)\mathcal{H}(Z) we use the quantisation procure described in Section 2 applied to all token embeddings which gives Z^\hat{Z} - by summing over each embedding and renormalising we get a categorical distribution P​(Z)P(Z) that describes the embedding space. To get a conditional estimate P​(Z|X)P(Z|X) we simply take Z^\hat{Z} and compute a subset, containing the embeddings corresponding to the input XX, Z^|X\hat{Z}|X. Summing and renormalising gives us the distribution P​(Z^|X)P(\hat{Z}|X).
+This brings us to an important distinction, our analysis discusses mutual informations with respect to tokens, bigrams, trigrams, and quadgrams. These are not computed over different widths of embeddings, but rather over single token embeddings conditioned on the preceding context. In the same way P​(Z^|X)P(\hat{Z}|X) is computed as a subset of P​(Z)P(Z), as we condition on further context we can subset the embeddings further. Figure 14 gives a high-level illustration of this process. It means that Z|tokenZ|\text{token} is a subset of ZZ, and Z|bigramZ|\text{bigram} is a subset of Z|tokenZ|\text{token}, Z|trigramZ|\text{trigram} is a subset of Z|bigramZ|\text{bigram} etc. This means the terms token, or bigram mutual informations refer to the width of the conditioning context, not the width of the embeddings over which entropy is computed.
+E.5 Conditional Mutual Informations and The Residual
+In order to compute what proportion of a model encodes each level of context we use the chain rule for mutual information. As we increase the context width used in back-off the estimates contain each other - the bigram mutual information includes the token mutual information. This means when estimating mutual information with the source distribution with token back-off we look at only the current token I​(Z;xt)I(Z;x_{t}), while bigram mutual information adds the preceding token I​(Z;xt,xt−1)I(Z;x_{t},x_{t-1}). The chain rule here means:
+I​(X;xt,xt−1)=I​(Z;xt)+I​(Z;xt−1|xt).I(X;x_{t},x_{t-1})=I(Z;x_{t})+I(Z;x_{t-1}|x_{t}).
+(8)
+which allows us to separate out the information explained by the current token I​(Z;xt)I(Z;x_{t}) and the preceding one given the current token I​(Z;xt−1|xt)I(Z;x_{t-1}|x_{t}). For the source distribution XX and a given n-gram width nn we can get a proportion ϕ\phi of model information by normalising by the entropy of the model.
+ϕ​(x,n)=I(Z;xn|x1..xn−1)ℋ​(Z)\phi(x,n)=\frac{I(Z;x_{n}|x_{1}..x_{n-1})}{\mathcal{H}(Z)}
+(9)
+We compute this for each level of backoff, where at the token level ϕ​(x,1)=I​(Z;xt)/ℋ​(Z)\phi(x,1)=I(Z;x_{t})/\mathcal{H}(Z). The most granular label we have in the experiments here is quadgram. The residual, or unexplained information, is the information in the model left after subtracting the mutual information of the most granular category.
+ϕr​e​s​i​d​u​a​l(x,nm​a​x)=ℋ(Z)−I(Z;xn..xnm​a​x)\phi_{residual}(x,n_{max})=\mathcal{H}(Z)-I(Z;x_{n}..x_{n_{max}})
+(10)
+Results showing proportions of model information broken down in ngram can be found in figure 4 (bottom).
+Figure 15: Proportions of Information Vs. Performance: Across 47 models less token information and more local contextual information relates significantly to performance based on a spearman correlation. 
+E.5.1 Conditional Mutual Informations and Performance
+Shown in Figure 15 - less token information, but a higher proportion of local contextual information, relates significantly to downstream performance. In the main paper we report token level back-off in the correlation results, where lower complexity is related to performance.
+E.6 On The Use of Shannon Entropy
+In this paper we compute the entropy of continuous latent variables. As a result it is natural to ask why we - in line with previous work [66, 74, 62] - opt instead to discretise representations and compute their Shannon entropy [65]. There are two major reasons for this; first, differential entropy is not the true continuous analogue of Shannon Entropy [39]. This is shown by the fact that differential entropy D​(X)D(X)is unbounded −∞≤D​(X)≤∞-\infty\leq D(X)\leq\infty, and variant under linear transformations. This is the main motivator for an information theoretic analysis to discretise and use Shannon entropy directly. A secondary consideration is that we don’t know how embeddings are distributed, so in order to get a differential entropy estimate we would first need to fit a distribution to the data. At scale this fitting step can be expensive, and introduce topographic assumptions. While discretisation is imperfect it enables the use of Shannon entropy, and makes minimal topographic assumptions.
+E.7 Scalability of Prior Work
+Notably [66] perform an empirical information theoretic analysis of neural-networks trained on MNIST. To do so they perform dimension-wise discretisation of model embeddings. This turns a 16-dimensional vector into a 16 character string. They then convert this to a categorical distribution over all possible strings. This gives a single categorical distribution that can describe representations at a particular layer in a network. This approach to discretisation works well on small problems - they study feed-forward networks trained on MNIST. However the dimension-wise discretisation requires taking a hidden representation with dimensions batch×hidden\textit{batch}\times\textit{hidden} and transforming it to batch×hidden×n bins\textit{batch}\times\textit{hidden}\times\textit{n bins}. If using 50 bins, in practice this means using 50 times the memory of not discretising. For the OLMo2 32B model used in this paper which has a hidden dimension of 5120 and 64 layers, and where we have a context window of 512 tokens, this would require holding in memory a tensor of dimensions batch×512×5120×64×n bins\textit{batch}\times 512\times 5120\times 64\times\textit{n bins}. The memory use of this approach makes it intractable to apply to contemporary models and the problems studied here.
+[74] studied the transformer base model which has only 6 layers with a hidden dimension of 512. Despite this they note the approach from [66] was not tractable to apply to the model. They opt instead for quantising representations via clustering, based on related work from [62]. This method runs a clustering algorithm ([74] use mini-batch k-means), then treats each cluster as an event in a categorical distribution - where density is assigned proportional to cluster membership. While this method provides robust entropy estimates, and dramatically less memory usage than the approach from [66] it still has relatively high computational complexity. It requires running a clustering algorithm to convergence before performing quantisation, prohibiting its use in an online setting - you need the cluster centroids before you can assign embeddings to them. Again thinking of the OLMo2 32B model used here, this would require running a clustering algorithm on 5120 dimensional spaces, at all 64 layers separately, for each of the 150 pre-training checkpoints. This would provide the ‘bins’ for the quantisation, then embeddings would need to be assigned to bins, requiring a second forward pass.
+In practice an information-theoretic analysis of an LLM requires an entropy estimation method that is memory efficient, fast to compute, and can be applied in an online setting - requiring a single forward pass and no caching of the embeddings. The only estimator we’re aware of that meets these criteria is the soft-entropy estimator [13]. Here the quantisation requires only a cosine-similarity and a softmax, making it fast and memory efficient. Additionally the normalisation step means ‘bins’ can be computed once at the start of the analysis, rather than needing a pass through the data to fit clusters or fit the support of the model’s distribution. [13] notes that the use of cosine similarities means this method considers only angular information in the representation space. While euclidean distances can be used instead, this would require first estimating the support of the distribution to fit the ‘bins’ making online estimation challenging. However use of cosine-based methods is standard practice in NLP [81, 59, 26], with some work suggesting vector norms in LLMs predominantly encode frequency information [52, e.g.].
+E.8 The Information Bottleneck Bound
+The Information Bottleneck bound is the curve traced by varying the trade-off parameter β\beta in:
+ℱβ​[p​(Z|X)]=I​(X;Z)−β​I​(Y;Z)\mathcal{F}_{\beta}[p(Z|X)]=I(X;Z)-\beta I(Y;Z)
+(11)
+The curve this traces is where representations are optimally compressed. Along this bound p​(Z|X)p(Z|X) is an optimal encoder, from inputs to representations, preserving only the information in XX relevant to YY. For a given dataset this optimal encoder can be found numerically via a version of the Blahut-Arimoto [8, 5] method for computing channel capacity. Introduced in [69], the information bottleneck method for determining channel capacity relies on three equations:
+pβ(z|x)=pβ​(z)Zβ​(x)exp(−βD[p(y|x)||pβ(y|Z)])p_{\beta}(z|x)=\frac{p_{\beta}(z)}{Z_{\beta}(x)}\exp\biggl(-\beta D[p(y|x)||p_{\beta}(y|Z)]\biggr)
+(12)
+pβ​(z)=∑x∈Xp​(x)​pβ​(z|x)p_{\beta}(z)=\sum_{x\in X}p(x)p_{\beta}(z|x)
+(13)
+pβ​(y|z)=∑x∈Xpβ​(x|z)​p​(y|x)p_{\beta}(y|z)=\sum_{x\in X}p_{\beta}(x|z)p(y|x)
+(14)
+These equations are satisfied self-consistently at the bound. As these three equations rely on each other, one can learn an optimal encoder by starting with a randomly initialised one. Then iteratively computing each of these equations in turn.
+In the general case the shape of this bound follows a linear relationship, until all mutual information between xx and yy is captured. At this point the curve saturates — additional complexity doesn’t result in additional accuracy, as there’s no more predictive information in xx. This means numerical computational bound is largely important for computing where it saturates.
+However numerical computation of the bound in our setting proves intractable. Here the optimal encoder p​(z|x)p(z|x) needs to map all of natural language to representations that optimally predict the next token. This is an exceedingly challenging problem for an iterative numerical optimizer – it’s a problem that ordinarily requires a large language model. In experiments we are able to compute a bound for tokenizers up to 50,000 tokens, however past this point convergence begins to fail. In our setting this process takes a tokenizer and 300,000 sentences from c4 to get a maximum likelihood estimate of P​(x),P​(y),P​(y|x)P(x),P(y),P(y|x) on data representative of a model’s training data. We can then iteratively compute P​(z|x)P(z|x) until convergence. In our experiments this iterative procedure converges to the expected saturation point - where I​(Z;Y)=I​(X;Y)I(Z;Y)=I(X;Y).
+Given that we would like to have a bound for problems where numerical computation of it proves intractable, we leverage this pattern by assuming the bound follows a linear relationship until the saturation point where I​(Z;Y)=I​(X;Y)I(Z;Y)=I(X;Y). The largest tokenizer for which we can tractably compute this quantity has a normalised I​(X;Y)I(X;Y) of 0.7 (where 1.0 is the maximum possible value). Across all open weights models the highest token complexity converged to is 0.15, well below the saturation point. This is in line with results from [66], which shows FFNs on MNIST only converge near the saturation point when over-fitting.
+Appendix F Relating Compression to Training Loss
+Figure 16: Cross-Entropy Loss vs. Distance to bound. Shown on the vertical axis is the OLMo2 7b model’s cross-entropy loss on 10,000 examples from c4. On the horizontal axis is the ratio between I​(Y;Z)I(Y;Z) and I​(X;Z)I(X;Z) which is indicative of how close a representation is to the IB bound. Models begin to compress and approach the bound as the loss saturates.
+Prior work [66] shows that models transition from the fitting phase where I​(Y;Z)I(Y;Z) increases, to the compression phase where I​(X;Z)I(X;Z) decreases when empirical error on the training distribution saturates. Their setting is substantively different to the one studied in our work – the most relevant differences here are that they analyse a feed-forward model trained on MNIST for multiple epochs, meaning the model’s performance can fully saturate in-distribution. In an LLM setting models are trained on orders of magnitude more data, often for a single epoch - passing through the data only once, meaning saturation is more graded. However it is worth asking if the transition between fitting and compression relates to training performance in an analogous way.
+We compute the cross-entropy loss for the OLMo2 7b model performing next token prediction on 10,000 examples from C4. C4 is a substantive component of the OLMo2 pre-training data [50] and so gives us a proxy for in-distribution performance on the model’s training set. This follows a previously attested dynamic, where earlier steps dramatically decrease the loss before this begins to slowly saturate. Unlike in an MNIST setting this objective never truly saturates, instead slowly flattening. Figure 16 shows this loss plotted against the ratio between expressivity I​(Y;Z)I(Y;Z) and complexity I​(X;Z)I(X;Z). As noted in Section 4.2 this ratio acts a distance to the bound where models are optimally compressed - as this quantity approaches 1.0 models approach the bound. Figure 16 shows how models begin to approach the bound as the loss on c4 begins to saturate. This broadly aligns with [66], where saturation in-distribution relates to the transition to compression.
+Appendix G Estimator Robustness
+Our work does not introduce the soft entropy estimator but is the first to apply it in this context. As a result we run some robustness experiments to see how the results vary under different hyper-parameters and data distributions.
+Figure 17: Estimator Robustness to number of bins and data distribution. Shown are trajectories through the information plane for the OLMo2 7b model. (Top) trajectories in the main paper use 100 reference points wiw_{i} per layer, here 50 points are used, and show the same overall two-phase pattern. (bottom) estimates in the main paper are with respect to c4 given its resemblance to an LLM’s training distribution, here are trajectories computed with data from Tulu and MMLU pro which show the same two-phase pattern. Hue indicates log tokens in billions over the course of pre-training.
+G.1 Robustness to Data Distribution
+Core results in the paper show information plane trajectories computed using C4 as this dataset forms a substantive part of the pre-training data for the OLMo2 models. To verify that the overall pattern of expansion and compression is robust across data distributions we analyse the pre-training checkpoints of the OLMo2 7B model across data from C4, Tulu [45], and MMLU [35]. Figure 17 (bottom) shows the pre-training trajectories for the 7B model computed with token backoff across all three distributions. The two-phase pattern proves consistent across all of them with a fitting phase followed by a compression phase where models approach the bound. There are individual variations for each dataset, with Tulu and MMLU having higher mutual informations than C4. This may reflect that MMLU and Tulu are more domain-specific than C4, which is a broad crawl of the internet.
+G.2 Robustness to Number of Reference Points
+The Soft Entropy estimator relies on a soft-quantisation of a model’s embedding space, whereby each representation is softly assigned to nn points wiw_{i} which are sampled uniformly at random from the surface of the unit sphere (a process described in equations 2 and 3). Experiments in the paper use a n=100n=100. Here we show the core 7b model pre-training time-course computed for c4 with token backoff using n=100n=100 and n=50n=50. The results show the same overall pattern of expansion and compression with small changes to the exact mutual information values. Given this estimator resembles a differentiable relaxation of a binning-based estimate, it is relevant to note that in binning based approaches increasing the number of bins reduces mutual information by assigning similar representations to an increasing number of different bins [53]. The results seen here are consistent with this effect - 100 points achieves slightly lower mutual information than 50 points. [13] note this interaction when introducing this estimator, but show in benchmarking experiments that the soft-assignment process makes this estimator more robust to number of ‘bins’ than existing clustering based approaches.
+Figure 18: Pre-training Time-courses Computed with a Mean vs. Expectation Shown are trajectories through the information plane over pre-training for the OLMo2 1b, 7b, 32b models. These analyses use a mean (top) or expectation (bottom) in computation of mutual information. The expectation is used in the main paper as it reflects true mutual information. Hue indicates tokens in billions over the course of pre-training.
+G.3 Language is a Long-Tailed Distribution — Computing ‘Mutual Information’ With Means
+As noted in Section 3.1, the quantity estimated here is mutual information, which uses an expectation over conditional entropies rather than a mean.
+I​(X;Z):=ℋ​(Z)−∑x∈XP​(X=x)​ℋ​(Z|X=x)\qquad I(X;Z):=\mathcal{H}(Z)-\sum\limits_{x\in X}P(X=x)\mathcal{H}(Z|X=x)
+(15)
+Here we recompute the core pre-training analyses for the 1B, 7B and 32B models using a mean - detailed in equation 16 - to see how treating each event as equiprobable effects the analysis. Given language is known to be zipfian distributed a small number of high-probability patterns likely drive the mutual information. It is worth noting when using a mean the resulting quantity is not the true mutual information, and so the information bottleneck bound does not necessarily apply.
+I​(X;Z):=1|X|​∑x∈Xℋ​(Z)−ℋ​(Z|X=x)\qquad I(X;Z):=\frac{1}{|X|}\sum\limits_{x\in X}\mathcal{H}(Z)-\mathcal{H}(Z|X=x)
+(16)
+As shown in figure 18, estimates computed with the mean and with the expectation both show the same two-phase pattern, with models first expanding representation phase before compressing towards the bound. When taken as a mean the quantity reflects the mean mutual information per label - like mean mutual information per token - rather than being weighted by the exponentially distributed token representations.
+Appendix H Datasets, Models, and Compute
+H.1 Licenses for Models and Datasets
+As noted in Section 3, we use two datasets for estimation - Tulu [45]
+and C4 [58] both of which fall under the Open Data Commons Attribution License (ODC-By) v1.0. Later we use MMLU Pro for behavioural evaluation [77] which falls under the Apache License (Version 2.0).
+We study a wide array of models, below is license information grouped by model family:
+• 
+OLMo: The code and models are released under Apache 2.0.
+• 
+Gemma: Released under the gemma license stated here: https://ai.google.dev/gemma/terms
+• 
+Llama: Released under the llama license found here: https://www.llama.com/llama3/license/
+• 
+Qwen: The code and models are released under Apache 2.0.
+• 
+Aya/Command: Released under the Creative Commons Attribution Non Commercial 4.0
+• 
+Pythia: The code and models are released under Apache 2.0.
+H.2 Compute Resource and Complexity
+The estimation procedure used here has low complexity for an entropy estimator, requiring only a dot-product and softmax. The majority of compute expense comes from the model’s forward pass required to compute the estimate. The complexity of this depends on the size of the model. In experiments here estimates required encoding 10,000 samples from C4 and Tulu. This process takes approximately 10, 40, or 70 minutes on either 2, 4, or 8 H100 GPUs respectively (number required depending on model size). Given this we estimate the total number of GPU hours required for the results in this paper at approximately 3,600 H100 hours.
+    Experimental support, please
+    <a href="./2604.07569v1/__stdout.txt" class="ltx_ref"
+    target="_blank" rel="nofollow">view the build logs
+    for errors. Generated by
+        L
+        A
+        T
+        E
+      xml
+      <img alt="[LOGO]"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==">
+    .
+    Instructions for reporting errors
+    We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+      support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+      methods listed below:
+      Click the "Report Issue" (<svg role="presentation"
+            style="display: inline-block; vertical-align: middle; fill: var(--text-color);" aria-hidden="true"
+            height="1em" viewBox="0 0 640 640">
+            <path
+              d="M224 160C224 107 267 64 320 64C373 64 416 107 416 160L416 163.6C416 179.3 403.3 192 387.6 192L252.5 192C236.8 192 224.1 179.3 224.1 163.6L224.1 160zM569.6 172.8C580.2 186.9 577.3 207 563.2 217.6L465.4 290.9C470.7 299.8 474.7 309.6 477.2 320L576 320C593.7 320 608 334.3 608 352C608 369.7 593.7 384 576 384L480 384L480 416C480 418.6 479.9 421.3 479.8 423.9L563.2 486.4C577.3 497 580.2 517.1 569.6 531.2C559 545.3 538.9 548.2 524.8 537.6L461.7 490.3C438.5 534.5 395.2 566.5 344 574.2L344 344C344 330.7 333.3 320 320 320C306.7 320 296 330.7 296 344L296 574.2C244.8 566.5 201.5 534.5 178.3 490.3L115.2 537.6C101.1 548.2 81 545.3 70.4 531.2C59.8 517.1 62.7 497 76.8 486.4L160.2 423.9C160.1 421.3 160 418.7 160 416L160 384L64 384C46.3 384 32 369.7 32 352C32 334.3 46.3 320 64 320L162.8 320C165.3 309.6 169.3 299.8 174.6 290.9L76.8 217.6C62.7 207 59.8 186.9 70.4 172.8C81 158.7 101.1 155.8 115.2 166.4L224 248C236.3 242.9 249.8 240 264 240L376 240C390.2 240 403.7 242.8 416 248L524.8 166.4C538.9 155.8 559 158.7 569.6 172.8z" />
+          ) button, located in the page header.
+    Tip: You can select the relevant text first, to include it in your report.
+    Our team has already identified <a class="ltx_ref" href="https://github.com/arXiv/html_feedback/issues"
+        target="_blank">the following issues. We appreciate your time reviewing and reporting rendering errors we
+      may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+      should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+      all.
+    Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a <a
+        class="ltx_ref" href="https://github.com/brucemiller/LaTeXML/wiki/Porting-LaTeX-packages-for-LaTeXML"
+        target="_blank">list of packages that need conversion, and welcome <a class="ltx_ref"
+        href="https://github.com/brucemiller/LaTeXML/issues" target="_blank">developer contributions.
+  BETA
+  <a id="disable-reading-mode-btn" class="header-button" href="javascript:toggleReadingMode();"
+    title="Disable reading mode, show header and footer">
+    <svg role="presentation" height="1.25rem"
+      viewBox="0 0 448 512">
+      <path
+        d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />
