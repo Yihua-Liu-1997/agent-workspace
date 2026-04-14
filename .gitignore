@@ -14,3 +14,5 @@ scripts.bak/
 
 # Temp files
 /tmp/
+.sync.log
+.sync.log
