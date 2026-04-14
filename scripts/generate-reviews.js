@@ -24,8 +24,6 @@ const CONFIG = {
   reviewBaseDir: '/home/useradmin/agent_workspace/data/paper-reviews',
   papersDir: '/home/useradmin/agent_workspace/data/papers',
   telegramTarget: '5740650457',
-  // Gemini CLI 只允许写入此目录（workspace sandbox 限制）
-  geminiWorkspace: '/home/useradmin/gemini_workspace',
   // 每个 Gemini 调用的超时（秒），避免无限重试
   geminiTimeout: 90,
   // GLM-5 超时
@@ -157,30 +155,9 @@ function generateReviewWithGemini(arxivId, title, today, paperFile, model = 'gem
     fs.mkdirSync(reviewDir, { recursive: true });
   }
 
-  // Gemini CLI sandbox: 只能读写 geminiWorkspace 下的文件
-  // 所以把 PDF 复制到 geminiWorkspace，让 gemini 在那里工作，完成后复制回来
-  const geminiDir = `${CONFIG.geminiWorkspace}/paper-reviews/${today}`;
-  if (!fs.existsSync(geminiDir)) {
-    fs.mkdirSync(geminiDir, { recursive: true });
-  }
-
-  // 复制论文文件到 geminiWorkspace（PDF 或 HTML 文本）
-  let geminiPaperFile = null;
-  if (paperFile && fs.existsSync(paperFile)) {
-    const ext = path.extname(paperFile);
-    const geminiCopy = `${geminiDir}/${arxivId}${ext}`;
-    if (!fs.existsSync(geminiCopy) || fs.statSync(geminiCopy).size !== fs.statSync(paperFile).size) {
-      fs.copyFileSync(paperFile, geminiCopy);
-      console.log(`  📋 已复制论文到 gemini_workspace`);
-    }
-    geminiPaperFile = geminiCopy;
-  }
-
-  const geminiReviewPath = `${geminiDir}/${arxivId}.md`;
-
   const task = `请分析这篇 arXiv 论文并写一篇详细的长文。
 
-请先读取论文 PDF 获取论文内容：@${geminiPaperFile}
+请先读取论文 PDF 获取论文内容：@${paperFile}
 
 论文链接：https://arxiv.org/abs/${arxivId}
 
@@ -197,14 +174,14 @@ function generateReviewWithGemini(arxivId, title, today, paperFile, model = 'gem
    - 评价与思考（个人见解，要有深度）
    - 适用场景
 4. 用 Markdown 格式
-5. 最后写完后，将完整长文保存到文件：${geminiReviewPath}
+5. 最后写完后，将完整长文保存到文件：${reviewPath}
 
-重要：一定要把完整内容写入 ${geminiReviewPath} 文件！`;
+重要：一定要把完整内容写入 ${reviewPath} 文件！`;
 
   console.log(`  💎 Gemini ${model} 写长文...`);
 
   try {
-    const taskFile = `${CONFIG.geminiWorkspace}/gemini-task-${arxivId}.txt`;
+    const taskFile = `/tmp/gemini-task-${arxivId}.txt`;
     fs.writeFileSync(taskFile, task, 'utf-8');
 
     const cmd = `timeout ${CONFIG.geminiTimeout}s gemini -y -m ${model} -p "$(cat ${taskFile})"`;
@@ -212,16 +189,13 @@ function generateReviewWithGemini(arxivId, title, today, paperFile, model = 'gem
       encoding: 'utf-8',
       timeout: (CONFIG.geminiTimeout + 10) * 1000,
       maxBuffer: 10 * 1024 * 1024,
-      cwd: geminiDir,  // 在 gemini_workspace 内工作
+      cwd: reviewDir,  // 直接在 agent_workspace 的 review 目录工作
     });
 
     try { fs.unlinkSync(taskFile); } catch (e) {}
 
-    // 从 geminiWorkspace 复制结果到 reviewDir
-    const finalReviewPath = copyFromGeminiWorkspace(geminiReviewPath, reviewPath);
-
     // Check if file was written
-    if (finalReviewPath && fs.existsSync(reviewPath)) {
+    if (fs.existsSync(reviewPath)) {
       const fileSize = fs.statSync(reviewPath).size;
       if (fileSize >= CONFIG.minReviewSize) {
         console.log(`  ✅ Gemini 完成: ${arxivId} (${(fileSize / 1024).toFixed(1)} KB)`);
@@ -243,8 +217,7 @@ function generateReviewWithGemini(arxivId, title, today, paperFile, model = 'gem
     return { success: false, error: 'No review content' };
 
   } catch (error) {
-    // Timeout - check if partial file exists (先尝试从 geminiWorkspace 复制)
-    copyFromGeminiWorkspace(geminiReviewPath, reviewPath);
+    // Timeout - check if partial file exists
     if (fs.existsSync(reviewPath)) {
       const fileSize = fs.statSync(reviewPath).size;
       if (fileSize >= CONFIG.minReviewSize) {
@@ -256,19 +229,6 @@ function generateReviewWithGemini(arxivId, title, today, paperFile, model = 'gem
     console.error(`  ⚠️ Gemini 失败: ${error.message.slice(0, 100)}`);
     return { success: false, error: error.message.slice(0, 100) };
   }
-}
-
-// ─── Copy file from geminiWorkspace to target ───
-function copyFromGeminiWorkspace(srcPath, dstPath) {
-  if (fs.existsSync(srcPath)) {
-    const size = fs.statSync(srcPath).size;
-    if (size >= CONFIG.minReviewSize) {
-      fs.copyFileSync(srcPath, dstPath);
-      console.log(`  📋 已从 gemini_workspace 复制 (${(size / 1024).toFixed(1)} KB)`);
-      return dstPath;
-    }
-  }
-  return null;
 }
 
 // ─── Generate review with GLM-5 API ───
