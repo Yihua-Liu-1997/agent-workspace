@@ -40,7 +40,7 @@ const CONFIG = {
   // 智谱 AI
   zhipuApiKey: 'f6efdb78d38248ccaa04e504d8615469.UFCOZXA1JxTPRNyK',
   zhipuBaseUrl: 'https://open.bigmodel.cn/api/coding/paas/v4',
-  zhipuModel: 'glm-4-flash',
+  zhipuModel: 'glm-5.1',
   aiConcurrency: 1,
   // 存储
   workspaceDir: WORKSPACE_DIR,
