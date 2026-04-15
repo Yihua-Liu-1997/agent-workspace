@@ -1,0 +1,29 @@
+{
+  "pushed": [
+    {
+      "arxiv_id": "2604.08570",
+      "title": "QuanBench+: A Unified Multi-Framework Benchmark for LLM-Based Quantum Code Generation",
+      "date": 1776222216307
+    },
+    {
+      "arxiv_id": "2604.11784",
+      "title": "ClawGUI: A Unified Framework for Training, Evaluating, and Deploying GUI Agents",
+      "date": 1776222216307
+    },
+    {
+      "arxiv_id": "2604.11297",
+      "title": "The Past Is Not Past: Memory-Enhanced Dynamic Reward Shaping",
+      "date": 1776222216307
+    },
+    {
+      "arxiv_id": "2604.10098",
+      "title": "Attention Sink in Transformers: A Survey on Utilization, Interpretation, and Mitigation",
+      "date": 1776222216307
+    },
+    {
+      "arxiv_id": "2604.08121",
+      "title": "Uni-ViGU: Towards Unified Video Generation and Understanding via A Diffusion-Based Video Generator",
+      "date": 1776222216307
+    }
+  ]
+}
