@@ -1,31 +1,6 @@
 {
   "pushed": [
     {
-      "arxiv_id": "2603.11653",
-      "title": "Simple Recipe Works: Vision-Language-Action Models are Natural Continual Learners with Reinforcement Learning",
-      "date": 1773625390117
-    },
-    {
-      "arxiv_id": "2603.10910",
-      "title": "GLM-OCR Technical Report",
-      "date": 1773625390117
-    },
-    {
-      "arxiv_id": "2603.12245",
-      "title": "One Model, Many Budgets: Elastic Latent Interfaces for Diffusion Transformers",
-      "date": 1773625390117
-    },
-    {
-      "arxiv_id": "2603.12185",
-      "title": "ComFree-Sim: A GPU-Parallelized Analytical Contact Physics Engine for Scalable Contact-Rich Robotics Simulation and Control",
-      "date": 1773625390117
-    },
-    {
-      "arxiv_id": "2603.11863",
-      "title": "CreativeBench: Benchmarking and Enhancing Machine Creativity via Self-Evolving Challenges",
-      "date": 1773625390117
-    },
-    {
       "arxiv_id": "2603.12254",
       "title": "Attend Before Attention: Efficient and Scalable Video Understanding via Autoregressive Gazing",
       "date": 1773709234699
@@ -749,6 +724,31 @@
       "arxiv_id": "2604.08542",
       "title": "Scal3R: Scalable Test-Time Training for Large-Scale 3D Reconstruction",
       "date": 1776148310112
+    },
+    {
+      "arxiv_id": "2604.08510",
+      "title": "What do Language Models Learn and When? The Implicit Curriculum Hypothesis",
+      "date": 1776218233600
+    },
+    {
+      "arxiv_id": "2604.08168",
+      "title": "ViVa: A Video-Generative Value Model for Robot Reinforcement Learning",
+      "date": 1776218233600
+    },
+    {
+      "arxiv_id": "2604.08544",
+      "title": "SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds",
+      "date": 1776218233600
+    },
+    {
+      "arxiv_id": "2604.08302",
+      "title": "DMax: Aggressive Parallel Decoding for dLLMs",
+      "date": 1776218233600
+    },
+    {
+      "arxiv_id": "2604.08120",
+      "title": "Small Vision-Language Models are Smart Compressors for Long Video Understanding",
+      "date": 1776218233600
     }
   ]
 }
