@@ -6,7 +6,13 @@ const { execSync, execFileSync } = require('child_process');
 const cheerio = require('cheerio');
 
 // 加载代理补丁（让 fetch 走代理）
-require(path.resolve(__dirname, '../../../fetch-patch.cjs'));
+const fetchPatchPath = path.resolve(__dirname, '../../../fetch-patch.cjs');
+if (fs.existsSync(fetchPatchPath)) {
+  require(fetchPatchPath);
+} else {
+  const localPatch = path.resolve(__dirname, '../fetch-patch.cjs');
+  if (fs.existsSync(localPatch)) require(localPatch);
+}
 
 /**
  * GitHub Trending 热门项目推送系统

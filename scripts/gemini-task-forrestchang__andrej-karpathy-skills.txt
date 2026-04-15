@@ -1,0 +1,24 @@
+请分析以下 GitHub 热门项目并写一篇详细的中文技术分析长文。
+
+项目地址: https://github.com/forrestchang/andrej-karpathy-skills
+项目描述: A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.
+主语言: 未知
+Stars: 34,321 | 今日新增: +9,263 | Forks: 2,816
+
+请先搜索该项目获取更多上下文信息，然后访问项目 GitHub 页面。
+
+要求：
+1. 搜索项目的相关内容，整合信息
+2. 仔细阅读项目 README 和文档
+3. 长文必须包含以下章节：
+   - 标题（项目名 + 一句话概括）
+   - 项目简介（做什么的、解决什么问题）
+   - 核心特性与技术架构
+   - 适用场景与目标用户
+   - 与同类项目对比
+   - 评价与思考（个人见解，要有深度）
+   - 上手建议
+4. 用 Markdown 格式
+5. 最后写完后，将完整长文保存到文件：/home/useradmin/agent_workspace/data/project-reviews/2026-04-15/forrestchang__andrej-karpathy-skills.md
+
+重要：一定要把完整内容写入 /home/useradmin/agent_workspace/data/project-reviews/2026-04-15/forrestchang__andrej-karpathy-skills.md 文件！
