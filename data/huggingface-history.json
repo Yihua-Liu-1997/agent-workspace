@@ -24,6 +24,31 @@
       "arxiv_id": "2604.08121",
       "title": "Uni-ViGU: Towards Unified Video Generation and Understanding via A Diffusion-Based Video Generator",
       "date": 1776222216307
+    },
+    {
+      "arxiv_id": "2604.12627",
+      "title": "KnowRL: Boosting LLM Reasoning via Reinforcement Learning with Minimal-Sufficient Knowledge Guidance",
+      "date": 1776308494248
+    },
+    {
+      "arxiv_id": "2604.13016",
+      "title": "Rethinking On-Policy Distillation of Large Language Models: Phenomenology, Mechanism, and Recipe",
+      "date": 1776308494248
+    },
+    {
+      "arxiv_id": "2604.07429",
+      "title": "GameWorld: Towards Standardized and Verifiable Evaluation of Multimodal Game Agents",
+      "date": 1776308494248
+    },
+    {
+      "arxiv_id": "2604.09574",
+      "title": "Turing Test on Screen: A Benchmark for Mobile GUI Agent Humanization",
+      "date": 1776308494248
+    },
+    {
+      "arxiv_id": "2604.08865",
+      "title": "SPPO: Sequence-Level PPO for Long-Horizon Reasoning Tasks",
+      "date": 1776308494248
     }
   ]
 }
