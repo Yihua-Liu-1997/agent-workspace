@@ -1,31 +1,6 @@
 {
   "pushed": [
     {
-      "arxiv_id": "2603.12254",
-      "title": "Attend Before Attention: Efficient and Scalable Video Understanding via Autoregressive Gazing",
-      "date": 1773709234699
-    },
-    {
-      "arxiv_id": "2603.12686",
-      "title": "Learning Athletic Humanoid Tennis Skills from Imperfect Human Motion Data",
-      "date": 1773709234699
-    },
-    {
-      "arxiv_id": "2603.13023",
-      "title": "daVinci-Env: Open SWE Environment Synthesis at Scale",
-      "date": 1773709234699
-    },
-    {
-      "arxiv_id": "2603.12793",
-      "title": "Cheers: Decoupling Patch Details from Semantic Representations Enables Unified Multimodal Comprehension and Generation",
-      "date": 1773709234699
-    },
-    {
-      "arxiv_id": "2603.13032",
-      "title": "Multimodal OCR: Parse Anything from Documents",
-      "date": 1773709234699
-    },
-    {
       "arxiv_id": "2603.15031",
       "title": "Attention Residuals",
       "date": 1773795626561
@@ -749,6 +724,21 @@
       "arxiv_id": "2604.08120",
       "title": "Small Vision-Language Models are Smart Compressors for Long Video Understanding",
       "date": 1776218233600
+    },
+    {
+      "arxiv_id": "2604.08362",
+      "title": "Towards Real-world Human Behavior Simulation: Benchmarking Large Language Models on Long-horizon, Cross-scenario, Heterogeneous Behavior Traces",
+      "date": 1776301264202
+    },
+    {
+      "arxiv_id": "2604.08995",
+      "title": "Matrix-Game 3.0: Real-Time and Streaming Interactive World Model with Long-Horizon Memory",
+      "date": 1776301264202
+    },
+    {
+      "arxiv_id": "2604.09168",
+      "title": "ELT: Elastic Looped Transformers for Visual Generation",
+      "date": 1776301264202
     }
   ]
 }
