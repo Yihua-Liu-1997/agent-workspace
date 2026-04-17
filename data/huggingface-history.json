@@ -49,6 +49,31 @@
       "arxiv_id": "2604.08865",
       "title": "SPPO: Sequence-Level PPO for Long-Horizon Reasoning Tasks",
       "date": 1776308494248
+    },
+    {
+      "arxiv_id": "2604.14148",
+      "title": "Seedance 2.0: Advancing Video Generation for World Complexity",
+      "date": 1776395029211
+    },
+    {
+      "arxiv_id": "2604.11626",
+      "title": "RationalRewards: Reasoning Rewards Scale Visual Generation Both Training and Test Time",
+      "date": 1776395029211
+    },
+    {
+      "arxiv_id": "2604.14144",
+      "title": "SpatialEvo: Self-Evolving Spatial Intelligence via Deterministic Geometric Environments",
+      "date": 1776395029211
+    },
+    {
+      "arxiv_id": "2604.10866",
+      "title": "OccuBench: Evaluating AI Agents on Real-World Professional Tasks via Language World Models",
+      "date": 1776395029211
+    },
+    {
+      "arxiv_id": "2604.14004",
+      "title": "Memory Transfer Learning: How Memories are Transferred Across Domains in Coding Agents",
+      "date": 1776395029211
     }
   ]
 }
