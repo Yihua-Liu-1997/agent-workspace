@@ -1,28 +1,11 @@
-🔥 **AlphaXiv 今日热门论文**
-📅 2026年4月16日星期四
+📭 **AlphaXiv 今日热门**
+📅 2026年4月17日星期五
 
----
+今天没有新的热门论文上榜，榜单与昨日基本一致。
 
-🥇 **Towards Real-world Human Behavior Simulation: Benchmarking Large Language Models on Long-horizon,...**
-   👍 16 | 👁 193
-   👥 Chen, Jiawei, Xu, Ruoxi, Cao, Boxi 等
-   📄 [arXiv:2604.08362](https://arxiv.org/abs/2604.08362) | 💬 [AlphaXiv](https://alphaxiv.org/abs/2604.08362)
+🏆 当前榜单 Top 3:
+🥇 Neural Computers (170👍)
+🥈 In-Place Test-Time Training (170👍)
+🥉 PaperOrchestra: A Multi-Agent Framework for Automated AI Research Paper Writing (117👍)
 
-   💭 📝 *评论生成失败*
-
-🥈 **Matrix-Game 3.0: Real-Time and Streaming Interactive World Model with Long-Horizon Memory**
-   👍 9 | 👁 58
-   👥 Wang, Zile, Liu, Zexiang, Li, Jiaxing 等
-   📄 [arXiv:2604.08995](https://arxiv.org/abs/2604.08995) | 💬 [AlphaXiv](https://alphaxiv.org/abs/2604.08995)
-
-   💭 📝 *评论生成失败*
-
-🥉 **ELT: Elastic Looped Transformers for Visual Generation**
-   👍 6 | 👁 41
-   👥 Goyal, Sahil, Agrawal, Swayam, Anil, Gautham Govind 等
-   📄 [arXiv:2604.09168](https://arxiv.org/abs/2604.09168) | 💬 [AlphaXiv](https://alphaxiv.org/abs/2604.09168)
-
-   💭 最近读到了一篇挺有意思的论文，感觉特别适合分享给你。这篇论文提出了一个叫 ELT（Elastic Looped Transformers）的模型，主要解决的是现在视觉生成模型参数量过于庞大的痛点。作者们非常巧妙地使用了权重共享的循环 Transformer 架构来替代传统的深层网络，硬是在大幅度缩减参数量的同时，还保持了极高的图像和视频生成质量。为了让这种循环结构更好地收敛，他们还设计了一种“环内自蒸馏”的训练策略。我觉得这项研究特别有意义，因为它意味着未来我们在做图像或视频生成时，完全有可能在算力有限的消费级显卡或移动端设备上，流畅地跑起高质量的生成模型，在轻量化和实用性上迈出了一大步，非常推荐你读读看！
-
----
-_数据来源: [AlphaXiv Hot](https://alphaxiv.org/explore?sort=Hot) | 评论由 AI 生成_
+📎 查看完整榜单: https://alphaxiv.org/explore?sort=Hot
