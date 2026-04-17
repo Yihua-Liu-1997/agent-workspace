@@ -39,6 +39,26 @@
     {
       "fullName": "Lordog/dive-into-llms",
       "date": 1776304913991
+    },
+    {
+      "fullName": "lsdefine/GenericAgent",
+      "date": 1776391408948
+    },
+    {
+      "fullName": "google/magika",
+      "date": 1776391408948
+    },
+    {
+      "fullName": "EvoMap/evolver",
+      "date": 1776391408948
+    },
+    {
+      "fullName": "vercel-labs/open-agents",
+      "date": 1776391408948
+    },
+    {
+      "fullName": "datawhalechina/hello-agents",
+      "date": 1776391408948
     }
   ]
 }
