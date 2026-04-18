@@ -59,6 +59,26 @@
     {
       "fullName": "datawhalechina/hello-agents",
       "date": 1776391408948
+    },
+    {
+      "fullName": "BasedHardware/omi",
+      "date": 1776477781250
+    },
+    {
+      "fullName": "anthropics/skills",
+      "date": 1776477781250
+    },
+    {
+      "fullName": "openai/openai-agents-python",
+      "date": 1776477781250
+    },
+    {
+      "fullName": "anomalyco/opencode",
+      "date": 1776477781250
+    },
+    {
+      "fullName": "SimoneAvogadro/android-reverse-engineering-skill",
+      "date": 1776477781250
     }
   ]
 }
