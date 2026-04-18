@@ -74,6 +74,31 @@
       "arxiv_id": "2604.14004",
       "title": "Memory Transfer Learning: How Memories are Transferred Across Domains in Coding Agents",
       "date": 1776395029211
+    },
+    {
+      "arxiv_id": "2604.14268",
+      "title": "HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds",
+      "date": 1776481333235
+    },
+    {
+      "arxiv_id": "2604.14142",
+      "title": "From P(y|x) to P(y): Investigating Reinforcement Learning in Pre-train Space",
+      "date": 1776481333235
+    },
+    {
+      "arxiv_id": "2604.11045",
+      "title": "Sema Code: Decoupling AI Coding Agents into Programmable, Embeddable Infrastructure",
+      "date": 1776481333235
+    },
+    {
+      "arxiv_id": "2604.13151",
+      "title": "Exploration and Exploitation Errors Are Measurable for Language Model Agents",
+      "date": 1776481333235
+    },
+    {
+      "arxiv_id": "2604.15308",
+      "title": "RAD-2: Scaling Reinforcement Learning in a Generator-Discriminator Framework",
+      "date": 1776481333235
     }
   ]
 }
